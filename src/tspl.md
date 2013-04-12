@@ -1,3 +1,6 @@
+% The Scheme Programming Language
+% R. Kent Dybvig
+
 [![](canned/small-cover.png)](canned/medium-cover.png)
 
    
