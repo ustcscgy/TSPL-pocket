@@ -1,0 +1,33 @@
+BODY {background-color: #FFFFFF}
+
+a:link, a:active, a:visited { color:#3974b3; text-decoration:underline }
+a:hover { color:black; text-decoration:underline; background:#3974b3 }
+
+a.plain:link, a.plain:active, a.plain:visited { color:#3974b3; text-decoration:none }
+a.plain:hover { color:black; text-decoration:none; background:#3974b3 }
+
+a.toc:link, a.toc:active, a.toc:visited {font-family: sans-serif; color:#3974b3; text-decoration:none}
+a.toc:hover {font-family: sans-serif; color:black; text-decoration:none; background:#3974b3}
+
+ul.tocchapter { list-style: none; }
+ul.tocsection { list-style: circle; color: #2d448c }
+
+hr.copyright { width: 50% }
+
+input.default { background: #ffffff; color: #000000; vertical-align: middle}
+
+h1, h2, h3, h4 {font-family: sans-serif; color: #2d448c}
+h1 {font-size: 2em}
+h2 {margin-top: 30px; font-size: 1.5em}
+h3 {margin-top: 30px; font-size: 1.17em}
+h1, h2, h3, h4 {font-weight: bold}
+
+.title { font-family: sans-serif; font-weight: bold; font-size: 2.5em; color: #2d448c; white-space: nowrap}
+.author { font-family: sans-serif; font-weight: bold; font-size: 2em; color: #2d448c; white-space: nowrap}
+.edition { font-family: sans-serif; font-weight: bold; font-size: 1.5em; color: #3974b3; white-space: nowrap}
+.artist { font-family: sans-serif; font-weight: bold; font-size: 1.25em; color: #3974b3; white-space: nowrap}
+
+.formdef { color: #3974b3 }
+
+table.indent {margin-left: 20px}
+
