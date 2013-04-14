@@ -1,12 +1,7 @@
 % The Scheme Programming Language
 % R. Kent Dybvig
 
-[![](canned/small-cover.png)](canned/medium-cover.png)
-
-   
-
-The Scheme\
- Programming Language
+The Scheme Programming Language
 
 Fourth Edition
 
@@ -14,9 +9,6 @@ R. Kent Dybvig
 
 Illustrations by Jean-Pierre Hébert
 
-* * * * *
-
-R. Kent Dybvig / The Scheme Programming Language, Fourth Edition\
  Copyright © 2009 [The MIT
 Press](http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&tid=11984).
 Electronically reproduced by permission.\
