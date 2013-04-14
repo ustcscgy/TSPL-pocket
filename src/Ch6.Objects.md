@@ -3536,18 +3536,3 @@ symbol in the universe of `enum-set`, returns the index of the symbol
 applied to a symbol not in the universe, `p` returns `#f`.
 
 `(define e1 (make-enumeration '(a b c d)))  (define e2 ((enum-set-constructor e1) '(a d)))  (define p (enum-set-indexer e2))  (list (p 'a) (p 'c) (p 'e))  (0 2 #f)`
-
-* * * * *
-
-R. Kent Dybvig / The Scheme Programming Language, Fourth Edition\
- Copyright © 2009 [The MIT
-Press](http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&tid=11984).
-Electronically reproduced by permission.\
- Illustrations © 2009 [Jean-Pierre
-Hébert](http://hebert.kitp.ucsb.edu/)\
- ISBN 978-0-262-51298-5 / LOC QA76.73.S34D93\
- [to order this
-book](http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&tid=11984)
-/ [about this book](canned/about.html)
-
-[http://www.scheme.com](http://www.scheme.com)

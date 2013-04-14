@@ -432,18 +432,3 @@ definition of the Fibonacci function (see
 page [69](further.html#fibonacci)).
 
 `(define memoize    (lambda (proc)      (let ([cache '()])        (lambda (x)          (cond            [(assq x cache) => cdr]            [else             (let ([ans (proc x)])               (set! cache (cons (cons x ans) cache))               ans)])))))   (define fibonacci    (memoize      (lambda (n)        (if (< n 2)            1            (+ (fibonacci (- n 1)) (fibonacci (- n 2)))))))   (fibonacci 100)  573147844013817084101`
-
-* * * * *
-
-R. Kent Dybvig / The Scheme Programming Language, Fourth Edition\
- Copyright © 2009 [The MIT
-Press](http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&tid=11984).
-Electronically reproduced by permission.\
- Illustrations © 2009 [Jean-Pierre
-Hébert](http://hebert.kitp.ucsb.edu/)\
- ISBN 978-0-262-51298-5 / LOC QA76.73.S34D93\
- [to order this
-book](http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&tid=11984)
-/ [about this book](canned/about.html)
-
-[http://www.scheme.com](http://www.scheme.com)
