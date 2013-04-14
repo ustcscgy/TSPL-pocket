@@ -1,4 +1,4 @@
-![](canned/ch8.png)![](canned/jph.png)
+![](canned/ch8.png)
 
 Chapter 8. Syntactic Extension
 ==============================

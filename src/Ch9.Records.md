@@ -1,4 +1,4 @@
-![](canned/ch9.png)![](canned/jph.png)
+![](canned/ch9.png)
 
 Chapter 9. Records
 ==================

@@ -1,4 +1,4 @@
-![](canned/ch4.png)![](canned/jph.png)
+![](canned/ch4.png)
 
 Chapter 4. Procedures and Variable Bindings
 ===========================================

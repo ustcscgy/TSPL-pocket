@@ -1,4 +1,4 @@
-![](canned/ch7.png)![](canned/jph.png)
+![](canned/ch7.png)
 
 Chapter 7. Input and Output
 ===========================

@@ -1,4 +1,4 @@
-![](canned/ch6.png)![](canned/jph.png)
+![](canned/ch6.png)
 
 Chapter 6. Operations on Objects
 ================================

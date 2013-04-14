@@ -1,4 +1,4 @@
-![](canned/ch1.png)![](canned/jph.png)
+![](canned/ch1.png)
 
 Chapter 1. Introduction
 =======================

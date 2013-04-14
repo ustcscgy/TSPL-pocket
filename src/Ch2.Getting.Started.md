@@ -1,4 +1,4 @@
-![](canned/ch2.png)![](canned/jph.png)
+![](canned/ch2.png)
 
 Chapter 2. Getting Started
 ==========================

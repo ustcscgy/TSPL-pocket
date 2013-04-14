@@ -1,4 +1,4 @@
-![](canned/ch3.png)![](canned/jph.png)
+![](canned/ch3.png)
 
 Chapter 3. Going Further
 ========================

@@ -1,4 +1,4 @@
-![](canned/ch5.png)![](canned/jph.png)
+![](canned/ch5.png)
 
 Chapter 5. Control Operations
 =============================
