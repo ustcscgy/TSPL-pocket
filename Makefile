@@ -2,8 +2,8 @@ epub: build
 	cd src && pandoc -S --epub-metadata=metadata.xml \
             --epub-cover-image=cover.png \
             --epub-stylesheet=tspl.css \
-	    -t epub3 -o ../build/TSPL.epub --toc \
-            tspl.md Preface.md Ch1.Introduction.md \
+            -t epub3 -o ../build/TSPL.epub \
+            tspl.md toc.md Preface.md Ch1.Introduction.md \
             Ch2.Getting.Started.md Ch3.Going.Further.md \
             Ch4.Procedures.and.Variable.Bindings.md \
             Ch5.Control.Operations.md Ch6.Objects.md \
