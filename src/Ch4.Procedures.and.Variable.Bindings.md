@@ -25,7 +25,12 @@ a visible variable binding for the identifier exists, e.g., the
 identifier appears within the scope of a binding created by `define`,
 `lambda`, `let`, or some other variable-binding construct.
 
-`list  #<procedure>  (define x 'a)  (list x x)  (a a)  (let ([x 'b])    (list x x))  (b b)  (let ([let 'let]) let)  let`
+`list `$\Rightarrow$` #<procedure>`<br>
+`(define x 'a)`<br>
+`(list x x) `$\Rightarrow$` (a a)`<br>
+`(let ([x 'b])`<br>
+`  (list x x)) `$\Rightarrow$` (b b)`<br>
+`(let ([let 'let]) let) `$\Rightarrow$` let`
 
 It is a syntax violation for an identifier reference to appear within a
 `library` form or top-level program if it is not bound as a variable,
@@ -37,11 +42,19 @@ reference is not actually evaluated until the definition has been
 completed. So, for example, the reference to `g` within the definition
 of `f` below
 
-`(define f    (lambda (x)      (g x)))  (define g    (lambda (x)      (+ x x)))`
+`(define f`<br>
+`  (lambda (x)`<br>
+`    (g x)))`<br>
+`(define g`<br>
+`  (lambda (x)`<br>
+`    (+ x x)))`
 
 is okay, but the reference to `g` in the definition of `q` below is not.
 
-`(define q (g 3))  (define g    (lambda (x)      (+ x x)))`
+`(define q (g 3))`<br>
+`(define g`<br>
+`  (lambda (x)`<br>
+`    (+ x x)))`
 
 ### Section 4.2. Lambda
 
@@ -96,7 +109,18 @@ Procedures do not have a printed representation in the usual sense.
 Scheme systems print procedures in different ways; this book uses the
 notation `#<procedure>`.
 
-`(lambda (x) (+ x 3))  #<procedure>  ((lambda (x) (+ x 3)) 7)  10  ((lambda (x y) (* x (+ x y))) 7 13)  140  ((lambda (f x) (f x x)) + 11)  22  ((lambda () (+ 3 4)))  7   ((lambda (x . y) (list x y))   28 37)  (28 (37))  ((lambda (x . y) (list x y))   28 37 47 28)  (28 (37 47 28))  ((lambda (x y . z) (list x y z))   1 2 3 4)  (1 2 (3 4))  ((lambda x x) 7 13)  (7 13)`
+`(lambda (x) (+ x 3)) `$\Rightarrow$` #<procedure>`<br>
+`((lambda (x) (+ x 3)) 7) `$\Rightarrow$` 10`<br>
+`((lambda (x y) (* x (+ x y))) 7 13) `$\Rightarrow$` 140`<br>
+`((lambda (f x) (f x x)) + 11) `$\Rightarrow$` 22`<br>
+`((lambda () (+ 3 4))) `$\Rightarrow$` 7 `<br>
+`((lambda (x . y) (list x y))`<br>
+` 28 37) `$\Rightarrow$` (28 (37))`<br>
+`((lambda (x . y) (list x y))`<br>
+` 28 37 47 28) `$\Rightarrow$` (28 (37 47 28))`<br>
+`((lambda (x y . z) (list x y z))`<br>
+` 1 2 3 4) `$\Rightarrow$` (1 2 (3 4))`<br>
+`((lambda x x) 7 13) `$\Rightarrow$` (7 13)`
 
 ### Section 4.3. Case-Lambda
 
@@ -163,24 +187,40 @@ actual parameters supplied, an exception with condition type
 The following definition for `make-list` uses `case-lambda` to support
 an optional fill parameter.
 
-`(define make-list    (case-lambda      [(n) (make-list n #f)]      [(n x)       (do ([n n (- n 1)] [ls '() (cons x ls)])           ((zero? n) ls))]))`
+`(define make-list`<br>
+`  (case-lambda`<br>
+`    [(n) (make-list n #f)]`<br>
+`    [(n x)`<br>
+`     (do ([n n (- n 1)] [ls '() (cons x ls)])`<br>
+`         ((zero? n) ls))]))`
 
 The `substring` procedure may be extended with `case-lambda` to accept
 either no `end` index, in which case it defaults to the end of the
 string, or no `start` and `end` indices, in which case `substring` is
 equivalent to `string-copy`:
 
-`(define substring1    (case-lambda      [(s) (substring1 s 0 (string-length s))]      [(s start) (substring1 s start (string-length s))]      [(s start end) (substring s start end)]))`
+`(define substring1`<br>
+`  (case-lambda`<br>
+`    [(s) (substring1 s 0 (string-length s))]`<br>
+`    [(s start) (substring1 s start (string-length s))]`<br>
+`    [(s start end) (substring s start end)]))`
 
 It is also possible to default the `start` index rather than the `end`
 index when only one index is supplied:
 
-`(define substring2    (case-lambda      [(s) (substring2 s 0 (string-length s))]      [(s end) (substring2 s 0 end)]      [(s start end) (substring s start end)]))`
+`(define substring2`<br>
+`  (case-lambda`<br>
+`    [(s) (substring2 s 0 (string-length s))]`<br>
+`    [(s end) (substring2 s 0 end)]`<br>
+`    [(s start end) (substring s start end)]))`
 
 It is even possible to require that both or neither of the `start` and
 `end` indices be supplied, simply by leaving out the middle clause:
 
-`(define substring3    (case-lambda      [(s) (substring3 s 0 (string-length s))]      [(s start end) (substring s start end)]))`
+`(define substring3`<br>
+`  (case-lambda`<br>
+`    [(s) (substring3 s 0 (string-length s))]`<br>
+`    [(s start end) (substring s start end)]))`
 
 ### Section 4.4. Local Binding
 
@@ -204,12 +244,21 @@ at the discretion of the implementation. Use `let` whenever the values
 are independent of the variables and the order of evaluation is
 unimportant.
 
-`(let ([x (* 3.0 3.0)] [y (* 4.0 4.0)])    (sqrt (+ x y)))  5.0   (let ([x 'a] [y '(b c)])    (cons x y))  (a b c)   (let ([x 0] [y 1])    (let ([x y] [y x])      (list x y)))  (1 0)`
+`(let ([x (* 3.0 3.0)] [y (* 4.0 4.0)])`<br>
+`  (sqrt (+ x y))) `$\Rightarrow$` 5.0 `<br>
+`(let ([x 'a] [y '(b c)])`<br>
+`  (cons x y)) `$\Rightarrow$` (a b c) `<br>
+`(let ([x 0] [y 1])`<br>
+`  (let ([x y] [y x])`<br>
+`    (list x y))) `$\Rightarrow$` (1 0)`
 
 The following definition of `let` shows the typical derivation of `let`
 from `lambda`.
 
-`(define-syntax let    (syntax-rules ()      [(_ ((x e) ...) b1 b2 ...)       ((lambda (x ...) b1 b2 ...) e ...)]))`
+`(define-syntax let`<br>
+`  (syntax-rules ()`<br>
+`    [(_ ((x e) ...) b1 b2 ...)`<br>
+`     ((lambda (x ...) b1 b2 ...) e ...)]))`
 
 Another form of `let`, *named* `let`, is described in
 Section [5.4](control.html#g100), and a definition of the full `let` can
@@ -225,13 +274,24 @@ is within the scope of the variables to the left. Use `let*` when there
 is a linear dependency among the values or when the order of evaluation
 is important.
 
-`(let* ([x (* 5.0 5.0)]         [y (- x (* 4.0 4.0))])    (sqrt y))  3.0   (let ([x 0] [y 1])    (let* ([x y] [y x])      (list x y)))  (1 1)`
+`(let* ([x (* 5.0 5.0)]`<br>
+`       [y (- x (* 4.0 4.0))])`<br>
+`  (sqrt y)) `$\Rightarrow$` 3.0 `<br>
+`(let ([x 0] [y 1])`<br>
+`  (let* ([x y] [y x])`<br>
+`    (list x y))) `$\Rightarrow$` (1 1)`
 
 Any `let*` expression may be converted to a set of nested `let`
 expressions. The following definition of `let*` demonstrates the typical
 transformation.
 
-`(define-syntax let*    (syntax-rules ()      [(_ () e1 e2 ...)       (let () e1 e2 ...)]      [(_ ((x1 v1) (x2 v2) ...) e1 e2 ...)       (let ((x1 v1))         (let* ((x2 v2) ...) e1 e2 ...))]))`
+`(define-syntax let*`<br>
+`  (syntax-rules ()`<br>
+`    [(_ () e1 e2 ...)`<br>
+`     (let () e1 e2 ...)]`<br>
+`    [(_ ((x1 v1) (x2 v2) ...) e1 e2 ...)`<br>
+`     (let ((x1 v1))`<br>
+`       (let* ((x2 v2) ...) e1 e2 ...))]))`
 
 **syntax**: `(letrec ((var expr) ...) body1 body2 ...)` \
  **returns:**the values of the final body expression \
@@ -242,7 +302,11 @@ expressions `expr ...` are within the scope of all of the variables
 `var ...`. `letrec` allows the definition of mutually recursive
 procedures.
 
-`(letrec ([sum (lambda (x)                  (if (zero? x)                      0                      (+ x (sum (- x 1)))))])    (sum 5))  15`
+`(letrec ([sum (lambda (x)`<br>
+`                (if (zero? x)`<br>
+`                    0`<br>
+`                    (+ x (sum (- x 1)))))])`<br>
+`  (sum 5)) `$\Rightarrow$` 15`
 
 The order of evaluation of the expressions `expr ...` is unspecified, so
 a program must not evaluate a reference to any of the variables bound by
@@ -270,7 +334,10 @@ A `letrec` expression of the form
 
 may be expressed in terms of `let` and `set!` as
 
-`(let ((var #f) ...)    (let ((temp expr) ...)      (set! var temp) ...      (let () body1 body2 ...)))`
+`(let ((var #f) ...)`<br>
+`  (let ((temp expr) ...)`<br>
+`    (set! var temp) ...`<br>
+`    (let () body1 body2 ...)))`
 
 where `temp ...` are fresh variables, i.e., ones that do not already
 appear in the `letrec` expression, one for each `(var expr)` pair. The
@@ -309,7 +376,9 @@ A `letrec*` expression of the form
 
 may be expressed in terms of `let` and `set!` as
 
-`(let ((var #f) ...)    (set! var expr) ...    (let () body1 body2 ...))`
+`(let ((var #f) ...)`<br>
+`  (set! var expr) ...`<br>
+`  (let () body1 body2 ...))`
 
 The outer `let` expression creates the bindings, each assignment
 evaluates an expression and immediately sets the corresponding variable
@@ -317,7 +386,20 @@ to its value, in sequence, and the inner let evaluates the body. `let`
 is used in the latter case rather than `begin` since the body may
 include internal definitions as well as expressions.
 
-`(letrec* ([sum (lambda (x)                   (if (zero? x)                       0                       (+ x (sum (- x 1)))))]            [f (lambda () (cons n n-sum))]            [n 15]            [n-sum (sum n)])    (f))  (15 . 120)   (letrec* ([f (lambda () (lambda () g))]            [g (f)])    (eq? (g) g))  #t   (letrec* ([g (f)]            [f (lambda () (lambda () g))])    (eq? (g) g))  exception: attempt to reference undefined variable f`
+`(letrec* ([sum (lambda (x)`<br>
+`                 (if (zero? x)`<br>
+`                     0`<br>
+`                     (+ x (sum (- x 1)))))]`<br>
+`          [f (lambda () (cons n n-sum))]`<br>
+`          [n 15]`<br>
+`          [n-sum (sum n)])`<br>
+`  (f)) `$\Rightarrow$` (15 . 120) `<br>
+`(letrec* ([f (lambda () (lambda () g))]`<br>
+`          [g (f)])`<br>
+`  (eq? (g) g)) `$\Rightarrow$` #t `<br>
+`(letrec* ([g (f)]`<br>
+`          [f (lambda () (lambda () g))])`<br>
+`  (eq? (g) g)) `$\Rightarrow$` exception: attempt to reference undefined variable f`
 
 ### Section 4.5. Multiple Values
 
@@ -336,7 +418,10 @@ corresponding `formals`, as described in the entry for `lambda` above. A
 definition of `let-values` is given on
 page [310](syntax.html#fullletvalues).
 
-`(let-values ([(a b) (values 1 2)] [c (values 1 2 3)])    (list a b c))  (1 2 (1 2 3))   (let*-values ([(a b) (values 1 2)] [(a b) (values b a)])    (list a b))  (2 1)`
+`(let-values ([(a b) (values 1 2)] [c (values 1 2 3)])`<br>
+`  (list a b c)) `$\Rightarrow$` (1 2 (1 2 3)) `<br>
+`(let*-values ([(a b) (values 1 2)] [(a b) (values b a)])`<br>
+`  (list a b)) `$\Rightarrow$` (2 1)`
 
 ### Section 4.6. Variable Definitions
 
@@ -360,7 +445,9 @@ The second form is equivalent to `(define var unspecified)`, where
 forms for binding variables to procedures; they are identical to the
 following definition in terms of `lambda`.
 
-`(define var    (lambda formals      body1 body2 ...))`
+`(define var`<br>
+`  (lambda formals`<br>
+`    body1 body2 ...))`
 
 where `formals` is `(var1 ...)`, `varr`, or `(var1 var2 ... . varr)` for
 the third, fourth, and fifth `define` formats.
@@ -375,7 +462,24 @@ described on page [292](syntax.html#body-expansion).
 Syntax definitions may appear along with variable definitions wherever
 variable definitions may appear; see Chapter [8](syntax.html#g133).
 
-`(define x 3)  x  3   (define f    (lambda (x y)      (* (+ x y) 2)))  (f 5 4)  18   (define (sum-of-squares x y)    (+ (* x x) (* y y)))  (sum-of-squares 3 4)  25   (define f    (lambda (x)      (+ x 1)))  (let ([x 2])    (define f      (lambda (y)        (+ y x)))    (f 3))  5  (f 3)  4`
+`(define x 3)`<br>
+`x `$\Rightarrow$` 3 `<br>
+`(define f`<br>
+`  (lambda (x y)`<br>
+`    (* (+ x y) 2)))`<br>
+`(f 5 4) `$\Rightarrow$` 18 `<br>
+`(define (sum-of-squares x y)`<br>
+`  (+ (* x x) (* y y)))`<br>
+`(sum-of-squares 3 4) `$\Rightarrow$` 25 `<br>
+`(define f`<br>
+`  (lambda (x)`<br>
+`    (+ x 1)))`<br>
+`(let ([x 2])`<br>
+`  (define f`<br>
+`    (lambda (y)`<br>
+`      (+ y x)))`<br>
+`  (f 3)) `$\Rightarrow$` 5`<br>
+`(f 3) `$\Rightarrow$` 4`
 
 A set of definitions may be grouped by enclosing them in a `begin` form.
 Definitions grouped in this manner may appear wherever ordinary variable
@@ -383,7 +487,22 @@ and syntax definitions may appear. They are treated as if written
 separately, i.e., without the enclosing `begin` form. This feature
 allows syntactic extensions to expand into groups of definitions.
 
-`(define-syntax multi-define-syntax    (syntax-rules ()      [(_ (var expr) ...)       (begin         (define-syntax var expr)         ...)]))  (let ()    (define plus      (lambda (x y)          (if (zero? x)              y              (plus (sub1 x) (add1 y)))))    (multi-define-syntax      (add1 (syntax-rules () [(_ e) (+ e 1)]))      (sub1 (syntax-rules () [(_ e) (- e 1)])))    (plus 7 8))  15`
+`(define-syntax multi-define-syntax`<br>
+`  (syntax-rules ()`<br>
+`    [(_ (var expr) ...)`<br>
+`     (begin`<br>
+`       (define-syntax var expr)`<br>
+`       ...)]))`<br>
+`(let ()`<br>
+`  (define plus`<br>
+`    (lambda (x y)`<br>
+`        (if (zero? x)`<br>
+`            y`<br>
+`            (plus (sub1 x) (add1 y)))))`<br>
+`  (multi-define-syntax`<br>
+`    (add1 (syntax-rules () [(_ e) (+ e 1)]))`<br>
+`    (sub1 (syntax-rules () [(_ e) (- e 1)])))`<br>
+`  (plus 7 8)) `$\Rightarrow$` 15`
 
 Many implementations support an interactive "top level" in which
 variable and other definitions may be entered interactively or loaded
@@ -395,13 +514,18 @@ reference to `g` in the top-level definition of `f` below is okay if `g`
 is not already defined, and `g` is assumed to name a variable to be
 defined at some later point.
 
-`(define f    (lambda (x)      (g x)))`
+`(define f`<br>
+`  (lambda (x)`<br>
+`    (g x)))`
 
 If this is then followed by a definition of `g` before `f` is evaluated,
 the assumption that `g` would be defined as a variable is proven
 correct, and a call to `f` works as expected.
 
-`(define g    (lambda (x)      (+ x x)))  (f 3)  6`
+`(define g`<br>
+`  (lambda (x)`<br>
+`    (+ x x)))`<br>
+`(f 3) `$\Rightarrow$` 6`
 
 If `g` were defined instead as the keyword for a syntactic extension,
 the assumption that `g` would be bound as a variable is proven false,
@@ -422,7 +546,14 @@ the scope of the altered binding evaluates to the new value.
 Assignments are not employed as frequently in Scheme as in most other
 languages, but they are useful for implementing state changes.
 
-`(define flip-flop    (let ([state #f])      (lambda ()        (set! state (not state))        state)))   (flip-flop)  #t  (flip-flop)  #f  (flip-flop)  #t`
+`(define flip-flop`<br>
+`  (let ([state #f])`<br>
+`    (lambda ()`<br>
+`      (set! state (not state))`<br>
+`      state))) `<br>
+`(flip-flop) `$\Rightarrow$` #t`<br>
+`(flip-flop) `$\Rightarrow$` #f`<br>
+`(flip-flop) `$\Rightarrow$` #t`
 
 Assignments are also useful for caching values. The example below uses a
 technique called *memoization*, in which a procedure records the values
@@ -431,4 +562,20 @@ implement a fast version of the otherwise exponential doubly recursive
 definition of the Fibonacci function (see
 page [69](further.html#fibonacci)).
 
-`(define memoize    (lambda (proc)      (let ([cache '()])        (lambda (x)          (cond            [(assq x cache) => cdr]            [else             (let ([ans (proc x)])               (set! cache (cons (cons x ans) cache))               ans)])))))   (define fibonacci    (memoize      (lambda (n)        (if (< n 2)            1            (+ (fibonacci (- n 1)) (fibonacci (- n 2)))))))   (fibonacci 100)  573147844013817084101`
+`(define memoize`<br>
+`  (lambda (proc)`<br>
+`    (let ([cache '()])`<br>
+`      (lambda (x)`<br>
+`        (cond`<br>
+`          [(assq x cache) => cdr]`<br>
+`          [else`<br>
+`           (let ([ans (proc x)])`<br>
+`             (set! cache (cons (cons x ans) cache))`<br>
+`             ans)]))))) `<br>
+`(define fibonacci`<br>
+`  (memoize`<br>
+`    (lambda (n)`<br>
+`      (if (< n 2)`<br>
+`          1`<br>
+`          (+ (fibonacci (- n 1)) (fibonacci (- n 2))))))) `<br>
+`(fibonacci 100) `$\Rightarrow$` 573147844013817084101`

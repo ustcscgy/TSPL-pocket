@@ -19,13 +19,14 @@ Pass 1: clean code blocks | DOING
 
 ### Done
 
-Ch1
-
-Ch2
+* Ch1
+* Ch2
+* Ch3
+* Ch4
 
 ### Doing
 
-Ch3
+Ch5
 
 ## What do I do?
 
