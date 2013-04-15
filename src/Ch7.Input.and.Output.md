@@ -154,7 +154,8 @@ the expression `(quote symbol)` except the former checks at expansion
 time that `symbol` is one of the eol-style symbols. The `eol-style`
 syntax provides useful documentation as well.
 
-`(eol-style crlf)  crlf  (eol-style lfcr)  syntax violation`
+`(eol-style crlf) `$\Rightarrow$` crlf`<br>
+`(eol-style lfcr) `$\Rightarrow$` syntax violation`
 
 **procedure**: `(native-eol-style)` \
  **returns:**the native eol style \
@@ -173,7 +174,8 @@ expression `(quote symbol)` except that the former checks at expansion
 time that `symbol` is one of the error-handling-mode symbols. The
 `error-handling-mode` syntax provides useful documentation as well.
 
-`(error-handling-mode replace)  replace  (error-handling-mode relpace)  syntax violation`
+`(error-handling-mode replace) `$\Rightarrow$` replace`<br>
+`(error-handling-mode relpace) `$\Rightarrow$` syntax violation`
 
 ### Section 7.2. Opening Files
 
@@ -244,13 +246,17 @@ expression `(buffer-mode symbol)` is equivalent to the expression
 `symbol` is one of the buffer-mode symbols. The `buffer-mode` syntax
 provides useful documentation as well.
 
-`(buffer-mode block)  block  (buffer-mode cushion)  syntax violation`
+`(buffer-mode block) `$\Rightarrow$` block`<br>
+`(buffer-mode cushion) `$\Rightarrow$` syntax violation`
 
 **syntax**: `(buffer-mode? obj)` \
  **returns:**`#t` if `obj` is a valid buffer mode, `#f` otherwise \
  **libraries:**`(rnrs io ports)`, `(rnrs)`
 
-`(buffer-mode? 'block)  #t  (buffer-mode? 'line)  #t  (buffer-mode? 'none)  #t  (buffer-mode? 'something-else)  #f`
+`(buffer-mode? 'block) `$\Rightarrow$` #t`<br>
+`(buffer-mode? 'line) `$\Rightarrow$` #t`<br>
+`(buffer-mode? 'none) `$\Rightarrow$` #t`<br>
+`(buffer-mode? 'something-else) `$\Rightarrow$` #f`
 
 **procedure**: `(open-file-input-port path)` \
  **procedure**: `(open-file-input-port path options)` \
@@ -360,7 +366,9 @@ this procedure returns a textual input port whose transcoder is
 The effect of modifying `bytevector` after this procedure is called is
 unspecified.
 
-`(let ([ip (open-bytevector-input-port #vu8(1 2))])    (let* ([x1 (get-u8 ip)] [x2 (get-u8 ip)] [x3 (get-u8 ip)])      (list x1 x2 (eof-object? x3))))  (1 2 #t)`
+`(let ([ip (open-bytevector-input-port #vu8(1 2))])`<br>
+`  (let* ([x1 (get-u8 ip)] [x2 (get-u8 ip)] [x3 (get-u8 ip)])`<br>
+`    (list x1 x2 (eof-object? x3)))) `$\Rightarrow$` (1 2 #t)`
 
 There is no need to close a bytevector port; it's storage will be
 reclaimed automatically when it is no longer needed, as with any other
@@ -377,7 +385,7 @@ does, the transcoder is implementation-dependent. While not required,
 implementations are encouraged to support `port-position` and
 `set-port-position!` for string ports.
 
-`(get-line (open-string-input-port "hi.\nwhat's up?\n"))  "hi."`
+`(get-line (open-string-input-port "hi.\nwhat's up?\n")) `$\Rightarrow$` "hi."`
 
 There is no need to close a string port; it's storage will be reclaimed
 automatically when it is no longer needed, as with any other object, and
@@ -399,7 +407,14 @@ zero, and returns the bytevector. The accumulated bytes include any
 bytes written beyond the end of the current position, if the position
 has been set back from its maximum extent.
 
-`(let-values ([(op g) (open-bytevector-output-port)])    (put-u8 op 15)    (put-u8 op 73)    (put-u8 op 115)    (set-port-position! op 2)    (let ([bv1 (g)])      (put-u8 op 27)      (list bv1 (g))))  (#vu8(15 73 115) #vu8(27))`
+`(let-values ([(op g) (open-bytevector-output-port)])`<br>
+`  (put-u8 op 15)`<br>
+`  (put-u8 op 73)`<br>
+`  (put-u8 op 115)`<br>
+`  (set-port-position! op 2)`<br>
+`  (let ([bv1 (g)])`<br>
+`    (put-u8 op 27)`<br>
+`    (list bv1 (g)))) `$\Rightarrow$` (#vu8(15 73 115) #vu8(27))`
 
 There is no need to close a bytevector port; it's storage will be
 reclaimed automatically when it is no longer needed, as with any other
@@ -420,7 +435,11 @@ position has been set back from its maximum extent. While not required,
 implementations are encouraged to support `port-position` and
 `set-port-position!` for string ports.
 
-`(let-values ([(op g) (open-string-output-port)])    (put-string op "some data")    (let ([str1 (g)])      (put-string op "new stuff")      (list str1 (g))))  ("some data" "new stuff")`
+`(let-values ([(op g) (open-string-output-port)])`<br>
+`  (put-string op "some data")`<br>
+`  (let ([str1 (g)])`<br>
+`    (put-string op "new stuff")`<br>
+`    (list str1 (g)))) `$\Rightarrow$` ("some data" "new stuff")`
 
 There is no need to close a string port; it's storage will be reclaimed
 automatically when it is no longer needed, as with any other object, and
@@ -443,7 +462,11 @@ These actions occur each time `procedure` returns, if it returns
 multiple times due to the invocation of a continuation created while
 `procedure` is active.
 
-`(let ([tx (make-transcoder (latin-1-codec) (eol-style lf)              (error-handling-mode replace))])    (call-with-bytevector-output-port      (lambda (p) (put-string p "abc"))      tx))  #vu8(97 98 99)`
+`(let ([tx (make-transcoder (latin-1-codec) (eol-style lf)`<br>
+`            (error-handling-mode replace))])`<br>
+`  (call-with-bytevector-output-port`<br>
+`    (lambda (p) (put-string p "abc"))`<br>
+`    tx)) `$\Rightarrow$` #vu8(97 98 99)`
 
 **procedure**: `(call-with-string-output-port procedure)` \
  **returns:**a string containing the accumulated characters \
@@ -461,7 +484,10 @@ of a continuation created while `procedure` is active.
 define a procedure, `object->string`, that returns a string containing
 the printed representation of an object.
 
-`(define (object->string x)    (call-with-string-output-port      (lambda (p) (put-datum p x))))   (object->string (cons 'a '(b c)))  "(a b c)"`
+`(define (object->string x)`<br>
+`  (call-with-string-output-port`<br>
+`    (lambda (p) (put-datum p x)))) `<br>
+`(object->string (cons 'a '(b c))) `$\Rightarrow$` "(a b c)"`
 
 ### Section 7.5. Opening Custom Ports
 
@@ -747,7 +773,17 @@ The example below copies the contents of infile to outfile, overwriting
 outfile if it exists. Unless an error occurs, the ports are closed after
 the copy has been completed.
 
-`(call-with-port (open-file-input-port "infile" (file-options)                    (buffer-mode block) (native-transcoder))    (lambda (ip)      (call-with-port (open-file-output-port "outfile"                        (file-options no-fail)                        (buffer-mode block)                        (native-transcoder))         (lambda (op)          (do ([c (get-char ip) (get-char ip)])              ((eof-object? c))            (put-char op c))))))`
+`(call-with-port (open-file-input-port "infile" (file-options)`<br>
+`                  (buffer-mode block) (native-transcoder))`<br>
+`  (lambda (ip)`<br>
+`    (call-with-port (open-file-output-port "outfile"`<br>
+`                      (file-options no-fail)`<br>
+`                      (buffer-mode block)`<br>
+`                      (native-transcoder)) `<br>
+`      (lambda (op)`<br>
+`        (do ([c (get-char ip) (get-char ip)])`<br>
+`            ((eof-object? c))`<br>
+`          (put-char op c))))))`
 
 A definition of `call-with-port` is given on
 page [135](control.html#defn:call-with-port).
@@ -773,7 +809,7 @@ The end-of-file object is returned by input operations, e.g.,
  **returns:**the eof object \
  **libraries:**`(rnrs io ports)`, `(rnrs io simple)`, `(rnrs)`
 
-`(eof-object? (eof-object))  #t`
+`(eof-object? (eof-object)) `$\Rightarrow$` #t`
 
 **procedure**: `(get-u8 binary-input-port)` \
  **returns:**the next byte from `binary-input-port`, or the eof object \
@@ -872,7 +908,15 @@ it sees one character beyond the word that it has read the entire word,
 it uses `lookahead-char` to determine the next character and `get-char`
 to consume the character.
 
-`(define get-word    (lambda (p)      (list->string        (let f ()          (let ([c (lookahead-char p)])            (cond              [(eof-object? c) '()]              [(char-alphabetic? c) (get-char p) (cons c (f))]              [else '()]))))))`
+`(define get-word`<br>
+`  (lambda (p)`<br>
+`    (list->string`<br>
+`      (let f ()`<br>
+`        (let ([c (lookahead-char p)])`<br>
+`          (cond`<br>
+`            [(eof-object? c) '()]`<br>
+`            [(char-alphabetic? c) (get-char p) (cons c (f))]`<br>
+`            [else '()]))))))`
 
 **procedure**: `(get-string-n textual-input-port n)` \
  **returns:**a nonempty string containing up to `n` characters, or the
@@ -905,7 +949,24 @@ characters read.
 `string-fill!`, as illustrated below, although this is not its primary
 purpose.
 
-`(define string-set!    (lambda (s i c)      (let ([sip (open-string-input-port (string c))])        (get-string-n! sip s i 1)       ; return unspecified values:        (if #f #f))))   (define string-fill!    (lambda (s c)      (let ([n (string-length s)])        (let ([sip (open-string-input-port (make-string n c))])          (get-string-n! sip s 0 n)         ; return unspecified values:          (if #f #f)))))   (let ([x (make-string 3)])    (string-fill! x #\-)    (string-set! x 2 #\))    (string-set! x 0 #\;)    x)  ";-)"`
+`(define string-set!`<br>
+`  (lambda (s i c)`<br>
+`    (let ([sip (open-string-input-port (string c))])`<br>
+`      (get-string-n! sip s i 1)`<br>
+`     ; return unspecified values:`<br>
+`      (if #f #f)))) `<br>
+`(define string-fill!`<br>
+`  (lambda (s c)`<br>
+`    (let ([n (string-length s)])`<br>
+`      (let ([sip (open-string-input-port (make-string n c))])`<br>
+`        (get-string-n! sip s 0 n)`<br>
+`       ; return unspecified values:`<br>
+`        (if #f #f))))) `<br>
+`(let ([x (make-string 3)])`<br>
+`  (string-fill! x #\-)`<br>
+`  (string-set! x 2 #\))`<br>
+`  (string-set! x 0 #\;)`<br>
+`  x) `$\Rightarrow$` ";-)"`
 
 **procedure**: `(get-string-all textual-input-port)` \
  **returns:**a nonempty string or the eof object \
@@ -928,7 +989,12 @@ character has been read and returns a string containing all but the
 line-feed character of the characters read. The port's position is
 advanced past the characters read.
 
-`(let ([sip (open-string-input-port "one\ntwo\n")])    (let* ([s1 (get-line sip)] [s2 (get-line sip)])      (list s1 s2 (port-eof? sip))))  ("one" "two" #t)   (let ([sip (open-string-input-port "one\ntwo")])    (let* ([s1 (get-line sip)] [s2 (get-line sip)])      (list s1 s2 (port-eof? sip))))  ("one" "two" #t)`
+`(let ([sip (open-string-input-port "one\ntwo\n")])`<br>
+`  (let* ([s1 (get-line sip)] [s2 (get-line sip)])`<br>
+`    (list s1 s2 (port-eof? sip)))) `$\Rightarrow$` ("one" "two" #t) `<br>
+`(let ([sip (open-string-input-port "one\ntwo")])`<br>
+`  (let* ([s1 (get-line sip)] [s2 (get-line sip)])`<br>
+`    (list s1 s2 (port-eof? sip)))) `$\Rightarrow$` ("one" "two" #t)`
 
 **procedure**: `(get-datum textual-input-port)` \
  **returns:**a Scheme datum object or the eof object \
@@ -947,7 +1013,11 @@ reached before the external representation of the datum is complete, or
 an unexpected character is read, an exception is raised with condition
 types `&lexical` and `i/o-read`.
 
-`(let ([sip (open-string-input-port "; a\n\n one (two)\n")])    (let* ([x1 (get-datum sip)]           [c1 (lookahead-char sip)]           [x2 (get-datum sip)])      (list x1 c1 x2 (port-eof? sip))))  (one #\space (two) #f)`
+`(let ([sip (open-string-input-port "; a\n\n one (two)\n")])`<br>
+`  (let* ([x1 (get-datum sip)]`<br>
+`         [c1 (lookahead-char sip)]`<br>
+`         [x2 (get-datum sip)])`<br>
+`    (list x1 c1 x2 (port-eof? sip)))) `$\Rightarrow$` (one #\space (two) #f)`
 
 **procedure**: `(port-eof? input-port)` \
  **returns:**`#t` if `input-port` is at end-of-file, `#f` otherwise \
@@ -1060,7 +1130,13 @@ The following shows the use of `open-input-file`, `read`, and
 `close-port` in an expression that gathers a list of objects from the
 file named by "myfile.ss."
 
-`(let ([p (open-input-file "myfile.ss")])    (let f ([x (read p)])      (if (eof-object? x)          (begin            (close-port p)            '())          (cons x (f (read p))))))`
+`(let ([p (open-input-file "myfile.ss")])`<br>
+`  (let f ([x (read p)])`<br>
+`    (if (eof-object? x)`<br>
+`        (begin`<br>
+`          (close-port p)`<br>
+`          '())`<br>
+`        (cons x (f (read p))))))`
 
 **procedure**: `(open-output-file path)` \
  **returns:**a new output port \
@@ -1076,7 +1152,14 @@ The following shows the use of `open-output-file` to write a list of
 objects (the value of `list-to-be-printed`), separated by newlines, to
 the file named by "myfile.ss."
 
-`(let ([p (open-output-file "myfile.ss")])    (let f ([ls list-to-be-printed])      (if (not (null? ls))          (begin            (write (car ls) p)            (newline p)            (f (cdr ls)))))    (close-port p))`
+`(let ([p (open-output-file "myfile.ss")])`<br>
+`  (let f ([ls list-to-be-printed])`<br>
+`    (if (not (null? ls))`<br>
+`        (begin`<br>
+`          (write (car ls) p)`<br>
+`          (newline p)`<br>
+`          (f (cdr ls)))))`<br>
+`  (close-port p))`
 
 **procedure**: `(call-with-input-file path procedure)` \
  **returns:**the values returned by `procedure` \
@@ -1105,12 +1188,22 @@ expression that gathers a list of objects from the file named by
 "myfile.ss." It is functionally equivalent to the example given for
 `open-input-file` above.
 
-`(call-with-input-file "myfile.ss"    (lambda (p)      (let f ([x (read p)])        (if (eof-object? x)            '()            (cons x (f (read p)))))))`
+`(call-with-input-file "myfile.ss"`<br>
+`  (lambda (p)`<br>
+`    (let f ([x (read p)])`<br>
+`      (if (eof-object? x)`<br>
+`          '()`<br>
+`          (cons x (f (read p)))))))`
 
 `call-with-input-file` might be defined without error checking as
 follows.
 
-`(define call-with-input-file    (lambda (filename proc)      (let ([p (open-input-file filename)])        (let-values ([v* (proc p)])          (close-port p)          (apply values v*)))))`
+`(define call-with-input-file`<br>
+`  (lambda (filename proc)`<br>
+`    (let ([p (open-input-file filename)])`<br>
+`      (let-values ([v* (proc p)])`<br>
+`        (close-port p)`<br>
+`        (apply values v*)))))`
 
 **procedure**: `(call-with-output-file path procedure)` \
  **returns:**the values returned by `procedure` \
@@ -1139,12 +1232,23 @@ of objects (the value of `list-to-be-printed`), separated by newlines,
 to the file named by "myfile.ss." It is functionally equivalent to the
 example given for `open-output-file` above.
 
-`(call-with-output-file "myfile.ss"    (lambda (p)      (let f ([ls list-to-be-printed])        (unless (null? ls)          (write (car ls) p)          (newline p)          (f (cdr ls))))))`
+`(call-with-output-file "myfile.ss"`<br>
+`  (lambda (p)`<br>
+`    (let f ([ls list-to-be-printed])`<br>
+`      (unless (null? ls)`<br>
+`        (write (car ls) p)`<br>
+`        (newline p)`<br>
+`        (f (cdr ls))))))`
 
 `call-with-output-file` might be defined without error checking as
 follows.
 
-`(define call-with-output-file    (lambda (filename proc)      (let ([p (open-output-file filename)])        (let-values ([v* (proc p)])          (close-port p)          (apply values v*)))))`
+`(define call-with-output-file`<br>
+`  (lambda (filename proc)`<br>
+`    (let ([p (open-output-file filename)])`<br>
+`      (let-values ([v* (proc p)])`<br>
+`        (close-port p)`<br>
+`        (apply values v*)))))`
 
 **procedure**: `(with-input-from-file path thunk)` \
  **returns:**the values returned by `thunk` \
@@ -1311,7 +1415,9 @@ This operation, at least in effect, creates a bytevector input port with
 the specified `transcoder` from which all of the available characters
 are read, as if by `get-string-all`, and placed into the output string.
 
-`(let ([tx (make-transcoder (utf-8-codec) (eol-style lf)              (error-handling-mode replace))])    (bytevector->string #vu8(97 98 99) tx))  "abc"`
+`(let ([tx (make-transcoder (utf-8-codec) (eol-style lf)`<br>
+`            (error-handling-mode replace))])`<br>
+`  (bytevector->string #vu8(97 98 99) tx)) `$\Rightarrow$` "abc"`
 
 **procedure**: `(string->bytevector string transcoder)` \
  **returns:**a bytevector containing the encodings of the characters in
@@ -1323,7 +1429,9 @@ with the specified `transcoder` to which all of the characters of
 `string` are written, then extracts a bytevector containing the
 accumulated bytes.
 
-`(let ([tx (make-transcoder (utf-8-codec) (eol-style none)              (error-handling-mode raise))])    (string->bytevector "abc" tx))  #vu8(97 98 99)`
+`(let ([tx (make-transcoder (utf-8-codec) (eol-style none)`<br>
+`            (error-handling-mode raise))])`<br>
+`  (string->bytevector "abc" tx)) `$\Rightarrow$` #vu8(97 98 99)`
 
 **procedure**: `(string->utf8 string)` \
  **returns:**a bytevector containing the UTF-8 encoding of `string` \
