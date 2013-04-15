@@ -26,10 +26,11 @@ Pass 1: clean code blocks | DOING
 * Ch5
 * Ch6
 * Ch7
+* Ch8
 
 ### Doing
 
-Ch8
+Ch9
 
 ## What do I do?
 
