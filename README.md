@@ -24,10 +24,11 @@ Pass 1: clean code blocks | DOING
 * Ch3
 * Ch4
 * Ch5
+* Ch6
 
 ### Doing
 
-Ch6
+Ch7
 
 ## What do I do?
 
