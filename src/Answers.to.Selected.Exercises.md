@@ -86,7 +86,9 @@ Answers to Selected Exercises
 
 **Exercise [2.2.4](start.html#g10). **(page [21](start.html#./start:s37))\
 
-` (car (cdr (car '((a b) (c d)))))  b  (car (car (cdr '((a b) (c d)))))  c  (car (cdr (car (cdr '((a b) (c d))))))  d`
+`(car (cdr (car '((a b) (c d))))) `$\Rightarrow$` b`<br>
+`(car (car (cdr '((a b) (c d))))) `$\Rightarrow$` c`<br>
+`(car (cdr (car (cdr '((a b) (c d)))))) `$\Rightarrow$` d`
 
 **Exercise [2.2.5](start.html#g11). **(page [21](start.html#./start:s38))\
 
@@ -97,7 +99,18 @@ Answers to Selected Exercises
 
 **Exercise [2.2.7](start.html#g13). **(page [21](start.html#./start:s40))\
 
-` (car '((a b) (c d)))  (a b)  (car (car '((a b) (c d))))  a  (cdr (car '((a b) (c d))))  (b)  (car (cdr (car '((a b) (c d)))))  b  (cdr (cdr (car '((a b) (c d)))))  ()  (cdr '((a b) (c d)))  ((c d))  (car (cdr '((a b) (c d))))  (c d)  (car (car (cdr '((a b) (c d)))))  c  (cdr (car (cdr '((a b) (c d)))))  (d)  (car (cdr (car (cdr '((a b) (c d))))))  d  (cdr (cdr (car (cdr '((a b) (c d))))))  ()  (cdr (cdr '((a b) (c d))))  ()`
+`(car '((a b) (c d))) `$\Rightarrow$` (a b)`<br>
+`(car (car '((a b) (c d)))) `$\Rightarrow$` a`<br>
+`(cdr (car '((a b) (c d)))) `$\Rightarrow$` (b)`<br>
+`(car (cdr (car '((a b) (c d))))) `$\Rightarrow$` b`<br>
+`(cdr (cdr (car '((a b) (c d))))) `$\Rightarrow$` ()`<br>
+`(cdr '((a b) (c d))) `$\Rightarrow$` ((c d))`<br>
+`(car (cdr '((a b) (c d)))) `$\Rightarrow$` (c d)`<br>
+`(car (car (cdr '((a b) (c d))))) `$\Rightarrow$` c`<br>
+`(cdr (car (cdr '((a b) (c d))))) `$\Rightarrow$` (d)`<br>
+`(car (cdr (car (cdr '((a b) (c d)))))) `$\Rightarrow$` d`<br>
+`(cdr (cdr (car (cdr '((a b) (c d)))))) `$\Rightarrow$` ()`<br>
+`(cdr (cdr '((a b) (c d)))) `$\Rightarrow$` ()`
 
 **Exercise [2.2.8](start.html#g14). **(page [21](start.html#./start:s41))\
  See Section [2.3](start.html#g15).
@@ -142,11 +155,21 @@ outer `let` evaluates to 54 (9 × 6).
 
 *  a*.
 
-`(let ([x0 'a] [y0 'b])    (list (let ([x1 'c]) (cons x1 y0))          (let ([y1 'd]) (cons x0 y1))))`
+`(let ([x0 'a] [y0 'b])`<br>
+`  (list (let ([x1 'c]) (cons x1 y0))`<br>
+`        (let ([y1 'd]) (cons x0 y1))))`
 
 *  b*.
 
-`(let ([x0 '((a b) c)])    (cons (let ([x1 (cdr x0)])            (car x1))          (let ([x2 (car x0)])            (cons (let ([x3 (cdr x2)])                    (car x3))                  (cons (let ([x4 (car x2)])                          x4)                        (cdr x2))))))`
+`(let ([x0 '((a b) c)])`<br>
+`  (cons (let ([x1 (cdr x0)])`<br>
+`          (car x1))`<br>
+`        (let ([x2 (car x0)])`<br>
+`          (cons (let ([x3 (cdr x2)])`<br>
+`                  (car x3))`<br>
+`                (cons (let ([x4 (car x2)])`<br>
+`                        x4)`<br>
+`                      (cdr x2))))))`
 
 **Exercise [2.5.1](start.html#g22). **(page [30](start.html#./start:s72))\
 
@@ -200,19 +223,57 @@ no free variables
 
 **Exercise [2.6.2](start.html#g27). **(page [34](start.html#./start:s92))\
 
-` (define compose    (lambda (p1 p2)      (lambda (x)        (p1 (p2 x)))))   (define cadr (compose car cdr))  (define cddr (compose cdr cdr))`
+`(define compose`<br>
+`  (lambda (p1 p2)`<br>
+`    (lambda (x)`<br>
+`      (p1 (p2 x))))) `<br>
+`(define cadr (compose car cdr))`<br>
+`(define cddr (compose cdr cdr))`
 
 **Exercise [2.6.3](start.html#g28). **(page [34](start.html#./start:s96))\
 
-` (define caar (compose car car))  (define cadr (compose car cdr))   (define cdar (compose cdr car))  (define cddr (compose cdr cdr))   (define caaar (compose car caar))  (define caadr (compose car cadr))  (define cadar (compose car cdar))  (define caddr (compose car cddr))   (define cdaar (compose cdr caar))  (define cdadr (compose cdr cadr))  (define cddar (compose cdr cdar))  (define cdddr (compose cdr cddr))   (define caaaar (compose caar caar))  (define caaadr (compose caar cadr))  (define caadar (compose caar cdar))  (define caaddr (compose caar cddr))  (define cadaar (compose cadr caar))  (define cadadr (compose cadr cadr))  (define caddar (compose cadr cdar))  (define cadddr (compose cadr cddr))   (define cdaaar (compose cdar caar))  (define cdaadr (compose cdar cadr))  (define cdadar (compose cdar cdar))  (define cdaddr (compose cdar cddr))  (define cddaar (compose cddr caar))  (define cddadr (compose cddr cadr))  (define cdddar (compose cddr cdar))  (define cddddr (compose cddr cddr))`
+`(define caar (compose car car))`<br>
+`(define cadr (compose car cdr)) `<br>
+`(define cdar (compose cdr car))`<br>
+`(define cddr (compose cdr cdr)) `<br>
+`(define caaar (compose car caar))`<br>
+`(define caadr (compose car cadr))`<br>
+`(define cadar (compose car cdar))`<br>
+`(define caddr (compose car cddr)) `<br>
+`(define cdaar (compose cdr caar))`<br>
+`(define cdadr (compose cdr cadr))`<br>
+`(define cddar (compose cdr cdar))`<br>
+`(define cdddr (compose cdr cddr)) `<br>
+`(define caaaar (compose caar caar))`<br>
+`(define caaadr (compose caar cadr))`<br>
+`(define caadar (compose caar cdar))`<br>
+`(define caaddr (compose caar cddr))`<br>
+`(define cadaar (compose cadr caar))`<br>
+`(define cadadr (compose cadr cadr))`<br>
+`(define caddar (compose cadr cdar))`<br>
+`(define cadddr (compose cadr cddr)) `<br>
+`(define cdaaar (compose cdar caar))`<br>
+`(define cdaadr (compose cdar cadr))`<br>
+`(define cdadar (compose cdar cdar))`<br>
+`(define cdaddr (compose cdar cddr))`<br>
+`(define cddaar (compose cddr caar))`<br>
+`(define cddadr (compose cddr cadr))`<br>
+`(define cdddar (compose cddr cdar))`<br>
+`(define cddddr (compose cddr cddr))`
 
 **Exercise [2.7.1](start.html#g30). **(page [41](start.html#./start:s126))\
 
-` (define atom?    (lambda (x)      (not (pair? x))))`
+`(define atom?`<br>
+`  (lambda (x)`<br>
+`    (not (pair? x))))`
 
 **Exercise [2.7.2](start.html#g31). **(page [41](start.html#./start:s128))\
 
-` (define shorter    (lambda (ls1 ls2)      (if (< (length ls2) (length ls1))          ls2          ls1)))`
+`(define shorter`<br>
+`  (lambda (ls1 ls2)`<br>
+`    (if (< (length ls2) (length ls1))`<br>
+`        ls2`<br>
+`        ls1)))`
 
 **Exercise [2.8.1](start.html#g33). **(page [46](start.html#./start:s149))\
  The structure of the output would be the mirror image of the structure
@@ -221,11 +282,19 @@ of the input. For example, `(a . b)` would become `(b . a)` and
 
 **Exercise [2.8.2](start.html#g34). **(page [46](start.html#./start:s150))\
 
-` (define append    (lambda (ls1 ls2)      (if (null? ls1)          ls2          (cons (car ls1) (append (cdr ls1) ls2)))))`
+`(define append`<br>
+`  (lambda (ls1 ls2)`<br>
+`    (if (null? ls1)`<br>
+`        ls2`<br>
+`        (cons (car ls1) (append (cdr ls1) ls2)))))`
 
 **Exercise [2.8.3](start.html#g35). **(page [46](start.html#./start:s152))\
 
-` (define make-list    (lambda (n x)      (if (= n 0)          '()          (cons x (make-list (- n 1) x)))))`
+`(define make-list`<br>
+`  (lambda (n x)`<br>
+`    (if (= n 0)`<br>
+`        '()`<br>
+`        (cons x (make-list (- n 1) x)))))`
 
 **Exercise [2.8.4](start.html#g36). **(page [47](start.html#./start:s154))\
  See the description of `list-ref` on
@@ -234,39 +303,130 @@ page [160](objects.html#defn:list-ref) and the description of
 
 **Exercise [2.8.5](start.html#g37). **(page [47](start.html#./start:s155))\
 
-` (define shorter?    (lambda (ls1 ls2)      (and (not (null? ls2))           (or (null? ls1)               (shorter? (cdr ls1) (cdr ls2))))))   (define shorter    (lambda (ls1 ls2)      (if (shorter? ls2 ls1)          ls2          ls1)))`
+`(define shorter?`<br>
+`  (lambda (ls1 ls2)`<br>
+`    (and (not (null? ls2))`<br>
+`         (or (null? ls1)`<br>
+`             (shorter? (cdr ls1) (cdr ls2)))))) `<br>
+`(define shorter`<br>
+`  (lambda (ls1 ls2)`<br>
+`    (if (shorter? ls2 ls1)`<br>
+`        ls2`<br>
+`        ls1)))`
 
 **Exercise [2.8.6](start.html#g38). **(page [47](start.html#./start:s158))\
 
-` (define even?    (lambda (x)      (or (= x 0)          (odd? (- x 1)))))  (define odd?    (lambda (x)      (and (not (= x 0))           (even? (- x 1)))))`
+`(define even?`<br>
+`  (lambda (x)`<br>
+`    (or (= x 0)`<br>
+`        (odd? (- x 1)))))`<br>
+`(define odd?`<br>
+`  (lambda (x)`<br>
+`    (and (not (= x 0))`<br>
+`         (even? (- x 1)))))`
 
 **Exercise [2.8.7](start.html#g39). **(page [47](start.html#./start:s161))\
 
-` (define transpose    (lambda (ls)      (cons (map car ls) (map cdr ls))))`
+`(define transpose`<br>
+`  (lambda (ls)`<br>
+`    (cons (map car ls) (map cdr ls))))`
 
 **Exercise [2.9.1](start.html#g41). **(page [54](start.html#./start:s186))\
 
-` (define make-counter    (lambda (init incr)      (let ([next init])        (lambda ()          (let ([v next])            (set! next (+ next incr))            v)))))`
+`(define make-counter`<br>
+`  (lambda (init incr)`<br>
+`    (let ([next init])`<br>
+`      (lambda ()`<br>
+`        (let ([v next])`<br>
+`          (set! next (+ next incr))`<br>
+`          v)))))`
 
 **Exercise [2.9.2](start.html#g42). **(page [55](start.html#./start:s188))\
 
-` (define make-stack    (lambda ()      (let ([ls '()])        (lambda (msg . args)          (case msg            [(empty? mt?) (null? ls)]            [(push!) (set! ls (cons (car args) ls))]            [(top) (car ls)]            [(pop!) (set! ls (cdr ls))]            [else "oops"])))))`
+`(define make-stack`<br>
+`  (lambda ()`<br>
+`    (let ([ls '()])`<br>
+`      (lambda (msg . args)`<br>
+`        (case msg`<br>
+`          [(empty? mt?) (null? ls)]`<br>
+`          [(push!) (set! ls (cons (car args) ls))]`<br>
+`          [(top) (car ls)]`<br>
+`          [(pop!) (set! ls (cdr ls))]`<br>
+`          [else "oops"])))))`
 
 **Exercise [2.9.3](start.html#g43). **(page [55](start.html#./start:s191))\
 
-` (define make-stack    (lambda ()      (let ([ls '()])        (lambda (msg . args)          (case msg            [(empty? mt?) (null? ls)]            [(push!) (set! ls (cons (car args) ls))]            [(top) (car ls)]            [(pop!) (set! ls (cdr ls))]            [(ref) (list-ref ls (car args))]            [(set!) (set-car! (list-tail ls (car args)) (cadr args))]            [else "oops"])))))`
+`(define make-stack`<br>
+`  (lambda ()`<br>
+`    (let ([ls '()])`<br>
+`      (lambda (msg . args)`<br>
+`        (case msg`<br>
+`          [(empty? mt?) (null? ls)]`<br>
+`          [(push!) (set! ls (cons (car args) ls))]`<br>
+`          [(top) (car ls)]`<br>
+`          [(pop!) (set! ls (cdr ls))]`<br>
+`          [(ref) (list-ref ls (car args))]`<br>
+`          [(set!) (set-car! (list-tail ls (car args)) (cadr args))]`<br>
+`          [else "oops"])))))`
 
 **Exercise [2.9.4](start.html#g44). **(page [55](start.html#./start:s192))\
 
-` (define make-stack    (lambda (n)      (let ([v (make-vector n)] [i -1])        (lambda (msg . args)          (case msg            [(empty? mt?) (= i -1)]            [(push!)             (set! i (+ i 1))             (vector-set! v i (car args))]            [(top) (vector-ref v i)]            [(pop!) (set! i (- i 1))]            [(ref) (vector-ref v (- i (car args)))]            [(set!) (vector-set! v (- i (car args)) (cadr args))]            [else "oops"])))))`
+`(define make-stack`<br>
+`  (lambda (n)`<br>
+`    (let ([v (make-vector n)] [i -1])`<br>
+`      (lambda (msg . args)`<br>
+`        (case msg`<br>
+`          [(empty? mt?) (= i -1)]`<br>
+`          [(push!)`<br>
+`           (set! i (+ i 1))`<br>
+`           (vector-set! v i (car args))]`<br>
+`          [(top) (vector-ref v i)]`<br>
+`          [(pop!) (set! i (- i 1))]`<br>
+`          [(ref) (vector-ref v (- i (car args)))]`<br>
+`          [(set!) (vector-set! v (- i (car args)) (cadr args))]`<br>
+`          [else "oops"])))))`
 
 **Exercise [2.9.5](start.html#g45). **(page [56](start.html#./start:s194))\
 
-` (define emptyq?    (lambda (q)      (eq? (car q) (cdr q))))   (define getq    (lambda (q)      (if (emptyq? q)          (assertion-violation 'getq "the queue is empty")          (car (car q)))))   (define delq!    (lambda (q)      (if (emptyq? q)          (assertion-violation 'delq! "the queue is empty")          (set-car! q (cdr (car q))))))`
+`(define emptyq?`<br>
+`  (lambda (q)`<br>
+`    (eq? (car q) (cdr q)))) `<br>
+`(define getq`<br>
+`  (lambda (q)`<br>
+`    (if (emptyq? q)`<br>
+`        (assertion-violation 'getq "the queue is empty")`<br>
+`        (car (car q))))) `<br>
+`(define delq!`<br>
+`  (lambda (q)`<br>
+`    (if (emptyq? q)`<br>
+`        (assertion-violation 'delq! "the queue is empty")`<br>
+`        (set-car! q (cdr (car q))))))`
 
 **Exercise [2.9.6](start.html#g46). **(page [56](start.html#./start:s195))\
 
-` (define make-queue    (lambda ()      (cons '() '())))   (define putq!    (lambda (q v)      (let ([p (cons v '())])        (if (null? (car q))            (begin              (set-car! q p)              (set-cdr! q p))            (begin              (set-cdr! (cdr q) p)              (set-cdr! q p))))))   (define getq    (lambda (q)      (car (car q))))   (define delq!    (lambda (q)      (if (eq? (car q) (cdr q))          (begin            (set-car! q '())            (set-cdr! q '()))          (set-car! q (cdr (car q))))))`
+`(define make-queue`<br>
+`  (lambda ()`<br>
+`    (cons '() '()))) `<br>
+`(define putq!`<br>
+`  (lambda (q v)`<br>
+`    (let ([p (cons v '())])`<br>
+`      (if (null? (car q))`<br>
+`          (begin`<br>
+`            (set-car! q p)`<br>
+`            (set-cdr! q p))`<br>
+`          (begin`<br>
+`            (set-cdr! (cdr q) p)`<br>
+`            (set-cdr! q p)))))) `<br>
+`(define getq`<br>
+`  (lambda (q)`<br>
+`    (car (car q)))) `<br>
+`(define delq!`<br>
+`  (lambda (q)`<br>
+`    (if (eq? (car q) (cdr q))`<br>
+`        (begin`<br>
+`          (set-car! q '())`<br>
+`          (set-cdr! q '()))`<br>
+`        (set-car! q (cdr (car q))))))`
 
 **Exercise [2.9.7](start.html#g47). **(page [56](start.html#./start:s196))\
  When asked to print a cyclic structure, some implementations print a
@@ -280,22 +440,46 @@ indefinitely.
 
 **Exercise [2.9.8](start.html#g48). **(page [56](start.html#./start:s199))\
 
-` (define race    (lambda (hare tortoise)      (if (pair? hare)          (let ([hare (cdr hare)])            (if (pair? hare)                (and (not (eq? hare tortoise))                     (race (cdr hare) (cdr tortoise)))                (null? hare)))          (null? hare))))   (define list?    (lambda (x)      (race x x)))`
+`(define race`<br>
+`  (lambda (hare tortoise)`<br>
+`    (if (pair? hare)`<br>
+`        (let ([hare (cdr hare)])`<br>
+`          (if (pair? hare)`<br>
+`              (and (not (eq? hare tortoise))`<br>
+`                   (race (cdr hare) (cdr tortoise)))`<br>
+`              (null? hare)))`<br>
+`        (null? hare)))) `<br>
+`(define list?`<br>
+`  (lambda (x)`<br>
+`    (race x x)))`
 
 **Exercise [3.1.1](further.html#g51). **(page [64](further.html#./further:s25))\
 
-` (let ([x (memv 'a ls)]) (and x (memv 'b x)))     ((lambda (x) (and x (memv 'b x))) (memv 'a ls))     ((lambda (x) (if x (and (memv 'b x)) #f)) (memv 'a ls))     ((lambda (x) (if x (memv 'b x) #f)) (memv 'a ls))`
+`(let ([x (memv 'a ls)]) (and x (memv 'b x))) `<br>
+`  ((lambda (x) (and x (memv 'b x))) (memv 'a ls)) `<br>
+`  ((lambda (x) (if x (and (memv 'b x)) #f)) (memv 'a ls)) `<br>
+`  ((lambda (x) (if x (memv 'b x) #f)) (memv 'a ls))`
 
 **Exercise [3.1.2](further.html#g52). **(page [64](further.html#./further:s26))\
 
-` (or (memv x '(a b c)) (list x))     (let ((t (memv x '(a b c)))) (if t t (or (list x))))     ((lambda (t) (if t t (or (list x)))) (memv x '(a b c)))     ((lambda (t) (if t t (list x))) (memv x '(a b c)))`
+`(or (memv x '(a b c)) (list x)) `<br>
+`  (let ((t (memv x '(a b c)))) (if t t (or (list x)))) `<br>
+`  ((lambda (t) (if t t (or (list x)))) (memv x '(a b c))) `<br>
+`  ((lambda (t) (if t t (list x))) (memv x '(a b c)))`
 
 **Exercise [3.1.3](further.html#g53). **(page [64](further.html#./further:s27))\
  See page [97](binding.html#defn:let*).
 
 **Exercise [3.1.4](further.html#g54). **(page [64](further.html#./further:s29))\
 
-` (define-syntax when    (syntax-rules ()      [(_ e0 e1 e2 ...)       (if e0 (begin e1 e2 ...))]))   (define-syntax unless    (syntax-rules ()      [(_ e0 e1 e2 ...)       (when (not e0) e1 e2 ...)]))`
+`(define-syntax when`<br>
+`  (syntax-rules ()`<br>
+`    [(_ e0 e1 e2 ...)`<br>
+`     (if e0 (begin e1 e2 ...))])) `<br>
+`(define-syntax unless`<br>
+`  (syntax-rules ()`<br>
+`    [(_ e0 e1 e2 ...)`<br>
+`     (when (not e0) e1 e2 ...)]))`
 
 **Exercise [3.2.1](further.html#g56). **(page [72](further.html#./further:s52))\
  Tail-recursive: `even?` and `odd?`, `race`, `fact` in second definition
@@ -305,17 +489,47 @@ Nontail-recursive: `sum`, `factorial`, `fib` in first version of
 
 **Exercise [3.2.2](further.html#g57). **(page [72](further.html#./further:s53))\
 
-` (define factor    (lambda (n)      (letrec ([f (lambda (n i)                    (cond                      [(>= i n) (list n)]                      [(integer? (/ n i))                       (cons i (f (/ n i) i))]                      [else (f n (+ i 1))]))])        (f n 2))))`
+`(define factor`<br>
+`  (lambda (n)`<br>
+`    (letrec ([f (lambda (n i)`<br>
+`                  (cond`<br>
+`                    [(>= i n) (list n)]`<br>
+`                    [(integer? (/ n i))`<br>
+`                     (cons i (f (/ n i) i))]`<br>
+`                    [else (f n (+ i 1))]))])`<br>
+`      (f n 2))))`
 
 **Exercise [3.2.3](further.html#g58). **(page [72](further.html#./further:s55))\
  Yes, but we need two named `let` expressions, one for `even?` and one
 for `odd?`.
 
-`(let even? ([x 20])    (or (= x 0)        (let odd? ([x (- x 1)])          (and (not (= x 0))               (even? (- x 1))))))`
+`(let even? ([x 20])`<br>
+`  (or (= x 0)`<br>
+`      (let odd? ([x (- x 1)])`<br>
+`        (and (not (= x 0))`<br>
+`             (even? (- x 1))))))`
 
 **Exercise [3.2.4](further.html#g59). **(page [72](further.html#./further:s56))\
 
-` (define fibcount1 0)  (define fibonacci1    (lambda (n)      (let fib ([i n])        (set! fibcount1 (+ fibcount1 1))        (cond          [(= i 0) 0]          [(= i 1) 1]          [else (+ (fib (- i 1)) (fib (- i 2)))]))))   (define fibcount2 0)  (define fibonacci2    (lambda (n)      (if (= n 0)          0          (let fib ([i n] [a1 1] [a2 0])            (set! fibcount2 (+ fibcount2 1))            (if (= i 1)                a1                (fib (- i 1) (+ a1 a2) a1))))))`
+`(define fibcount1 0)`<br>
+`(define fibonacci1`<br>
+`  (lambda (n)`<br>
+`    (let fib ([i n])`<br>
+`      (set! fibcount1 (+ fibcount1 1))`<br>
+`      (cond`<br>
+`        [(= i 0) 0]`<br>
+`        [(= i 1) 1]`<br>
+`        [else (+ (fib (- i 1)) (fib (- i 2)))])))) `<br>
+`(define fibcount2 0)`<br>
+`(define fibonacci2`<br>
+`  (lambda (n)`<br>
+`    (if (= n 0)`<br>
+`        0`<br>
+`        (let fib ([i n] [a1 1] [a2 0])`<br>
+`          (set! fibcount2 (+ fibcount2 1))`<br>
+`          (if (= i 1)`<br>
+`              a1`<br>
+`              (fib (- i 1) (+ a1 a2) a1))))))`
 
 The counts for `(fibonacci 10)` are 177 and 10, for `(fibonacci 20)` are
 21891 and 20, and for `(fibonacci 30)` are 2692537 and 30. While the
@@ -350,17 +564,40 @@ savings, followed by skipping even factors greater than 2. Avoiding the
 redundant division is less important, since it occurs only when a factor
 is found.
 
-`(define factor    (lambda (n)      (let f ([n n] [i 2] [step 1])        (if (> i (sqrt n))            (list n)            (let ([n/i (/ n i)])              (if (integer? n/i)                  (cons i (f n/i i step))                  (f n (+ i step) 2)))))))`
+`(define factor`<br>
+`  (lambda (n)`<br>
+`    (let f ([n n] [i 2] [step 1])`<br>
+`      (if (> i (sqrt n))`<br>
+`          (list n)`<br>
+`          (let ([n/i (/ n i)])`<br>
+`            (if (integer? n/i)`<br>
+`                (cons i (f n/i i step))`<br>
+`                (f n (+ i step) 2)))))))`
 
 The second version replaces `(> i (sqrt n))` with `(> (* i i) n)`, since
 `*` is typically much faster than `sqrt`.
 
-`(define factor    (lambda (n)      (let f ([n n] [i 2] [step 1])        (if (> (* i i) n)            (list n)            (let ([n/i (/ n i)])              (if (integer? n/i)                  (cons i (f n/i i step))                  (f n (+ i step) 2)))))))`
+`(define factor`<br>
+`  (lambda (n)`<br>
+`    (let f ([n n] [i 2] [step 1])`<br>
+`      (if (> (* i i) n)`<br>
+`          (list n)`<br>
+`          (let ([n/i (/ n i)])`<br>
+`            (if (integer? n/i)`<br>
+`                (cons i (f n/i i step))`<br>
+`                (f n (+ i step) 2)))))))`
 
 The third version uses `gcd` (see page [179](objects.html#page:gcd)) to
 avoid most of the divisions, since `gcd` should be faster than `/`.
 
-`(define factor    (lambda (n)      (let f ([n n] [i 2] [step 1])        (if (> (* i i) n)            (list n)            (if (= (gcd n i) 1)                (f n (+ i step) 2)                (cons i (f (/ n i) i step)))))))`
+`(define factor`<br>
+`  (lambda (n)`<br>
+`    (let f ([n n] [i 2] [step 1])`<br>
+`      (if (> (* i i) n)`<br>
+`          (list n)`<br>
+`          (if (= (gcd n i) 1)`<br>
+`              (f n (+ i step) 2)`<br>
+`              (cons i (f (/ n i) i step)))))))`
 
 To see the difference these changes make, time each version of `factor`,
 including the original, in your Scheme system to see which performs
@@ -369,15 +606,31 @@ better. Try a variety of inputs, including larger ones like
 
 **Exercise [3.3.1](further.html#g70). **(page [77](further.html#./further:s66))\
 
-` (let ([k.n (call/cc (lambda (k) (cons k 0)))])    (let ([k (car k.n)] [n (cdr k.n)])      (write n)      (newline)      (k (cons k (+ n 1)))))`
+`(let ([k.n (call/cc (lambda (k) (cons k 0)))])`<br>
+`  (let ([k (car k.n)] [n (cdr k.n)])`<br>
+`    (write n)`<br>
+`    (newline)`<br>
+`    (k (cons k (+ n 1)))))`
 
 Or with multiple values (see Section [5.8](control.html#g104)):
 
-`(call-with-values    (lambda () (call/cc (lambda (k) (values k 0))))    (lambda (k n)      (write n)      (newline)      (k k (+ n 1))))`
+`(call-with-values`<br>
+`  (lambda () (call/cc (lambda (k) (values k 0))))`<br>
+`  (lambda (k n)`<br>
+`    (write n)`<br>
+`    (newline)`<br>
+`    (k k (+ n 1))))`
 
 **Exercise [3.3.2](further.html#g71). **(page [77](further.html#./further:s67))\
 
-` (define product    (lambda (ls)      (if (null? ls)          1          (if (= (car ls) 0)              0              (let ([n (product (cdr ls))])                (if (= n 0) 0 (* n (car ls))))))))`
+`(define product`<br>
+`  (lambda (ls)`<br>
+`    (if (null? ls)`<br>
+`        1`<br>
+`        (if (= (car ls) 0)`<br>
+`            0`<br>
+`            (let ([n (product (cdr ls))])`<br>
+`              (if (= n 0) 0 (* n (car ls))))))))`
 
 **Exercise [3.3.3](further.html#g72). **(page [77](further.html#./further:s68))\
  If one of the processes returns without calling `pause`, it returns to
@@ -388,53 +641,223 @@ explicitly. If other processes are active, the `lwp` system continues to
 run. Otherwise, control returns to the continuation of the original call
 to `start`.
 
-`(define lwp-list '())  (define lwp    (lambda (thunk)      (set! lwp-list (append lwp-list (list thunk)))))  (define start    (lambda ()      (call/cc        (lambda (k)          (set! quit-k k)          (next)))))  (define next    (lambda ()      (let ([p (car lwp-list)])        (set! lwp-list (cdr lwp-list))        (p))))  (define pause    (lambda ()      (call/cc        (lambda (k)          (lwp (lambda () (k #f)))          (next)))))  (define quit    (lambda (v)      (if (null? lwp-list)          (quit-k v)          (next))))`
+`(define lwp-list '())`<br>
+`(define lwp`<br>
+`  (lambda (thunk)`<br>
+`    (set! lwp-list (append lwp-list (list thunk)))))`<br>
+`(define start`<br>
+`  (lambda ()`<br>
+`    (call/cc`<br>
+`      (lambda (k)`<br>
+`        (set! quit-k k)`<br>
+`        (next)))))`<br>
+`(define next`<br>
+`  (lambda ()`<br>
+`    (let ([p (car lwp-list)])`<br>
+`      (set! lwp-list (cdr lwp-list))`<br>
+`      (p))))`<br>
+`(define pause`<br>
+`  (lambda ()`<br>
+`    (call/cc`<br>
+`      (lambda (k)`<br>
+`        (lwp (lambda () (k #f)))`<br>
+`        (next)))))`<br>
+`(define quit`<br>
+`  (lambda (v)`<br>
+`    (if (null? lwp-list)`<br>
+`        (quit-k v)`<br>
+`        (next))))`
 
 **Exercise [3.3.4](further.html#g73). **(page [77](further.html#./further:s69))\
 
-` (define lwp-queue (make-queue))  (define lwp    (lambda (thunk)      (putq! lwp-queue thunk)))  (define start    (lambda ()      (let ([p (getq lwp-queue)])        (delq! lwp-queue)        (p))))  (define pause    (lambda ()      (call/cc        (lambda (k)          (lwp (lambda () (k #f)))          (start)))))`
+`(define lwp-queue (make-queue))`<br>
+`(define lwp`<br>
+`  (lambda (thunk)`<br>
+`    (putq! lwp-queue thunk)))`<br>
+`(define start`<br>
+`  (lambda ()`<br>
+`    (let ([p (getq lwp-queue)])`<br>
+`      (delq! lwp-queue)`<br>
+`      (p))))`<br>
+`(define pause`<br>
+`  (lambda ()`<br>
+`    (call/cc`<br>
+`      (lambda (k)`<br>
+`        (lwp (lambda () (k #f)))`<br>
+`        (start)))))`
 
 **Exercise [3.4.1](further.html#g76). **(page [80](further.html#./further:s75))\
 
-` (define reciprocal    (lambda (n success failure)      (if (= n 0)          (failure)          (success (/ 1 n)))))`
+`(define reciprocal`<br>
+`  (lambda (n success failure)`<br>
+`    (if (= n 0)`<br>
+`        (failure)`<br>
+`        (success (/ 1 n)))))`
 
 **Exercise [3.4.2](further.html#g77). **(page [80](further.html#./further:s77))\
 
-` (define retry #f)   (define factorial    (lambda (x)      (let f ([x x] [k (lambda (x) x)])        (if (= x 0)            (begin (set! retry k) (k 1))            (f (- x 1) (lambda (y) (k (* x y))))))))`
+`(define retry #f) `<br>
+`(define factorial`<br>
+`  (lambda (x)`<br>
+`    (let f ([x x] [k (lambda (x) x)])`<br>
+`      (if (= x 0)`<br>
+`          (begin (set! retry k) (k 1))`<br>
+`          (f (- x 1) (lambda (y) (k (* x y))))))))`
 
 **Exercise [3.4.3](further.html#g78). **(page [80](further.html#./further:s79))\
 
-` (define map/k    (lambda (p ls k)      (if (null? ls)          (k '())          (p (car ls)             (lambda (x)               (map/k p (cdr ls)                 (lambda (ls)                   (k (cons x ls)))))))))   (define reciprocals    (lambda (ls)      (map/k (lambda (x k) (if (= x 0) "zero found" (k (/ 1 x))))             ls             (lambda (x) x))))`
+`(define map/k`<br>
+`  (lambda (p ls k)`<br>
+`    (if (null? ls)`<br>
+`        (k '())`<br>
+`        (p (car ls)`<br>
+`           (lambda (x)`<br>
+`             (map/k p (cdr ls)`<br>
+`               (lambda (ls)`<br>
+`                 (k (cons x ls))))))))) `<br>
+`(define reciprocals`<br>
+`  (lambda (ls)`<br>
+`    (map/k (lambda (x k) (if (= x 0) "zero found" (k (/ 1 x))))`<br>
+`           ls`<br>
+`           (lambda (x) x))))`
 
 **Exercise [3.5.1](further.html#g80). **(page [85](further.html#./further:s86))\
 
-` (define-syntax complain    (syntax-rules ()      [(_ ek msg expr) (ek (list msg expr))]))`
+`(define-syntax complain`<br>
+`  (syntax-rules ()`<br>
+`    [(_ ek msg expr) (ek (list msg expr))]))`
 
 **Exercise [3.5.2](further.html#g81). **(page [85](further.html#./further:s87))\
 
-` (define calc    (lambda (expr)      (call/cc        (lambda (ek)          (define do-calc            (lambda (expr)              (cond                [(number? expr) expr]                [(and (list? expr) (= (length expr) 3))                 (let ([op (car expr)] [args (cdr expr)])                   (case op                     [(add) (apply-op + args)]                     [(sub) (apply-op - args)]                     [(mul) (apply-op * args)]                     [(div) (apply-op / args)]                     [else (complain "invalid operator" op)]))]                [else (complain "invalid expression" expr)])))          (define apply-op            (lambda (op args)              (op (do-calc (car args)) (do-calc (cadr args)))))          (define complain            (lambda (msg expr)              (ek (list msg expr))))          (do-calc expr)))))`
+`(define calc`<br>
+`  (lambda (expr)`<br>
+`    (call/cc`<br>
+`      (lambda (ek)`<br>
+`        (define do-calc`<br>
+`          (lambda (expr)`<br>
+`            (cond`<br>
+`              [(number? expr) expr]`<br>
+`              [(and (list? expr) (= (length expr) 3))`<br>
+`               (let ([op (car expr)] [args (cdr expr)])`<br>
+`                 (case op`<br>
+`                   [(add) (apply-op + args)]`<br>
+`                   [(sub) (apply-op - args)]`<br>
+`                   [(mul) (apply-op * args)]`<br>
+`                   [(div) (apply-op / args)]`<br>
+`                   [else (complain "invalid operator" op)]))]`<br>
+`              [else (complain "invalid expression" expr)])))`<br>
+`        (define apply-op`<br>
+`          (lambda (op args)`<br>
+`            (op (do-calc (car args)) (do-calc (cadr args)))))`<br>
+`        (define complain`<br>
+`          (lambda (msg expr)`<br>
+`            (ek (list msg expr))))`<br>
+`        (do-calc expr)))))`
 
 **Exercise [3.5.3](further.html#g82). **(page [85](further.html#./further:s88))\
 
-` (define calc #f)  (let ()    (define do-calc      (lambda (expr)        (cond          [(number? expr) expr]          [(and (list? expr) (= (length expr) 3))           (let ([op (car expr)] [args (cdr expr)])             (case op               [(add) (apply-op + args)]               [(sub) (apply-op - args)]               [(mul) (apply-op * args)]               [(div) (apply-op / args)]               [else (complain "invalid operator" op)]))]          [else (complain "invalid expression" expr)])))    (define apply-op      (lambda (op args)        (op (do-calc (car args)) (do-calc (cadr args)))))    (define complain      (lambda (msg expr)        (assertion-violation 'calc msg expr)))    (set! calc      (lambda (expr)        (do-calc expr))))`
+`(define calc #f)`<br>
+`(let ()`<br>
+`  (define do-calc`<br>
+`    (lambda (expr)`<br>
+`      (cond`<br>
+`        [(number? expr) expr]`<br>
+`        [(and (list? expr) (= (length expr) 3))`<br>
+`         (let ([op (car expr)] [args (cdr expr)])`<br>
+`           (case op`<br>
+`             [(add) (apply-op + args)]`<br>
+`             [(sub) (apply-op - args)]`<br>
+`             [(mul) (apply-op * args)]`<br>
+`             [(div) (apply-op / args)]`<br>
+`             [else (complain "invalid operator" op)]))]`<br>
+`        [else (complain "invalid expression" expr)])))`<br>
+`  (define apply-op`<br>
+`    (lambda (op args)`<br>
+`      (op (do-calc (car args)) (do-calc (cadr args)))))`<br>
+`  (define complain`<br>
+`    (lambda (msg expr)`<br>
+`      (assertion-violation 'calc msg expr)))`<br>
+`  (set! calc`<br>
+`    (lambda (expr)`<br>
+`      (do-calc expr))))`
 
 **Exercise [3.5.4](further.html#g83). **(page [85](further.html#./further:s89))\
  This adds `sqrt`, `times` (an alias for `mul`), and `expt` along with
 `minus`.
 
-`(let ()    (define do-calc      (lambda (ek expr)        (cond          [(number? expr) expr]          [(and (list? expr) (= (length expr) 2))           (let ([op (car expr)] [args (cdr expr)])             (case op               [(minus) (apply-op1 ek - args)]               [(sqrt) (apply-op1 ek sqrt args)]               [else (complain ek "invalid unary operator" op)]))]          [(and (list? expr) (= (length expr) 3))           (let ([op (car expr)] [args (cdr expr)])             (case op               [(add) (apply-op2 ek + args)]               [(sub) (apply-op2 ek - args)]               [(mul times) (apply-op2 ek * args)]               [(div) (apply-op2 ek / args)]               [(expt) (apply-op2 ek expt args)]               [else (complain ek "invalid binary operator" op)]))]          [else (complain ek "invalid expression" expr)])))    (define apply-op1      (lambda (ek op args)        (op (do-calc ek (car args)))))    (define apply-op2      (lambda (ek op args)        (op (do-calc ek (car args)) (do-calc ek (cadr args)))))    (define complain      (lambda (ek msg expr)        (ek (list msg expr))))    (set! calc      (lambda (expr)        (call/cc          (lambda (ek)            (do-calc ek expr))))))`
+`(let ()`<br>
+`  (define do-calc`<br>
+`    (lambda (ek expr)`<br>
+`      (cond`<br>
+`        [(number? expr) expr]`<br>
+`        [(and (list? expr) (= (length expr) 2))`<br>
+`         (let ([op (car expr)] [args (cdr expr)])`<br>
+`           (case op`<br>
+`             [(minus) (apply-op1 ek - args)]`<br>
+`             [(sqrt) (apply-op1 ek sqrt args)]`<br>
+`             [else (complain ek "invalid unary operator" op)]))]`<br>
+`        [(and (list? expr) (= (length expr) 3))`<br>
+`         (let ([op (car expr)] [args (cdr expr)])`<br>
+`           (case op`<br>
+`             [(add) (apply-op2 ek + args)]`<br>
+`             [(sub) (apply-op2 ek - args)]`<br>
+`             [(mul times) (apply-op2 ek * args)]`<br>
+`             [(div) (apply-op2 ek / args)]`<br>
+`             [(expt) (apply-op2 ek expt args)]`<br>
+`             [else (complain ek "invalid binary operator" op)]))]`<br>
+`        [else (complain ek "invalid expression" expr)])))`<br>
+`  (define apply-op1`<br>
+`    (lambda (ek op args)`<br>
+`      (op (do-calc ek (car args)))))`<br>
+`  (define apply-op2`<br>
+`    (lambda (ek op args)`<br>
+`      (op (do-calc ek (car args)) (do-calc ek (cadr args)))))`<br>
+`  (define complain`<br>
+`    (lambda (ek msg expr)`<br>
+`      (ek (list msg expr))))`<br>
+`  (set! calc`<br>
+`    (lambda (expr)`<br>
+`      (call/cc`<br>
+`        (lambda (ek)`<br>
+`          (do-calc ek expr))))))`
 
 **Exercise [3.6.1](further.html#g85). **(page [87](further.html#./further:s90))\
  This version of `gpa` returns `x` when all of the input letter grades
 are `x`.
 
-`(define-syntax gpa    (syntax-rules ()      [(_ g1 g2 ...)       (let ([ls (map letter->number (remq 'x '(g1 g2 ...)))])         (if (null? ls)             'x             (/ (apply + ls) (length ls))))]))`
+`(define-syntax gpa`<br>
+`  (syntax-rules ()`<br>
+`    [(_ g1 g2 ...)`<br>
+`     (let ([ls (map letter->number (remq 'x '(g1 g2 ...)))])`<br>
+`       (if (null? ls)`<br>
+`           'x`<br>
+`           (/ (apply + ls) (length ls))))]))`
 
 **Exercise [3.6.2](further.html#g86). **(page [87](further.html#./further:s91))\
  After defining `$distribution` and `distribution` within the library as
 follows:
 
-`(define $distribution    (lambda (ls)      (let loop ([ls ls] [a 0] [b 0] [c 0] [d 0] [f 0])        (if (null? ls)            (list (list a 'a) (list b 'b) (list c 'c)              (list d 'd) (list f 'f))            (case (car ls)              [(a) (loop (cdr ls) (+ a 1) b c d f)]              [(b) (loop (cdr ls) a (+ b 1) c d f)]              [(c) (loop (cdr ls) a b (+ c 1) d f)]              [(d) (loop (cdr ls) a b c (+ d 1) f)]              [(f) (loop (cdr ls) a b c d (+ f 1))]             ; ignore x grades, per preceding exercise              [(x) (loop (cdr ls) a b c d f)]              [else (assertion-violation 'distribution                      "unrecognized grade letter"                      (car ls))])))))  (define-syntax distribution    (syntax-rules ()      [(_ g1 g2 ...)       ($distribution '(g1 g2 ...))]))`
+`(define $distribution`<br>
+`  (lambda (ls)`<br>
+`    (let loop ([ls ls] [a 0] [b 0] [c 0] [d 0] [f 0])`<br>
+`      (if (null? ls)`<br>
+`          (list (list a 'a) (list b 'b) (list c 'c)`<br>
+`            (list d 'd) (list f 'f))`<br>
+`          (case (car ls)`<br>
+`            [(a) (loop (cdr ls) (+ a 1) b c d f)]`<br>
+`            [(b) (loop (cdr ls) a (+ b 1) c d f)]`<br>
+`            [(c) (loop (cdr ls) a b (+ c 1) d f)]`<br>
+`            [(d) (loop (cdr ls) a b c (+ d 1) f)]`<br>
+`            [(f) (loop (cdr ls) a b c d (+ f 1))]`<br>
+`           ; ignore x grades, per preceding exercise`<br>
+`            [(x) (loop (cdr ls) a b c d f)]`<br>
+`            [else (assertion-violation 'distribution`<br>
+`                    "unrecognized grade letter"`<br>
+`                    (car ls))])))))`<br>
+`(define-syntax distribution`<br>
+`  (syntax-rules ()`<br>
+`    [(_ g1 g2 ...)`<br>
+`     ($distribution '(g1 g2 ...))]))`
 
 modify the `export` line to add `distribution` (but not
 `$distribution`).
@@ -442,7 +865,19 @@ modify the `export` line to add `distribution` (but not
 **Exercise [3.6.3](further.html#g87). **(page [87](further.html#./further:s92))\
  After defining `histogram` as follows:
 
-`(define histogram    (lambda (port distr)      (for-each        (lambda (n g)          (put-datum port g)          (put-string port ": ")          (let loop ([n n])            (unless (= n 0)              (put-char port #\*)              (loop (- n 1))))          (put-string port "\n"))        (map car distr)        (map cadr distr))))`
+`(define histogram`<br>
+`  (lambda (port distr)`<br>
+`    (for-each`<br>
+`      (lambda (n g)`<br>
+`        (put-datum port g)`<br>
+`        (put-string port ": ")`<br>
+`        (let loop ([n n])`<br>
+`          (unless (= n 0)`<br>
+`            (put-char port #\*)`<br>
+`            (loop (- n 1))))`<br>
+`        (put-string port "\n"))`<br>
+`      (map car distr)`<br>
+`      (map cadr distr))))`
 
 modify the `export` line to add `histogram`. The solution uses
 `for-each`, which is described on page [118](control.html#desc:for-each)

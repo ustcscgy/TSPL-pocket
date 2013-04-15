@@ -72,7 +72,7 @@ example, an implementation might recognize the flag `#!braces` and
 switch to a mode in which lists may be enclosed in braces as well as in
 parentheses and brackets.
 
-`#!braces '{a b c}  (a b c)`
+`#!braces '{a b c} `$\Rightarrow$` (a b c)`
 
 The flag `#!r6rs` may be used to declare that the subsequent text is
 written in R6RS syntax. It is good practice to include `#!r6rs` at the
@@ -281,7 +281,14 @@ The abbreviations are equivalent to the corresponding two-element lists
 shown below. Once an abbreviation has been read, the result is
 indistinguishable from its nonabbreviated form.
 
-`` '<datum>  (quote <datum>)  `<datum>  (quasiquote <datum>)  ,<datum>  (unquote <datum>)  ,@<datum>  (unquote-splicing <datum>)  #'<datum>  (syntax <datum>)  #`<datum>  (quasisyntax <datum>)  #,<datum>  (unsyntax <datum>)  #,@<datum>  (unsyntax-splicing <datum>) ``
+`` '<datum>  (quote <datum>)``<br>
+`` `<datum>  (quasiquote <datum>)``<br>
+`` ,<datum>  (unquote <datum>)``<br>
+`` ,@<datum>  (unquote-splicing <datum>)``<br>
+`` #'<datum>  (syntax <datum>)``<br>
+`` #`<datum>  (quasisyntax <datum>)``<br>
+`` #,<datum>  (unsyntax <datum>)``<br>
+`` #,@<datum>  (unsyntax-splicing <datum>) ``
 
 **Vectors.**  Vectors are compound datums formed from groups of tokens
 and possibly involving other datums, including other vectors. A vector

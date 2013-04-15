@@ -11,7 +11,6 @@ epub: build
             Ch9.Records.md Ch10.Libraries.and.Top-Level.Programs.md \
             Ch11.Exceptions.and.Conditions.md \
             Ch12.Extended.Examples.md References.md \
-            Answers.to.Selected.Exercises.md Formal.Syntax.md \
-            Summary.of.Forms.md
+            Answers.to.Selected.Exercises.md Formal.Syntax.md
 build:
 	mkdir -p build
