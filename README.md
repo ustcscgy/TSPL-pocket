@@ -10,36 +10,27 @@ word level references are lost, but section level references are remained.
 
 ## TODO
 
-1. Typeset math using latex to replace gifs.
+1. Typeset math using latex to replace gifs. (DOING)
 2. Repair broken internal sectional level links.
 
 ## Status
 
-Pass 1: clean code blocks | DOING
+Pass 1: clean code blocks | DONE
+
+Pass 2: clean math stuff | DOING
 
 ### Done
 
-* Ch1
-* Ch2
-* Ch3
-* Ch4
-* Ch5
-* Ch6
-* Ch7
-* Ch8
-* Ch9
-* Ch10
-* Ch11
-
 ### Doing
 
-Ch12
+Ch1
 
 ## What do I do?
 
 ### Table of Contents
 
-Thanks to pandoc's `implicit_header_references` extension, I just remove the broken links and use 'implicit header references'.
+Thanks to pandoc's `implicit_header_references` extension, I just
+remove the broken links and use 'implicit header references'.
 
 ### Math stuff
 
@@ -50,14 +41,14 @@ Use latex to replace `math/tspl/*.gif`. This is not difficult.
 This is a little complicated. The original html files use
 ![](http://scheme.com/tspl4/math/tspl/0.gif) in almost every piece of
 code, so pandoc simply ignores them. It's a hard work to insert
-```$\Rightarrow$``` into those blanks left by the missing images. But
+` ``$\Rightarrow$` `` into those blanks left by the missing images. But
 thankfully, the original code blocks in html are using no-break space
 `&nbsp;` which is different from normal blank space. After translated
 into markdown files, normal space are inserted to replace `<br>`, but
 those "no-break space" remained. Thus, two normal blank spaces mean to
 insert a `<br>` and two no-break spaces mean to insert a
-```$\Rightarrow$```. So I decide to use Emacs macros to insert
-```$\Rightarrow$``` and `<br>` back to their proper postion.
+`` `$\Rightarrow$` ``. So I decide to use Emacs macros to insert
+`` `$\Rightarrow$` `` and `<br>` back to their proper postion.
 
 Those macros are recorded in emacs-macros.el.
 
