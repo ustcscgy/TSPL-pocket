@@ -31,7 +31,11 @@ order. The evaluation is guaranteed to be sequential, however: whatever
 order is chosen, each expression is fully evaluated before evaluation of
 the next is started.
 
-`(+ 3 4)  7   ((if (odd? 3) + -) 6 2)  8   ((lambda (x) x) 5)  5   (let ([f (lambda (x) (+ x x))])    (f 8))  16`
+`(+ 3 4) `$\Rightarrow$` 7 `<br>
+`((if (odd? 3) + -) 6 2) `$\Rightarrow$` 8 `<br>
+`((lambda (x) x) 5) `$\Rightarrow$` 5 `<br>
+`(let ([f (lambda (x) (+ x x))])`<br>
+`  (f 8)) `$\Rightarrow$` 16`
 
 **procedure**: `(apply procedure obj ... list)` \
  **returns:**the values of applying `procedure` to `obj ...` and the
@@ -48,7 +52,21 @@ as there are `objs` plus elements of `list`.
 procedure are in a list, since it frees the programmer from explicitly
 destructuring the list.
 
-`(apply + '(4 5))  9   (apply min '(6 8 3 2 5))  2   (apply min  5 1 3 '(6 8 3 2 5))  1   (apply vector 'a 'b '(c d e))  #(a b c d e)   (define first    (lambda (ls)      (apply (lambda (x . y) x) ls)))  (define rest    (lambda (ls)      (apply (lambda (x . y) y) ls)))  (first '(a b c d))  a  (rest '(a b c d))  (b c d)   (apply append    '(1 2 3)    '((a b) (c d e) (f)))  (1 2 3 a b c d e f)`
+`(apply + '(4 5)) `$\Rightarrow$` 9 `<br>
+`(apply min '(6 8 3 2 5)) `$\Rightarrow$` 2 `<br>
+`(apply min  5 1 3 '(6 8 3 2 5)) `$\Rightarrow$` 1 `<br>
+`(apply vector 'a 'b '(c d e)) `$\Rightarrow$` #(a b c d e) `<br>
+`(define first`<br>
+`  (lambda (ls)`<br>
+`    (apply (lambda (x . y) x) ls)))`<br>
+`(define rest`<br>
+`  (lambda (ls)`<br>
+`    (apply (lambda (x . y) y) ls)))`<br>
+`(first '(a b c d)) `$\Rightarrow$` a`<br>
+`(rest '(a b c d)) `$\Rightarrow$` (b c d) `<br>
+`(apply append`<br>
+`  '(1 2 3)`<br>
+`  '((a b) (c d e) (f))) `$\Rightarrow$` (1 2 3 a b c d e f)`
 
 ### Section 5.2. Sequencing
 
@@ -60,13 +78,18 @@ The expressions `expr1 expr2 ...` are evaluated in sequence from left to
 right. `begin` is used to sequence assignments, input/output, or other
 operations that cause side effects.
 
-`(define x 3)  (begin    (set! x (+ x 1))    (+ x x))  8`
+`(define x 3)`<br>
+`(begin`<br>
+`  (set! x (+ x 1))`<br>
+`  (+ x x)) `$\Rightarrow$` 8`
 
 A `begin` form may contain zero or more definitions in place of the
 expressions `expr1 expr2 ...`, in which case it is considered to be a
 definition and may appear only where definitions are valid.
 
-`(let ()    (begin (define x 3) (define y 4))    (+ x y))  7`
+`(let ()`<br>
+`  (begin (define x 3) (define y 4))`<br>
+`  (+ x y)) `$\Rightarrow$` 7`
 
 This form of `begin` is primarily used by syntactic extensions that must
 expand into multiple definitions. (See
@@ -79,7 +102,13 @@ The bodies of many syntactic forms, including `lambda`, `case-lambda`,
 executed in sequence, with the values of the last expression being
 returned.
 
-`(define swap-pair!    (lambda (x)      (let ([temp (car x)])        (set-car! x (cdr x))        (set-cdr! x temp)        x)))  (swap-pair! (cons 'a 'b))  (b . a)`
+`(define swap-pair!`<br>
+`  (lambda (x)`<br>
+`    (let ([temp (car x)])`<br>
+`      (set-car! x (cdr x))`<br>
+`      (set-cdr! x temp)`<br>
+`      x)))`<br>
+`(swap-pair! (cons 'a 'b)) `$\Rightarrow$` (b . a)`
 
 ### Section 5.3. Conditionals
 
@@ -96,7 +125,24 @@ expressions. If `test` evaluates to a true value (anything other than
 "one-armed," form, which has no `alternative`, the result is unspecified
 if `test` evaluates to false.
 
-`(let ([ls '(a b c)])    (if (null? ls)        '()        (cdr ls)))  (b c)   (let ([ls '()])    (if (null? ls)        '()        (cdr ls)))  ()   (let ([abs         (lambda (x)           (if (< x 0)               (- 0 x)               x))])    (abs -4))  4   (let ([x -4])    (if (< x 0)        (list 'minus (- 0 x))        (list 'plus 4)))  (minus 4)`
+`(let ([ls '(a b c)])`<br>
+`  (if (null? ls)`<br>
+`      '()`<br>
+`      (cdr ls))) `$\Rightarrow$` (b c) `<br>
+`(let ([ls '()])`<br>
+`  (if (null? ls)`<br>
+`      '()`<br>
+`      (cdr ls))) `$\Rightarrow$` () `<br>
+`(let ([abs`<br>
+`       (lambda (x)`<br>
+`         (if (< x 0)`<br>
+`             (- 0 x)`<br>
+`             x))])`<br>
+`  (abs -4)) `$\Rightarrow$` 4 `<br>
+`(let ([x -4])`<br>
+`  (if (< x 0)`<br>
+`      (list 'minus (- 0 x))`<br>
+`      (list 'plus 4))) `$\Rightarrow$` (minus 4)`
 
 **procedure**: `(not obj)` \
  **returns:**`#t` if `obj` is false, `#f` otherwise \
@@ -104,7 +150,10 @@ if `test` evaluates to false.
 
 `not` is equivalent to `(lambda (x) (if x #f #t))`.
 
-`(not #f)  #t  (not #t)  #f  (not '())  #f  (not (< 4 5))  #f`
+`(not #f) `$\Rightarrow$` #t`<br>
+`(not #t) `$\Rightarrow$` #f`<br>
+`(not '()) `$\Rightarrow$` #f`<br>
+`(not (< 4 5)) `$\Rightarrow$` #f`
 
 **syntax**: `(and expr ...)` \
  **returns:**see below \
@@ -118,7 +167,12 @@ returned. If a subexpression returns `#f`, `and` returns `#f` without
 evaluating the remaining subexpressions. A syntax definition of `and`
 appears on page [62](further.html#defn:and).
 
-`(let ([x 3])    (and (> x 2) (< x 4)))  #t   (let ([x 5])    (and (> x 2) (< x 4)))  #f   (and #f '(a b) '(c d))  #f  (and '(a b) '(c d) '(e f))  (e f)`
+`(let ([x 3])`<br>
+`  (and (> x 2) (< x 4))) `$\Rightarrow$` #t `<br>
+`(let ([x 5])`<br>
+`  (and (> x 2) (< x 4))) `$\Rightarrow$` #f `<br>
+`(and #f '(a b) '(c d)) `$\Rightarrow$` #f`<br>
+`(and '(a b) '(c d) '(e f)) `$\Rightarrow$` (e f)`
 
 **syntax**: `(or expr ...)` \
  **returns:**see below \
@@ -133,7 +187,11 @@ its values are returned. If a subexpression returns a value other than
 subexpressions. A syntax definition of `or` appears on
 page [63](further.html#defn:or).
 
-`(let ([x 3])    (or (< x 2) (> x 4)))  #f   (let ([x 5])    (or (< x 2) (> x 4)))  #t   (or #f '(a b) '(c d))  (a b)`
+`(let ([x 3])`<br>
+`  (or (< x 2) (> x 4))) `$\Rightarrow$` #f `<br>
+`(let ([x 5])`<br>
+`  (or (< x 2) (> x 4))) `$\Rightarrow$` #t `<br>
+`(or #f '(a b) '(c d)) `$\Rightarrow$` (a b)`
 
 **syntax**: `(cond clause1 clause2 ...)` \
  **returns:**see below \
@@ -141,7 +199,9 @@ page [63](further.html#defn:or).
 
 Each `clause` but the last must take one of the forms below.
 
-`(test)  (test expr1 expr2 ...)  (test => expr)`
+`(test)`<br>
+`(test expr1 expr2 ...)`<br>
+`(test => expr)`
 
 The last clause may be in any of the above forms, or it may be an
 "`else` clause" of the form
@@ -172,7 +232,20 @@ present, the value or values are unspecified.
 
 See page [305](syntax.html#defn:cond) for a syntax definition of `cond`.
 
-`(let ([x 0])    (cond      [(< x 0) (list 'minus (abs x))]      [(> x 0) (list 'plus x)]      [else (list 'zero x)]))  (zero 0)   (define select    (lambda (x)      (cond        [(not (symbol? x))]        [(assq x '((a . 1) (b . 2) (c . 3))) => cdr]        [else 0])))   (select 3)  #t  (select 'b)  2  (select 'e)  0`
+`(let ([x 0])`<br>
+`  (cond`<br>
+`    [(< x 0) (list 'minus (abs x))]`<br>
+`    [(> x 0) (list 'plus x)]`<br>
+`    [else (list 'zero x)])) `$\Rightarrow$` (zero 0) `<br>
+`(define select`<br>
+`  (lambda (x)`<br>
+`    (cond`<br>
+`      [(not (symbol? x))]`<br>
+`      [(assq x '((a . 1) (b . 2) (c . 3))) => cdr]`<br>
+`      [else 0]))) `<br>
+`(select 3) `$\Rightarrow$` #t`<br>
+`(select 'b) `$\Rightarrow$` 2`<br>
+`(select 'e) `$\Rightarrow$` 0`
 
 **syntax**: `else` \
  **syntax**: `=>` \
@@ -204,19 +277,38 @@ of the other expressions are evaluated, and the value or values of
 A `when` or `unless` expression is usually clearer than the
 corresponding "one-armed" `if` expression.
 
-`(let ([x -4] [sign 'plus])    (when (< x 0)      (set! x (- 0 x))      (set! sign 'minus))    (list sign x))  (minus 4)   (define check-pair    (lambda (x)      (unless (pair? x)        (syntax-violation 'check-pair "invalid argument" x))      x))   (check-pair '(a b c))  (a b c)`
+`(let ([x -4] [sign 'plus])`<br>
+`  (when (< x 0)`<br>
+`    (set! x (- 0 x))`<br>
+`    (set! sign 'minus))`<br>
+`  (list sign x)) `$\Rightarrow$` (minus 4) `<br>
+`(define check-pair`<br>
+`  (lambda (x)`<br>
+`    (unless (pair? x)`<br>
+`      (syntax-violation 'check-pair "invalid argument" x))`<br>
+`    x)) `<br>
+`(check-pair '(a b c)) `$\Rightarrow$` (a b c)`
 
 `when` may be defined as follows:
 
-`(define-syntax when    (syntax-rules ()      [(_ e0 e1 e2 ...)       (if e0 (begin e1 e2 ...))]))`
+`(define-syntax when`<br>
+`  (syntax-rules ()`<br>
+`    [(_ e0 e1 e2 ...)`<br>
+`     (if e0 (begin e1 e2 ...))]))`
 
 `unless` may be defined as follows:
 
-`(define-syntax unless    (syntax-rules ()      [(_ e0 e1 e2 ...)       (if (not e0) (begin e1 e2 ...))]))`
+`(define-syntax unless`<br>
+`  (syntax-rules ()`<br>
+`    [(_ e0 e1 e2 ...)`<br>
+`     (if (not e0) (begin e1 e2 ...))]))`
 
 or in terms of `when` as follows:
 
-`(define-syntax unless    (syntax-rules ()      [(_ e0 e1 e2 ...)       (when (not e0) e1 e2 ...)]))`
+`(define-syntax unless`<br>
+`  (syntax-rules ()`<br>
+`    [(_ e0 e1 e2 ...)`<br>
+`     (when (not e0) e1 e2 ...)]))`
 
 **syntax**: `(case expr0 clause1 clause2 ...)` \
  **returns:**see below \
@@ -247,7 +339,11 @@ present, the value or values are unspecified.
 
 See page [306](syntax.html#defn:case) for a syntax definition of `case`.
 
-`(let ([x 4] [y 5])    (case (+ x y)      [(1 3 5 7 9) 'odd]      [(0 2 4 6 8) 'even]      [else 'out-of-range]))  odd`
+`(let ([x 4] [y 5])`<br>
+`  (case (+ x y)`<br>
+`    [(1 3 5 7 9) 'odd]`<br>
+`    [(0 2 4 6 8) 'even]`<br>
+`    [else 'out-of-range])) `$\Rightarrow$` odd`
 
 ### Section 5.4. Recursion and Iteration
 
@@ -266,11 +362,14 @@ new values of the variables `var ...`.
 
 A named `let` expression of the form
 
-`(let name ((var expr) ...)    body1 body2 ...)`
+`(let name ((var expr) ...)`<br>
+`  body1 body2 ...)`
 
 can be rewritten with `letrec` as follows.
 
-`((letrec ((name (lambda (var ...) body1 body2 ...)))     name)   expr ...)`
+`((letrec ((name (lambda (var ...) body1 body2 ...)))`<br>
+`   name)`<br>
+` expr ...)`
 
 A syntax definition of `let` that implements this transformation and
 handles unnamed `let` as well can be found on
@@ -279,14 +378,28 @@ page [312](syntax.html#defn:let).
 The procedure `divisors` defined below uses named `let` to compute the
 nontrivial divisors of a nonnegative integer.
 
-`(define divisors    (lambda (n)      (let f ([i 2])        (cond          [(>= i n) '()]          [(integer? (/ n i)) (cons i (f (+ i 1)))]          [else (f (+ i 1))]))))   (divisors 5)  ()  (divisors 32)  (2 4 8 16)`
+`(define divisors`<br>
+`  (lambda (n)`<br>
+`    (let f ([i 2])`<br>
+`      (cond`<br>
+`        [(>= i n) '()]`<br>
+`        [(integer? (/ n i)) (cons i (f (+ i 1)))]`<br>
+`        [else (f (+ i 1))])))) `<br>
+`(divisors 5) `$\Rightarrow$` ()`<br>
+`(divisors 32) `$\Rightarrow$` (2 4 8 16)`
 
 The version above is non-tail-recursive when a divisor is found and
 tail-recursive when a divisor is not found. The version below is fully
 tail-recursive. It builds up the list in reverse order, but this is easy
 to remedy, if desired, by reversing the list on exit.
 
-`(define divisors    (lambda (n)      (let f ([i 2] [ls '()])        (cond          [(>= i n) ls]          [(integer? (/ n i)) (f (+ i 1) (cons i ls))]          [else (f (+ i 1) ls)]))))`
+`(define divisors`<br>
+`  (lambda (n)`<br>
+`    (let f ([i 2] [ls '()])`<br>
+`      (cond`<br>
+`        [(>= i n) ls]`<br>
+`        [(integer? (/ n i)) (f (+ i 1) (cons i ls))]`<br>
+`        [else (f (+ i 1) ls)]))))`
 
 **syntax**: `(do ((var init update) ...) (test result ...) expr ...)` \
  **returns:**the values of the last `result` expression \
@@ -327,18 +440,44 @@ The definitions of `factorial` and `fibonacci` below are straightforward
 translations of the tail-recursive named-`let` versions given in
 Section [3.2](further.html#g55).
 
-`(define factorial    (lambda (n)      (do ([i n (- i 1)] [a 1 (* a i)])          ((zero? i) a))))   (factorial 10)  3628800   (define fibonacci    (lambda (n)      (if (= n 0)          0          (do ([i n (- i 1)] [a1 1 (+ a1 a2)] [a2 0 a1])              ((= i 1) a1)))))   (fibonacci 6)  8`
+`(define factorial`<br>
+`  (lambda (n)`<br>
+`    (do ([i n (- i 1)] [a 1 (* a i)])`<br>
+`        ((zero? i) a)))) `<br>
+`(factorial 10) `$\Rightarrow$` 3628800 `<br>
+`(define fibonacci`<br>
+`  (lambda (n)`<br>
+`    (if (= n 0)`<br>
+`        0`<br>
+`        (do ([i n (- i 1)] [a1 1 (+ a1 a2)] [a2 0 a1])`<br>
+`            ((= i 1) a1))))) `<br>
+`(fibonacci 6) `$\Rightarrow$` 8`
 
 The definition of `divisors` below is similar to the tail-recursive
 definition of `divisors` given with the description of named `let`
 above.
 
-`(define divisors    (lambda (n)      (do ([i 2 (+ i 1)]           [ls '()               (if (integer? (/ n i))                   (cons i ls)                   ls)])          ((>= i n) ls))))`
+`(define divisors`<br>
+`  (lambda (n)`<br>
+`    (do ([i 2 (+ i 1)]`<br>
+`         [ls '()`<br>
+`             (if (integer? (/ n i))`<br>
+`                 (cons i ls)`<br>
+`                 ls)])`<br>
+`        ((>= i n) ls))))`
 
 The definition of `scale-vector!` below, which scales each element of a
 vector *v* by a constant *k*, demonstrates a nonempty `do` body.
 
-`(define scale-vector!    (lambda (v k)      (let ([n (vector-length v)])        (do ([i 0 (+ i 1)])            ((= i n))          (vector-set! v i (* (vector-ref v i) k))))))   (define vec (vector 1 2 3 4 5))  (scale-vector! vec 2)  vec  #(2 4 6 8 10)`
+`(define scale-vector!`<br>
+`  (lambda (v k)`<br>
+`    (let ([n (vector-length v)])`<br>
+`      (do ([i 0 (+ i 1)])`<br>
+`          ((= i n))`<br>
+`        (vector-set! v i (* (vector-ref v i) k)))))) `<br>
+`(define vec (vector 1 2 3 4 5))`<br>
+`(scale-vector! vec 2)`<br>
+`vec `$\Rightarrow$` #(2 4 6 8 10)`
 
 ### Section 5.5. Mapping and Folding
 
@@ -358,7 +497,10 @@ operators are also available for vectors and strings.
 as many arguments as there are lists, should return a single value, and
 should not mutate the `list` arguments.
 
-`(map abs '(1 -2 3 -4 5 -6))  (1 2 3 4 5 6)   (map (lambda (x y) (* x y))       '(1 2 3 4)       '(8 7 6 5))  (8 14 18 20)`
+`(map abs '(1 -2 3 -4 5 -6)) `$\Rightarrow$` (1 2 3 4 5 6) `<br>
+`(map (lambda (x y) (* x y))`<br>
+`     '(1 2 3 4)`<br>
+`     '(8 7 6 5)) `$\Rightarrow$` (8 14 18 20)`
 
 While the order in which the applications themselves occur is not
 specified, the order of the values in the output list is the same as
@@ -366,7 +508,20 @@ that of the corresponding values in the input lists.
 
 `map` might be defined as follows.
 
-`(define map    (lambda (f ls . more)      (if (null? more)          (let map1 ([ls ls])            (if (null? ls)                '()                (cons (f (car ls))                      (map1 (cdr ls)))))          (let map-more ([ls ls] [more more])            (if (null? ls)                '()                (cons                  (apply f (car ls) (map car more))                  (map-more (cdr ls) (map cdr more))))))))`
+`(define map`<br>
+`  (lambda (f ls . more)`<br>
+`    (if (null? more)`<br>
+`        (let map1 ([ls ls])`<br>
+`          (if (null? ls)`<br>
+`              '()`<br>
+`              (cons (f (car ls))`<br>
+`                    (map1 (cdr ls)))))`<br>
+`        (let map-more ([ls ls] [more more])`<br>
+`          (if (null? ls)`<br>
+`              '()`<br>
+`              (cons`<br>
+`                (apply f (car ls) (map car more))`<br>
+`                (map-more (cdr ls) (map cdr more))))))))`
 
 No error checking is done by this version of `map`; `f` is assumed to be
 a procedure and the other arguments are assumed to be proper lists of
@@ -385,7 +540,19 @@ right. `procedure` should accept as many arguments as there are lists
 and should not mutate the `list` arguments. `for-each` may be defined
 without error checks as follows.
 
-`(define for-each    (lambda (f ls . more)      (do ([ls ls (cdr ls)] [more more (map cdr more)])          ((null? ls))        (apply f (car ls) (map car more)))))   (let ([same-count 0])    (for-each      (lambda (x y)        (when (= x y)          (set! same-count (+ same-count 1))))      '(1 2 3 4 5 6)      '(2 3 3 4 7 6))    same-count)  3`
+`(define for-each`<br>
+`  (lambda (f ls . more)`<br>
+`    (do ([ls ls (cdr ls)] [more more (map cdr more)])`<br>
+`        ((null? ls))`<br>
+`      (apply f (car ls) (map car more))))) `<br>
+`(let ([same-count 0])`<br>
+`  (for-each`<br>
+`    (lambda (x y)`<br>
+`      (when (= x y)`<br>
+`        (set! same-count (+ same-count 1))))`<br>
+`    '(1 2 3 4 5 6)`<br>
+`    '(2 3 3 4 7 6))`<br>
+`  same-count) `$\Rightarrow$` 3`
 
 **procedure**: `(exists procedure list1 list2 ...)` \
  **returns:**see below \
@@ -400,12 +567,26 @@ only one element or `procedure` returns a true value `t`. In the former
 case, `exists` tail-calls `procedure`, applying it to the remaining
 element of each list. In the latter case, `exists` returns `t`.
 
-`(exists symbol? '(1.0 #\a "hi" '()))  #f   (exists member          '(a b c)          '((c b) (b a) (a c)))  (b a)   (exists (lambda (x y z) (= (+ x y) z))          '(1 2 3 4)          '(1.2 2.3 3.4 4.5)          '(2.3 4.4 6.4 8.6))  #t`
+`(exists symbol? '(1.0 #\a "hi" '())) `$\Rightarrow$` #f `<br>
+`(exists member`<br>
+`        '(a b c)`<br>
+`        '((c b) (b a) (a c))) `$\Rightarrow$` (b a) `<br>
+`(exists (lambda (x y z) (= (+ x y) z))`<br>
+`        '(1 2 3 4)`<br>
+`        '(1.2 2.3 3.4 4.5)`<br>
+`        '(2.3 4.4 6.4 8.6)) `$\Rightarrow$` #t`
 
 `exists` may be defined (somewhat inefficiently and without error
 checks) as follows:
 
-`(define exists    (lambda (f ls . more)      (and (not (null? ls))        (let exists ([x (car ls)] [ls (cdr ls)] [more more])          (if (null? ls)              (apply f x (map car more))              (or (apply f x (map car more))                  (exists (car ls) (cdr ls) (map cdr more))))))))`
+`(define exists`<br>
+`  (lambda (f ls . more)`<br>
+`    (and (not (null? ls))`<br>
+`      (let exists ([x (car ls)] [ls (cdr ls)] [more more])`<br>
+`        (if (null? ls)`<br>
+`            (apply f x (map car more))`<br>
+`            (or (apply f x (map car more))`<br>
+`                (exists (car ls) (cdr ls) (map cdr more))))))))`
 
 **procedure**: `(for-all procedure list1 list2 ...)` \
  **returns:**see below \
@@ -420,12 +601,26 @@ only one element left or `procedure` returns `#f`. In the former case,
 `for-all` tail-calls `procedure`, applying it to the remaining element
 of each list. In the latter case, `for-all` returns `#f`.
 
-`(for-all symbol? '(a b c d))  #t   (for-all =           '(1 2 3 4)           '(1.0 2.0 3.0 4.0))  #t   (for-all (lambda (x y z) (= (+ x y) z))           '(1 2 3 4)           '(1.2 2.3 3.4 4.5)           '(2.2 4.3 6.5 8.5))  #f`
+`(for-all symbol? '(a b c d)) `$\Rightarrow$` #t `<br>
+`(for-all =`<br>
+`         '(1 2 3 4)`<br>
+`         '(1.0 2.0 3.0 4.0)) `$\Rightarrow$` #t `<br>
+`(for-all (lambda (x y z) (= (+ x y) z))`<br>
+`         '(1 2 3 4)`<br>
+`         '(1.2 2.3 3.4 4.5)`<br>
+`         '(2.2 4.3 6.5 8.5)) `$\Rightarrow$` #f`
 
 `for-all` may be defined (somewhat inefficiently and without error
 checks) as follows:
 
-`(define for-all    (lambda (f ls . more)      (or (null? ls)        (let for-all ([x (car ls)] [ls (cdr ls)] [more more])          (if (null? ls)              (apply f x (map car more))              (and (apply f x (map car more))                   (for-all (car ls) (cdr ls) (map cdr more))))))))`
+`(define for-all`<br>
+`  (lambda (f ls . more)`<br>
+`    (or (null? ls)`<br>
+`      (let for-all ([x (car ls)] [ls (cdr ls)] [more more])`<br>
+`        (if (null? ls)`<br>
+`            (apply f x (map car more))`<br>
+`            (and (apply f x (map car more))`<br>
+`                 (for-all (car ls) (cdr ls) (map cdr more))))))))`
 
 **procedure**: `(fold-left procedure obj list1 list2 ...)` \
  **returns:**see below \
@@ -440,7 +635,16 @@ not empty, `fold-left` applies `procedure` to `obj` and the cars of
 `list1 list2 ...`, then recurs with the value returned by `procedure` in
 place of `obj` and the cdr of each `list` in place of the `list`.
 
-`(fold-left cons '() '(1 2 3 4))  ((((() . 1) . 2) . 3) . 4)   (fold-left    (lambda (a x) (+ a (* x x)))    0 '(1 2 3 4 5))  55   (fold-left    (lambda (a . args) (append args a))    '(question)    '(that not to)    '(is to be)    '(the be: or))  (to be or not to be: that is the question)`
+`(fold-left cons '() '(1 2 3 4)) `$\Rightarrow$` ((((() . 1) . 2) . 3) . 4) `<br>
+`(fold-left`<br>
+`  (lambda (a x) (+ a (* x x)))`<br>
+`  0 '(1 2 3 4 5)) `$\Rightarrow$` 55 `<br>
+`(fold-left`<br>
+`  (lambda (a . args) (append args a))`<br>
+`  '(question)`<br>
+`  '(that not to)`<br>
+`  '(is to be)`<br>
+`  '(the be: or)) `$\Rightarrow$` (to be or not to be: that is the question)`
 
 **procedure**: `(fold-right procedure obj list1 list2 ...)` \
  **returns:**see below \
@@ -455,7 +659,15 @@ are not empty, `fold-right` recurs with the cdr of each `list` replacing
 the `list`, then applies `procedure` to the cars of `list1 list2 ...`
 and the result returned by the recursion.
 
-`(fold-right cons '() '(1 2 3 4))  (1 2 3 4)   (fold-right    (lambda (x a) (+ a (* x x)))    0 '(1 2 3 4 5))  55   (fold-right    (lambda (x y a) (cons* x y a))    (parting is such sweet sorrow    '((with apologies))                gotta go see ya tomorrow    '(parting such sorrow go ya)       (with apologies))    '(is sweet gotta see tomorrow))`
+`(fold-right cons '() '(1 2 3 4)) `$\Rightarrow$` (1 2 3 4) `<br>
+`(fold-right`<br>
+`  (lambda (x a) (+ a (* x x)))`<br>
+`  0 '(1 2 3 4 5)) `$\Rightarrow$` 55 `<br>
+`(fold-right`<br>
+`  (lambda (x y a) (cons* x y a))    (parting is such sweet sorrow`<br>
+`  '((with apologies))                gotta go see ya tomorrow`<br>
+`  '(parting such sorrow go ya)       (with apologies))`<br>
+`  '(is sweet gotta see tomorrow))`
 
 **procedure**: `(vector-map procedure vector1 vector1 ...)` \
  **returns:**vector of results \
@@ -467,7 +679,10 @@ vectors `vector1 vector2 ...` must be of the same length, and
 `procedure` should accept as many arguments as there are vectors and
 return a single value.
 
-`(vector-map abs '#(1 -2 3 -4 5 -6))  #(1 2 3 4 5 6)  (vector-map (lambda (x y) (* x y))    '#(1 2 3 4)    '#(8 7 6 5))  #(8 14 18 20)`
+`(vector-map abs '#(1 -2 3 -4 5 -6)) `$\Rightarrow$` #(1 2 3 4 5 6)`<br>
+`(vector-map (lambda (x y) (* x y))`<br>
+`  '#(1 2 3 4)`<br>
+`  '#(8 7 6 5)) `$\Rightarrow$` #(8 14 18 20)`
 
 While the order in which the applications themselves occur is not
 specified, the order of the values in the output vector is the same as
@@ -482,7 +697,14 @@ that of the corresponding values in the input vectors.
 values, and `vector-for-each` guarantees to perform the applications in
 sequence over the elements from left to right.
 
-`(let ([same-count 0])    (vector-for-each      (lambda (x y)        (when (= x y)          (set! same-count (+ same-count 1))))      '#(1 2 3 4 5 6)      '#(2 3 3 4 7 6))    same-count)  3`
+`(let ([same-count 0])`<br>
+`  (vector-for-each`<br>
+`    (lambda (x y)`<br>
+`      (when (= x y)`<br>
+`        (set! same-count (+ same-count 1))))`<br>
+`    '#(1 2 3 4 5 6)`<br>
+`    '#(2 3 3 4 7 6))`<br>
+`  same-count) `$\Rightarrow$` 3`
 
 **procedure**: `(string-for-each procedure string1 string2 ...)` \
  **returns:**unspecified \
@@ -491,7 +713,13 @@ sequence over the elements from left to right.
 `string-for-each` is similar to `for-each` and `vector-for-each` except
 that the inputs are strings rather than lists or vectors.
 
-`(let ([ls '()])    (string-for-each      (lambda r (set! ls (cons r ls)))      "abcd"      "===="      "1234")    (map list->string (reverse ls)))  ("a=1" "b=2" "c=3" "d=4")`
+`(let ([ls '()])`<br>
+`  (string-for-each`<br>
+`    (lambda r (set! ls (cons r ls)))`<br>
+`    "abcd"`<br>
+`    "===="`<br>
+`    "1234")`<br>
+`  (map list->string (reverse ls))) `$\Rightarrow$` ("a=1" "b=2" "c=3" "d=4")`
 
 ### Section 5.6. Continuations
 
@@ -526,7 +754,16 @@ multitasking [[10](bibliography.html#g228),[32](bibliography.html#g250)].
 The example below illustrates the use of a continuation to perform a
 nonlocal exit from a loop.
 
-`(define member    (lambda (x ls)      (call/cc        (lambda (break)          (do ([ls ls (cdr ls)])              ((null? ls) #f)            (when (equal? x (car ls))              (break ls)))))))   (member 'd '(a b c))  #f  (member 'b '(a b c))  (b c)`
+`(define member`<br>
+`  (lambda (x ls)`<br>
+`    (call/cc`<br>
+`      (lambda (break)`<br>
+`        (do ([ls ls (cdr ls)])`<br>
+`            ((null? ls) #f)`<br>
+`          (when (equal? x (car ls))`<br>
+`            (break ls))))))) `<br>
+`(member 'd '(a b c)) `$\Rightarrow$` #f`<br>
+`(member 'b '(a b c)) `$\Rightarrow$` (b c)`
 
 Additional examples are given in Sections [3.3](further.html#g63)
 and [12.11](examples.html#g208).
@@ -570,7 +807,19 @@ protection from nonlocal exits. This is often sufficient.
 Common Lisp does not support fully general continuations. Here is how
 `unwind-protect` might be specified with `dynamic-wind`.
 
-`(define-syntax unwind-protect    (syntax-rules ()      [(_ body cleanup ...)       (dynamic-wind         (lambda () #f)         (lambda () body)         (lambda () cleanup ...))]))   ((call/cc     (let ([x 'a])       (lambda (k)         (unwind-protect           (k (lambda () x))           (set! x 'b))))))  b`
+`(define-syntax unwind-protect`<br>
+`  (syntax-rules ()`<br>
+`    [(_ body cleanup ...)`<br>
+`     (dynamic-wind`<br>
+`       (lambda () #f)`<br>
+`       (lambda () body)`<br>
+`       (lambda () cleanup ...))])) `<br>
+`((call/cc`<br>
+`   (let ([x 'a])`<br>
+`     (lambda (k)`<br>
+`       (unwind-protect`<br>
+`         (k (lambda () x))`<br>
+`         (set! x 'b)))))) `$\Rightarrow$` b`
 
 Some Scheme implementations support a controlled form of assignment
 known as *fluid binding*, in which a variable takes on a temporary value
@@ -580,7 +829,12 @@ in terms of `dynamic-wind` permits the fluid binding of a single
 variable `x` to the value of an expression `e` within a the body
 `b1 b2 ...`.
 
-`(define-syntax fluid-let    (syntax-rules ()      [(_ ((x e)) b1 b2 ...)       (let ([y e])         (let ([swap (lambda () (let ([t x]) (set! x y) (set! y t)))])           (dynamic-wind swap (lambda () b1 b2 ...) swap)))]))`
+`(define-syntax fluid-let`<br>
+`  (syntax-rules ()`<br>
+`    [(_ ((x e)) b1 b2 ...)`<br>
+`     (let ([y e])`<br>
+`       (let ([swap (lambda () (let ([t x]) (set! x y) (set! y t)))])`<br>
+`         (dynamic-wind swap (lambda () b1 b2 ...) swap)))]))`
 
 Implementations that support `fluid-let` typically extend it to allow an
 indefinite number of `(x e)` pairs, as with `let`.
@@ -589,12 +843,21 @@ If no continuations are invoked within the body of a `fluid-let`, the
 behavior is the same as if the variable were simply assigned the new
 value on entry and assigned the old value on return.
 
-`(let ([x 3])    (+ (fluid-let ([x 5])         x)       x))  8`
+`(let ([x 3])`<br>
+`  (+ (fluid-let ([x 5])`<br>
+`       x)`<br>
+`     x)) `$\Rightarrow$` 8`
 
 A fluid-bound variable also reverts to the old value if a continuation
 created outside of the `fluid-let` is invoked.
 
-`(let ([x 'a])    (let ([f (lambda () x)])      (cons (call/cc              (lambda (k)                (fluid-let ([x 'b])                  (k (f)))))            (f))))  (b . a)`
+`(let ([x 'a])`<br>
+`  (let ([f (lambda () x)])`<br>
+`    (cons (call/cc`<br>
+`            (lambda (k)`<br>
+`              (fluid-let ([x 'b])`<br>
+`                (k (f)))))`<br>
+`          (f)))) `$\Rightarrow$` (b . a)`
 
 If control has left a `fluid-let` body, either normally or by the
 invocation of a continuation, and control reenters the body by the
@@ -602,16 +865,65 @@ invocation of a continuation, the temporary value of the fluid-bound
 variable is reinstated. Furthermore, any changes to the temporary value
 are maintained and reflected upon reentry.
 
-`(define reenter #f)  (define x 0)  (fluid-let ([x 1])    (call/cc (lambda (k) (set! reenter k)))    (set! x (+ x 1))    x)  2  x  0  (reenter '*)  3  (reenter '*)  4  x  0`
+`(define reenter #f)`<br>
+`(define x 0)`<br>
+`(fluid-let ([x 1])`<br>
+`  (call/cc (lambda (k) (set! reenter k)))`<br>
+`  (set! x (+ x 1))`<br>
+`  x)  2`<br>
+`x `$\Rightarrow$` 0`<br>
+`(reenter '*) `$\Rightarrow$` 3`<br>
+`(reenter '*) `$\Rightarrow$` 4`<br>
+`x `$\Rightarrow$` 0`
 
 A library showing how `dynamic-wind` might be implemented were it not
 already built in is given below. In addition to defining `dynamic-wind`,
 the code defines a version of `call/cc` that does its part to support
 `dynamic-wind`.
 
-`(library (dynamic-wind)    (export dynamic-wind call/cc      (rename (call/cc call-with-current-continuation)))    (import (rename (except (rnrs) dynamic-wind) (call/cc rnrs:call/cc)))     (define winders '())     (define common-tail      (lambda (x y)        (let ([lx (length x)] [ly (length y)])          (do ([x (if (> lx ly) (list-tail x (- lx ly)) x) (cdr x)]               [y (if (> ly lx) (list-tail y (- ly lx)) y) (cdr y)])              ((eq? x y) x)))))     (define do-wind      (lambda (new)        (let ([tail (common-tail new winders)])          (let f ([ls winders])            (if (not (eq? ls tail))                (begin                  (set! winders (cdr ls))                  ((cdar ls))                  (f (cdr ls)))))          (let f ([ls new])            (if (not (eq? ls tail))                (begin                  (f (cdr ls))                  ((caar ls))                  (set! winders ls)))))))`
+`(library (dynamic-wind)`<br>
+`  (export dynamic-wind call/cc`<br>
+`    (rename (call/cc call-with-current-continuation)))`<br>
+`  (import (rename (except (rnrs) dynamic-wind) (call/cc rnrs:call/cc))) `<br>
+`  (define winders '()) `<br>
+`  (define common-tail`<br>
+`    (lambda (x y)`<br>
+`      (let ([lx (length x)] [ly (length y)])`<br>
+`        (do ([x (if (> lx ly) (list-tail x (- lx ly)) x) (cdr x)]`<br>
+`             [y (if (> ly lx) (list-tail y (- ly lx)) y) (cdr y)])`<br>
+`            ((eq? x y) x))))) `<br>
+`  (define do-wind`<br>
+`    (lambda (new)`<br>
+`      (let ([tail (common-tail new winders)])`<br>
+`        (let f ([ls winders])`<br>
+`          (if (not (eq? ls tail))`<br>
+`              (begin`<br>
+`                (set! winders (cdr ls))`<br>
+`                ((cdar ls))`<br>
+`                (f (cdr ls)))))`<br>
+`        (let f ([ls new])`<br>
+`          (if (not (eq? ls tail))`<br>
+`              (begin`<br>
+`                (f (cdr ls))`<br>
+`                ((caar ls))`<br>
+`                (set! winders ls)))))))`
 
-`  (define call/cc      (lambda (f)        (rnrs:call/cc          (lambda (k)            (f (let ([save winders])                 (lambda (x)                   (unless (eq? save winders) (do-wind save))                   (k x))))))))     (define dynamic-wind      (lambda (in body out)        (in)        (set! winders (cons (cons in out) winders))        (let-values ([ans* (body)])          (set! winders (cdr winders))          (out)          (apply values ans*)))))`
+`  (define call/cc`<br>
+`    (lambda (f)`<br>
+`      (rnrs:call/cc`<br>
+`        (lambda (k)`<br>
+`          (f (let ([save winders])`<br>
+`               (lambda (x)`<br>
+`                 (unless (eq? save winders) (do-wind save))`<br>
+`                 (k x)))))))) `<br>
+`  (define dynamic-wind`<br>
+`    (lambda (in body out)`<br>
+`      (in)`<br>
+`      (set! winders (cons (cons in out) winders))`<br>
+`      (let-values ([ans* (body)])`<br>
+`        (set! winders (cdr winders))`<br>
+`        (out)`<br>
+`        (apply values ans*)))))`
 
 Together, `dynamic-wind` and `call/cc` manage a list of *winders*. A
 winder is a pair of *in* and *out* thunks established by a call to
@@ -663,20 +975,52 @@ conceptually infinite lists, or *streams*. The example below shows how a
 stream abstraction may be built with `delay` and `force`. A stream is a
 promise that, when forced, returns a pair whose cdr is a stream.
 
-`(define stream-car    (lambda (s)      (car (force s))))   (define stream-cdr    (lambda (s)      (cdr (force s))))   (define counters    (let next ([n 1])      (delay (cons n (next (+ n 1))))))   (stream-car counters)  1   (stream-car (stream-cdr counters))  2   (define stream-add    (lambda (s1 s2)      (delay (cons               (+ (stream-car s1) (stream-car s2))               (stream-add (stream-cdr s1) (stream-cdr s2))))))   (define even-counters    (stream-add counters counters))   (stream-car even-counters)  2   (stream-car (stream-cdr even-counters))  4`
+`(define stream-car`<br>
+`  (lambda (s)`<br>
+`    (car (force s)))) `<br>
+`(define stream-cdr`<br>
+`  (lambda (s)`<br>
+`    (cdr (force s)))) `<br>
+`(define counters`<br>
+`  (let next ([n 1])`<br>
+`    (delay (cons n (next (+ n 1)))))) `<br>
+`(stream-car counters) `$\Rightarrow$` 1 `<br>
+`(stream-car (stream-cdr counters)) `$\Rightarrow$` 2 `<br>
+`(define stream-add`<br>
+`  (lambda (s1 s2)`<br>
+`    (delay (cons`<br>
+`             (+ (stream-car s1) (stream-car s2))`<br>
+`             (stream-add (stream-cdr s1) (stream-cdr s2)))))) `<br>
+`(define even-counters`<br>
+`  (stream-add counters counters)) `<br>
+`(stream-car even-counters) `$\Rightarrow$` 2 `<br>
+`(stream-car (stream-cdr even-counters)) `$\Rightarrow$` 4`
 
 `delay` may be defined by
 
-`(define-syntax delay    (syntax-rules ()      [(_ expr) (make-promise (lambda () expr))]))`
+`(define-syntax delay`<br>
+`  (syntax-rules ()`<br>
+`    [(_ expr) (make-promise (lambda () expr))]))`
 
 where `make-promise` might be defined as follows.
 
-`(define make-promise    (lambda (p)      (let ([val #f] [set? #f])        (lambda ()          (unless set?            (let ([x (p)])              (unless set?                (set! val x)                (set! set? #t))))          val))))`
+`(define make-promise`<br>
+`  (lambda (p)`<br>
+`    (let ([val #f] [set? #f])`<br>
+`      (lambda ()`<br>
+`        (unless set?`<br>
+`          (let ([x (p)])`<br>
+`            (unless set?`<br>
+`              (set! val x)`<br>
+`              (set! set? #t))))`<br>
+`        val))))`
 
 With this definition of `delay`, `force` simply invokes the promise to
 force evaluation or to retrieve the saved value.
 
-`(define force    (lambda (promise)      (promise)))`
+`(define force`<br>
+`  (lambda (promise)`<br>
+`    (promise)))`
 
 The second test of the variable `set?` in `make-promise` is necessary in
 the event that, as a result of applying `p`, the promise is recursively
@@ -687,7 +1031,22 @@ Whether `delay` and `force` handle multiple return values is
 unspecified; the implementation given above does not, but the following
 version does, with the help of `call-with-values` and `apply`.
 
-`(define make-promise    (lambda (p)      (let ([vals #f] [set? #f])        (lambda ()          (unless set?            (call-with-values p              (lambda x                (unless set?                  (set! vals x)                  (set! set? #t)))))          (apply values vals)))))   (define p (delay (values 1 2 3)))  (force p)  1             2             3  (call-with-values (lambda () (force p)) +)  6`
+`(define make-promise`<br>
+`  (lambda (p)`<br>
+`    (let ([vals #f] [set? #f])`<br>
+`      (lambda ()`<br>
+`        (unless set?`<br>
+`          (call-with-values p`<br>
+`            (lambda x`<br>
+`              (unless set?`<br>
+`                (set! vals x)`<br>
+`                (set! set? #t)))))`<br>
+`        (apply values vals))))) `<br>
+`(define p (delay (values 1 2 3)))`<br>
+`(force p) `$\Rightarrow$` 1`<br>
+`           2`<br>
+`           3`<br>
+`(call-with-values (lambda () (force p)) +) `$\Rightarrow$` 6`
 
 Neither implementation is quite right, since `force` must raise an
 exception with condition type `&assertion` if its argument is not a
@@ -697,7 +1056,20 @@ following reimplementation of `make-promise` and `force` represents
 promises as records of the type `promise` to allow `force` to make the
 required check.
 
-`(define-record-type promise    (fields (immutable p) (mutable vals) (mutable set?))    (protocol (lambda (new) (lambda (p) (new p #f #f)))))   (define force    (lambda (promise)      (unless (promise? promise)        (assertion-violation 'promise "invalid argument" promise))      (unless (promise-set? promise)        (call-with-values (promise-p promise)          (lambda x            (unless (promise-set? promise)              (promise-vals-set! promise x)              (promise-set?-set! promise #t)))))      (apply values (promise-vals promise))))`
+`(define-record-type promise`<br>
+`  (fields (immutable p) (mutable vals) (mutable set?))`<br>
+`  (protocol (lambda (new) (lambda (p) (new p #f #f))))) `<br>
+`(define force`<br>
+`  (lambda (promise)`<br>
+`    (unless (promise? promise)`<br>
+`      (assertion-violation 'promise "invalid argument" promise))`<br>
+`    (unless (promise-set? promise)`<br>
+`      (call-with-values (promise-p promise)`<br>
+`        (lambda x`<br>
+`          (unless (promise-set? promise)`<br>
+`            (promise-vals-set! promise x)`<br>
+`            (promise-set?-set! promise #t)))))`<br>
+`    (apply values (promise-vals promise))))`
 
 ### Section 5.8. Multiple Values
 
@@ -720,7 +1092,16 @@ multiple-value values with procedures that consume them.
 The procedure `values` accepts any number of arguments and simply passes
 (returns) the arguments to its continuation.
 
-`(values)   (values 1)  1   (values 1 2 3)  1                  2                  3   (define head&tail    (lambda (ls)      (values (car ls) (cdr ls))))   (head&tail '(a b c))  a                        (b c)`
+`(values) `<br>
+`(values 1) `$\Rightarrow$` 1 `<br>
+`(values 1 2 3) `$\Rightarrow$` 1`<br>
+`                2`<br>
+`                3 `<br>
+`(define head&tail`<br>
+`  (lambda (ls)`<br>
+`    (values (car ls) (cdr ls)))) `<br>
+`(head&tail '(a b c)) `$\Rightarrow$` a`<br>
+`                      (b c)`
 
 **procedure**: `(call-with-values producer consumer)` \
  **returns:**see below \
@@ -730,7 +1111,10 @@ The procedure `values` accepts any number of arguments and simply passes
 `consumer` to the values returned by invoking `producer` without
 arguments.
 
-`(call-with-values    (lambda () (values 'bond 'james))    (lambda (x y) (cons y x)))  (james . bond)   (call-with-values values list)  '()`
+`(call-with-values`<br>
+`  (lambda () (values 'bond 'james))`<br>
+`  (lambda (x y) (cons y x))) `$\Rightarrow$` (james . bond) `<br>
+`(call-with-values values list) `$\Rightarrow$` '()`
 
 In the second example, `values` itself serves as the producer. It
 receives no arguments and thus returns no values. `list` is thus applied
@@ -740,22 +1124,57 @@ The procedure `dxdy` defined below computes the change in `x` and `y`
 coordinates for a pair of points whose coordinates are represented by
 `(x . y)` pairs.
 
-`(define dxdy    (lambda (p1 p2)      (values (- (car p2) (car p1))              (- (cdr p2) (cdr p1)))))   (dxdy '(0 . 0) '(0 . 5))  0                            5`
+`(define dxdy`<br>
+`  (lambda (p1 p2)`<br>
+`    (values (- (car p2) (car p1))`<br>
+`            (- (cdr p2) (cdr p1))))) `<br>
+`(dxdy '(0 . 0) '(0 . 5)) `$\Rightarrow$` 0`<br>
+`                          5`
 
 `dxdy` can be used to compute the length and slope of a segment
 represented by two endpoints.
 
-`(define segment-length    (lambda (p1 p2)      (call-with-values        (lambda () (dxdy p1 p2))        (lambda (dx dy) (sqrt (+ (* dx dx) (* dy dy)))))))   (define segment-slope    (lambda (p1 p2)      (call-with-values        (lambda () (dxdy p1 p2))        (lambda (dx dy) (/ dy dx)))))   (segment-length '(1 . 4) '(4 . 8))  5  (segment-slope '(1 . 4) '(4 . 8))  4/3`
+`(define segment-length`<br>
+`  (lambda (p1 p2)`<br>
+`    (call-with-values`<br>
+`      (lambda () (dxdy p1 p2))`<br>
+`      (lambda (dx dy) (sqrt (+ (* dx dx) (* dy dy))))))) `<br>
+`(define segment-slope`<br>
+`  (lambda (p1 p2)`<br>
+`    (call-with-values`<br>
+`      (lambda () (dxdy p1 p2))`<br>
+`      (lambda (dx dy) (/ dy dx))))) `<br>
+`(segment-length '(1 . 4) '(4 . 8)) `$\Rightarrow$` 5`<br>
+`(segment-slope '(1 . 4) '(4 . 8)) `$\Rightarrow$` 4/3`
 
 We can of course combine these to form one procedure that returns two
 values.
 
-`(define describe-segment    (lambda (p1 p2)      (call-with-values        (lambda () (dxdy p1 p2))        (lambda (dx dy)          (values            (sqrt (+ (* dx dx) (* dy dy)))            (/ dy dx))))))   (describe-segment '(1 . 4) '(4 . 8))  5                                        4/3`
+`(define describe-segment`<br>
+`  (lambda (p1 p2)`<br>
+`    (call-with-values`<br>
+`      (lambda () (dxdy p1 p2))`<br>
+`      (lambda (dx dy)`<br>
+`        (values`<br>
+`          (sqrt (+ (* dx dx) (* dy dy)))`<br>
+`          (/ dy dx)))))) `<br>
+`(describe-segment '(1 . 4) '(4 . 8)) `$\Rightarrow$` 5`<br>
+`                                      4/3`
 
 The example below employs multiple values to divide a list
 nondestructively into two sublists of alternating elements.
 
-`(define split    (lambda (ls)      (if (or (null? ls) (null? (cdr ls)))          (values ls '())          (call-with-values            (lambda () (split (cddr ls)))            (lambda (odds evens)              (values (cons (car ls) odds)                      (cons (cadr ls) evens)))))))   (split '(a b c d e f))  (a c e)                          (b d f)`
+`(define split`<br>
+`  (lambda (ls)`<br>
+`    (if (or (null? ls) (null? (cdr ls)))`<br>
+`        (values ls '())`<br>
+`        (call-with-values`<br>
+`          (lambda () (split (cddr ls)))`<br>
+`          (lambda (odds evens)`<br>
+`            (values (cons (car ls) odds)`<br>
+`                    (cons (cadr ls) evens))))))) `<br>
+`(split '(a b c d e f)) `$\Rightarrow$` (a c e)`<br>
+`                        (b d f)`
 
 At each level of recursion, the procedure `split` returns two values: a
 list of the odd-numbered elements from the argument list and a list of
@@ -766,18 +1185,25 @@ call to `call-with-values`, nor must only `values` be used to return to
 a continuation established by `call-with-values`. In particular,
 `(values e)` and `e` are equivalent expressions. For example:
 
-`(+ (values 2) 4)  6   (if (values #t) 1 2)  1   (call-with-values    (lambda () 4)    (lambda (x) x))  4`
+`(+ (values 2) 4)  6 `<br>
+`(if (values #t) 1 2)  1 `<br>
+`(call-with-values`<br>
+`  (lambda () 4)`<br>
+`  (lambda (x) x)) `$\Rightarrow$` 4`
 
 Similarly, `values` may be used to pass any number of values to a
 continuation that ignores the values, as in the following.
 
-`(begin (values 1 2 3) 4)  4`
+`(begin (values 1 2 3) 4) `$\Rightarrow$` 4`
 
 Because a continuation may accept zero or more than one value,
 continuations obtained via `call/cc` may accept zero or more than one
 argument.
 
-`(call-with-values    (lambda ()      (call/cc (lambda (k) (k 2 3))))    (lambda (x y) (list x y)))  (2 3)`
+`(call-with-values`<br>
+`  (lambda ()`<br>
+`    (call/cc (lambda (k) (k 2 3))))`<br>
+`  (lambda (x y) (list x y))) `$\Rightarrow$` (2 3)`
 
 The behavior is unspecified when a continuation expecting exactly one
 value receives zero values or more than one value. For example, the
@@ -785,32 +1211,54 @@ behavior of each of the following expressions is unspecified. Some
 implementations raise an exception, while others silently suppress
 additional values or supply defaults for missing values.
 
-`(if (values 1 2) 'x 'y)   (+ (values) 5)`
+`(if (values 1 2) 'x 'y) `<br>
+`(+ (values) 5)`
 
 Programs that wish to force extra values to be ignored in particular
 contexts can do so easily by calling `call-with-values` explicitly. A
 syntactic form, which we might call `first`, can be defined to abstract
 the discarding of more than one value when only one is desired.
 
-`(define-syntax first    (syntax-rules ()      [(_ expr)       (call-with-values         (lambda () expr)         (lambda (x . y) x))]))   (if (first (values #t #f)) 'a 'b)  a`
+`(define-syntax first`<br>
+`  (syntax-rules ()`<br>
+`    [(_ expr)`<br>
+`     (call-with-values`<br>
+`       (lambda () expr)`<br>
+`       (lambda (x . y) x))])) `<br>
+`(if (first (values #t #f)) 'a 'b) `$\Rightarrow$` a`
 
 Since implementations are required to raise an exception with condition
 type `&assertion` if a procedure does not accept the number of arguments
 passed to it, each of the following raises an exception.
 
-`(call-with-values    (lambda () (values 2 3 4))    (lambda (x y) x))   (call-with-values    (lambda () (call/cc (lambda (k) (k 0))))    (lambda (x y) x))`
+`(call-with-values`<br>
+`  (lambda () (values 2 3 4))`<br>
+`  (lambda (x y) x)) `<br>
+`(call-with-values`<br>
+`  (lambda () (call/cc (lambda (k) (k 0))))`<br>
+`  (lambda (x y) x))`
 
 Since `producer` is most often a `lambda` expression, it is often
 convenient to use a syntactic extension that suppresses the lambda
 expression in the interest of readability.
 
-`(define-syntax with-values    (syntax-rules ()      [(_ expr consumer)       (call-with-values (lambda () expr) consumer)]))   (with-values (values 1 2) list)  (1 2)  (with-values (split '(1 2 3 4))    (lambda (odds evens)      evens))  (2 4)`
+`(define-syntax with-values`<br>
+`  (syntax-rules ()`<br>
+`    [(_ expr consumer)`<br>
+`     (call-with-values (lambda () expr) consumer)])) `<br>
+`(with-values (values 1 2) list) `$\Rightarrow$` (1 2)`<br>
+`(with-values (split '(1 2 3 4))`<br>
+`  (lambda (odds evens)`<br>
+`    evens)) `$\Rightarrow$` (2 4)`
 
 If the `consumer` is also a `lambda` expression, the multiple-value
 variants of `let` and `let*` described in
 Section [4.5](binding.html#g93) are usually even more convenient.
 
-`(let-values ([(odds evens) (split '(1 2 3 4))])    evens)  (2 4)   (let-values ([ls (values 'a 'b 'c)])    ls)  (a b c)`
+`(let-values ([(odds evens) (split '(1 2 3 4))])`<br>
+`  evens) `$\Rightarrow$` (2 4) `<br>
+`(let-values ([ls (values 'a 'b 'c)])`<br>
+`  ls) `$\Rightarrow$` (a b c)`
 
 Many standard syntactic forms and procedures pass along multiple values.
 Most of these are "automatic," in the sense that nothing special must be
@@ -823,13 +1271,22 @@ then closes the port argument before returning the procedure's values,
 so it must save the values temporarily. This is easily accomplished via
 `let-values`, `apply`, and `values`:
 
-`(define call-with-port    (lambda (port proc)      (let-values ([val* (proc port)])        (close-port port)        (apply values val*))))`
+`(define call-with-port`<br>
+`  (lambda (port proc)`<br>
+`    (let-values ([val* (proc port)])`<br>
+`      (close-port port)`<br>
+`      (apply values val*))))`
 
 If this seems like too much overhead when a single value is returned,
 the code can use `call-with-values` and `case-lambda` to handle the
 single-value case more efficiently:
 
-`(define call-with-port    (lambda (port proc)      (call-with-values (lambda () (proc port))        (case-lambda          [(val) (close-port port) val]          [val* (close-port port) (apply values val*)]))))`
+`(define call-with-port`<br>
+`  (lambda (port proc)`<br>
+`    (call-with-values (lambda () (proc port))`<br>
+`      (case-lambda`<br>
+`        [(val) (close-port port) val]`<br>
+`        [val* (close-port port) (apply values val*)]))))`
 
 The definitions of `values` and `call-with-values` (and concomitant
 redefinition of `call/cc`) in the library below demonstrate that the
@@ -838,9 +1295,35 @@ were not already built in. No error checking can be done, however, for
 the case in which more than one value is returned to a single-value
 context, such as the test part of an `if` expression.
 
-`(library (mrvs)    (export call-with-values values call/cc      (rename (call/cc call-with-current-continuation)))    (import      (rename        (except (rnrs) values call-with-values)        (call/cc rnrs:call/cc)))     (define magic (cons 'multiple 'values))     (define magic?      (lambda (x)        (and (pair? x) (eq? (car x) magic))))`
+`(library (mrvs)`<br>
+`  (export call-with-values values call/cc`<br>
+`    (rename (call/cc call-with-current-continuation)))`<br>
+`  (import`<br>
+`    (rename`<br>
+`      (except (rnrs) values call-with-values)`<br>
+`      (call/cc rnrs:call/cc))) `<br>
+`  (define magic (cons 'multiple 'values)) `<br>
+`  (define magic?`<br>
+`    (lambda (x)`<br>
+`      (and (pair? x) (eq? (car x) magic))))`
 
-`  (define call/cc      (lambda (p)        (rnrs:call/cc          (lambda (k)            (p (lambda args                 (k (apply values args))))))))     (define values      (lambda args        (if (and (not (null? args)) (null? (cdr args)))            (car args)            (cons magic args))))     (define call-with-values      (lambda (producer consumer)        (let ([x (producer)])          (if (magic? x)              (apply consumer (cdr x))              (consumer x))))))`
+`  (define call/cc`<br>
+`    (lambda (p)`<br>
+`      (rnrs:call/cc`<br>
+`        (lambda (k)`<br>
+`          (p (lambda args`<br>
+`               (k (apply values args)))))))) `<br>
+`  (define values`<br>
+`    (lambda args`<br>
+`      (if (and (not (null? args)) (null? (cdr args)))`<br>
+`          (car args)`<br>
+`          (cons magic args)))) `<br>
+`  (define call-with-values`<br>
+`    (lambda (producer consumer)`<br>
+`      (let ([x (producer)])`<br>
+`        (if (magic? x)`<br>
+`            (apply consumer (cdr x))`<br>
+`            (consumer x))))))`
 
 Multiple values can be implemented more
 efficiently [[2](bibliography.html#g220)], but this code serves to
@@ -866,7 +1349,11 @@ returned by `environment`, `scheme-report-environment`, and
 with condition type `&syntax` if an assignment to any of the variables
 in the environment appears within the expression.
 
-`(define cons 'not-cons)  (eval '(let ([x 3]) (cons x 4)) (environment '(rnrs)))  (3 . 4)   (define lambda 'not-lambda)  (eval '(lambda (x) x) (environment '(rnrs)))  #<procedure>   (eval '(cons 3 4) (environment))  exception`
+`(define cons 'not-cons)`<br>
+`(eval '(let ([x 3]) (cons x 4)) (environment '(rnrs))) `$\Rightarrow$` (3 . 4) `<br>
+`(define lambda 'not-lambda)`<br>
+`(eval '(lambda (x) x) (environment '(rnrs))) `$\Rightarrow$` #<procedure> `<br>
+`(eval '(cons 3 4) (environment)) `$\Rightarrow$` exception`
 
 **procedure**: `(environment import-spec ...)` \
  **returns:**an environment \
@@ -877,7 +1364,8 @@ of the given import specifiers. Each `import-spec` must be an
 s-expression representing a valid import specifier (see
 Chapter [10](libraries.html#g142)).
 
-`(define env (environment '(rnrs) '(prefix (rnrs lists) $)))  (eval '($cons* 3 4 (* 5 8)) env)  (3 4 . 40)`
+`(define env (environment '(rnrs) '(prefix (rnrs lists) $)))`<br>
+`(eval '($cons* 3 4 (* 5 8)) env) `$\Rightarrow$` (3 4 . 40)`
 
 **procedure**: `(null-environment version)` \
  **procedure**: `(scheme-report-environment version)` \

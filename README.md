@@ -23,10 +23,11 @@ Pass 1: clean code blocks | DOING
 * Ch2
 * Ch3
 * Ch4
+* Ch5
 
 ### Doing
 
-Ch5
+Ch6
 
 ## What do I do?
 
@@ -53,5 +54,9 @@ insert a `<br>` and two no-break spaces mean to insert a
 ```$\Rightarrow$``` and `<br>` back to their proper postion.
 
 Those macros are recorded in emacs-macros.el.
+
+## BUGS
+
+Multiple values are not aligned.
 
 ## You are welcome to report bugs!
