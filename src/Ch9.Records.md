@@ -32,7 +32,11 @@ the following procedures:
 With this definition in place, we can use these procedures to create and
 manipulate records of the `point` type, as illustrated below.
 
-`(define p (make-point 36 -17))  (point? p)  #t  (point? '(cons 36 -17))  #f  (point-x p)  36  (point-y p)  -17`
+`(define p (make-point 36 -17))`<br>
+`(point? p) `$\Rightarrow$` #t`<br>
+`(point? '(cons 36 -17)) `$\Rightarrow$` #f`<br>
+`(point-x p) `$\Rightarrow$` 36`<br>
+`(point-y p) `$\Rightarrow$` -17`
 
 Fields are immutable by default, but may be declared mutable. In the
 alternate definition of `point` below, the `x` field is mutable while
@@ -63,12 +67,17 @@ following definition of `point`, the constructor is `mkpoint`, the
 predicate is `ispoint?`, and the accessors for `x` and `y` are `x-val`
 and `y-val`. The mutator for `x` is `set-x-val!`.
 
-`(define-record-type (point mkpoint ispoint?)    (fields (mutable x x-val set-x-val!)            (immutable y y-val)))`
+`(define-record-type (point mkpoint ispoint?)`<br>
+`  (fields (mutable x x-val set-x-val!)`<br>
+`          (immutable y y-val)))`
 
 By default, a record definition creates a new type each time it is
 evaluated, as illustrated by the example below.
 
-`(define (f p)    (define-record-type point (fields x y))    (if (eq? p 'make) (make-point 3 4) (point? p)))  (f (f 'make))  #f`
+`(define (f p)`<br>
+`  (define-record-type point (fields x y))`<br>
+`  (if (eq? p 'make) (make-point 3 4) (point? p)))`<br>
+`(f (f 'make)) `$\Rightarrow$` #f`
 
 The first (inner) call to `f` returns a point `p`, which is passed to
 `f` in the second (outer) call, which applies `point?` to `p`. This
@@ -79,18 +88,36 @@ returns `#f`.
 This default *generative* behavior may be overridden by including a
 `nongenerative` clause in the record definition.
 
-`(define (f p)    (define-record-type point (fields x y) (nongenerative))    (if (eq? p 'make) (make-point 3 4) (point? p)))  (define p (f 'make))  (f p)  #t`
+`(define (f p)`<br>
+`  (define-record-type point (fields x y) (nongenerative))`<br>
+`  (if (eq? p 'make) (make-point 3 4) (point? p)))`<br>
+`(define p (f 'make))`<br>
+`(f p) `$\Rightarrow$` #t`
 
 Record types created in this manner are still distinct from record types
 created by a definition appearing in a different part of the program,
 even if the definitions are syntactically identical:
 
-`(define (f)    (define-record-type point (fields x y) (nongenerative))    (make-point 3 4))  (define (g p)    (define-record-type point (fields x y) (nongenerative))    (point? p))  (g (f))  #f`
+`(define (f)`<br>
+`  (define-record-type point (fields x y) (nongenerative))`<br>
+`  (make-point 3 4))`<br>
+`(define (g p)`<br>
+`  (define-record-type point (fields x y) (nongenerative))`<br>
+`  (point? p))`<br>
+`(g (f)) `$\Rightarrow$` #f`
 
 Even this can be overridden by including a uid (unique id) in the
 `nongenerative` clause:
 
-`(define (f)    (define-record-type point (fields x y)      (nongenerative really-the-same-point))    (make-point 3 4))  (define (g p)    (define-record-type point (fields x y)      (nongenerative really-the-same-point))    (point? p))  (g (f))  #t`
+`(define (f)`<br>
+`  (define-record-type point (fields x y)`<br>
+`    (nongenerative really-the-same-point))`<br>
+`  (make-point 3 4))`<br>
+`(define (g p)`<br>
+`  (define-record-type point (fields x y)`<br>
+`    (nongenerative really-the-same-point))`<br>
+`  (point? p))`<br>
+`(g (f)) `$\Rightarrow$` #t`
 
 The uid may be any identifier, but programmers are encouraged to select
 uids from the RFC 4122 UUID namespace [[20](bibliography.html#g238)],
@@ -103,7 +130,8 @@ parent record's fields, and each instance of the child type is
 considered to be an instance of the parent type, so that accessors and
 mutators for the parent type may be used on instances of the child type.
 
-`(define-record-type point (fields x y))  (define-record-type cpoint (parent point) (fields color))`
+`(define-record-type point (fields x y))`<br>
+`(define-record-type cpoint (parent point) (fields color))`
 
 The child type has all of the fields of the parent type, plus the
 additional fields declared in the child's definition. This is reflected
@@ -115,13 +143,17 @@ the parent arguments followed by the child argument.
 A record of the child type is considered a record of the parent type,
 but a record of the parent type is not a record of the new type.
 
-`(point? (make-cpoint 3 4 'red))  #t  (cpoint? (make-point 3 4))  #f`
+`(point? (make-cpoint 3 4 'red)) `$\Rightarrow$` #t`<br>
+`(cpoint? (make-point 3 4)) `$\Rightarrow$` #f`
 
 Only one new accessor is created for `cpoint`, the one for the new field
 `color`. The existing accessors and mutators for the parent type may be
 used to access and modify the parent fields of the child type.
 
-`(define cp (make-cpoint 3 4 'red))  (point-x cp)  3  (point-y cp)  4  (cpoint-color cp)  red`
+`(define cp (make-cpoint 3 4 'red))`<br>
+`(point-x cp) `$\Rightarrow$` 3`<br>
+`(point-y cp) `$\Rightarrow$` 4`<br>
+`(cpoint-color cp) `$\Rightarrow$` red`
 
 As the examples given so far illustrate, the default constructor defined
 by `define-record-type` accepts as many arguments as the record has
@@ -135,7 +167,16 @@ constructor still takes only two arguments, the `x` and `y` values, and
 initializes `d` to the square root of the sum of the squares of `x` and
 `y`.
 
-`(define-record-type point    (fields x y d)    (protocol      (lambda (new)        (lambda (x y)          (new x y (sqrt (+ (* x x) (* y y))))))))   (define p (make-point 3 4))  (point-x p)  3  (point-y p)  4  (point-d p)  5`
+`(define-record-type point`<br>
+`  (fields x y d)`<br>
+`  (protocol`<br>
+`    (lambda (new)`<br>
+`      (lambda (x y)`<br>
+`        (new x y (sqrt (+ (* x x) (* y y)))))))) `<br>
+`(define p (make-point 3 4))`<br>
+`(point-x p) `$\Rightarrow$` 3`<br>
+`(point-y p) `$\Rightarrow$` 4`<br>
+`(point-d p) `$\Rightarrow$` 5`
 
 The procedure value of the expression within the `protocol` clause
 receives as an argument a primitive constructor `new` and returns a
@@ -151,7 +192,18 @@ If a parent record is specified, the construction protocol becomes more
 involved. The following definition of `cpoint` assumes that `point` has
 been defined as shown just above.
 
-`(define-record-type cpoint    (parent point)    (fields color)    (protocol      (lambda (pargs->new)        (lambda (c x y)          ((pargs->new x y) c)))))   (define cp (make-cpoint 'red 3 4))  (point-x cp)  3  (point-y cp)  4  (point-d cp)  5  (cpoint-color cp)  red`
+`(define-record-type cpoint`<br>
+`  (parent point)`<br>
+`  (fields color)`<br>
+`  (protocol`<br>
+`    (lambda (pargs->new)`<br>
+`      (lambda (c x y)`<br>
+`        ((pargs->new x y) c))))) `<br>
+`(define cp (make-cpoint 'red 3 4))`<br>
+`(point-x cp) `$\Rightarrow$` 3`<br>
+`(point-y cp) `$\Rightarrow$` 4`<br>
+`(point-d cp) `$\Rightarrow$` 5`<br>
+`(cpoint-color cp) `$\Rightarrow$` red`
 
 Because a parent clause is present, the procedure value of the
 expression within the `protocol` clause receives a procedure
@@ -174,7 +226,9 @@ The default protocol is equivalent to
 for record types with no parents, while for record types with parents,
 the default protocol is equivalent to the following
 
-`(lambda (pargs->new)    (lambda (x1 ... xn y1 ... ym)      ((pargs->new x1 ... xn) y1 ... ym)))`
+`(lambda (pargs->new)`<br>
+`  (lambda (x1 ... xn y1 ... ym)`<br>
+`    ((pargs->new x1 ... xn) y1 ... ym)))`
 
 where `n` is the number of parent (including grandparent, etc.) fields
 and `m` is the number of child fields.
@@ -227,7 +281,11 @@ present. The clauses that appear may appear in any order.
 fields of the record type. Each `field-spec` must take one of the
 following forms:
 
-`field-name  (immmutable field-name)  (mutable field-name)  (immmutable field-name accessor-name)  (mutable field-name accessor-name mutator-name)`
+`field-name`<br>
+`(immmutable field-name)`<br>
+`(mutable field-name)`<br>
+`(immmutable field-name accessor-name)`<br>
+`(mutable field-name accessor-name mutator-name)`
 
 where `field-name`, `accessor-name`, and `mutator-name` are identifiers.
 The first form, `field-name`, is equivalent to `(immutable field-name)`.
@@ -251,7 +309,8 @@ fields of its parent record type in addition to those declared via the
 **Nongenerative clause.**  A `nongenerative` clause may take one of two
 forms:
 
-`(nongenerative)  (nongenerative uid)`
+`(nongenerative)`<br>
+`(nongenerative uid)`
 
 where `uid` is a symbol. The first form is equivalent to the second,
 with a uid generated by the implementation at macro-expansion time. When
@@ -402,7 +461,15 @@ definitions similar to those of the second `point` record definition in
 Section [9.1](records.html#g139), with a mutable `x` field and an
 immutable `y` field.
 
-`(define point-rtd (make-record-type-descriptor 'point #f #f #f #f                  '#((mutable x) (immutable y))))  (define point-rcd (make-record-constructor-descriptor point-rtd                      #f #f))  (define make-point (record-constructor point-rcd))  (define point? (record-predicate point-rtd))  (define point-x (record-accessor point-rtd 0))  (define point-y (record-accessor point-rtd 1))  (define point-x-set! (record-mutator point-rtd 0))`
+`(define point-rtd (make-record-type-descriptor 'point #f #f #f #f`<br>
+`                '#((mutable x) (immutable y))))`<br>
+`(define point-rcd (make-record-constructor-descriptor point-rtd`<br>
+`                    #f #f))`<br>
+`(define make-point (record-constructor point-rcd))`<br>
+`(define point? (record-predicate point-rtd))`<br>
+`(define point-x (record-accessor point-rtd 0))`<br>
+`(define point-y (record-accessor point-rtd 1))`<br>
+`(define point-x-set! (record-mutator point-rtd 0))`
 
 See the additional examples given at the end of this section.
 
@@ -502,7 +569,45 @@ The following example illustrates the creation of parent and child
 record types, predicates, accessors, mutators, and constructors using
 the procedures described in this section.
 
-`(define rtd/parent    (make-record-type-descriptor 'parent #f #f #f #f      '#((mutable x))))   (record-type-descriptor? rtd/parent)  #t  (define parent? (record-predicate rtd/parent))  (define parent-x (record-accessor rtd/parent 0))  (define set-parent-x! (record-mutator rtd/parent 0))   (define rtd/child    (make-record-type-descriptor 'child rtd/parent #f #f #f      '#((mutable x) (immutable y))))   (define child? (record-predicate rtd/child))  (define child-x (record-accessor rtd/child 0))  (define set-child-x! (record-mutator rtd/child 0))  (define child-y (record-accessor rtd/child 1))   (record-mutator rtd/child 1)  exception: immutable field   (define rcd/parent    (make-record-constructor-descriptor rtd/parent #f      (lambda (new) (lambda (x) (new (* x x))))))   (record-type-descriptor? rcd/parent)  #f   (define make-parent (record-constructor rcd/parent))   (define p (make-parent 10))  (parent? p)  #t  (parent-x p)  100  (set-parent-x! p 150)  (parent-x p)  150   (define rcd/child    (make-record-constructor-descriptor rtd/child rcd/parent      (lambda (pargs->new)        (lambda (x y)          ((pargs->new x) (+ x 5) y)))))   (define make-child (record-constructor rcd/child))  (define c (make-child 10 'cc))  (parent? c)  #t  (child? c)  #t  (child? p)  #f   (parent-x c)  100  (child-x c)  15  (child-y c)  cc   (child-x p)  exception: invalid argument type`
+`(define rtd/parent`<br>
+`  (make-record-type-descriptor 'parent #f #f #f #f`<br>
+`    '#((mutable x)))) `<br>
+`(record-type-descriptor? rtd/parent) `$\Rightarrow$` #t`<br>
+`(define parent? (record-predicate rtd/parent))`<br>
+`(define parent-x (record-accessor rtd/parent 0))`<br>
+`(define set-parent-x! (record-mutator rtd/parent 0)) `<br>
+`(define rtd/child`<br>
+`  (make-record-type-descriptor 'child rtd/parent #f #f #f`<br>
+`    '#((mutable x) (immutable y)))) `<br>
+`(define child? (record-predicate rtd/child))`<br>
+`(define child-x (record-accessor rtd/child 0))`<br>
+`(define set-child-x! (record-mutator rtd/child 0))`<br>
+`(define child-y (record-accessor rtd/child 1)) `<br>
+`(record-mutator rtd/child 1) `$\Rightarrow$` exception: immutable field `<br>
+`(define rcd/parent`<br>
+`  (make-record-constructor-descriptor rtd/parent #f`<br>
+`    (lambda (new) (lambda (x) (new (* x x)))))) `<br>
+`(record-type-descriptor? rcd/parent) `$\Rightarrow$` #f `<br>
+`(define make-parent (record-constructor rcd/parent)) `<br>
+`(define p (make-parent 10))`<br>
+`(parent? p) `$\Rightarrow$` #t`<br>
+`(parent-x p) `$\Rightarrow$` 100`<br>
+`(set-parent-x! p 150)`<br>
+`(parent-x p) `$\Rightarrow$` 150 `<br>
+`(define rcd/child`<br>
+`  (make-record-constructor-descriptor rtd/child rcd/parent`<br>
+`    (lambda (pargs->new)`<br>
+`      (lambda (x y)`<br>
+`        ((pargs->new x) (+ x 5) y))))) `<br>
+`(define make-child (record-constructor rcd/child))`<br>
+`(define c (make-child 10 'cc))`<br>
+`(parent? c) `$\Rightarrow$` #t`<br>
+`(child? c) `$\Rightarrow$` #t`<br>
+`(child? p) `$\Rightarrow$` #f `<br>
+`(parent-x c) `$\Rightarrow$` 100`<br>
+`(child-x c) `$\Rightarrow$` 15`<br>
+`(child-y c) `$\Rightarrow$` cc `<br>
+`(child-x p) `$\Rightarrow$` exception: invalid argument type`
 
 ### Section 9.3. Inspection
 
@@ -523,13 +628,22 @@ non-opaque record types.
  **returns:**the name associated with `rtd` \
  **libraries:**`(rnrs records inspection)`, `(rnrs)`
 
-` (define record->name    (lambda (x)      (and (record? x) (record-type-name (record-rtd x)))))   (define-record-type dim (fields w l h))  (record->name (make-dim 10 15 6))  dim   (define-record-type dim (fields w l h) (opaque #t))  (record->name (make-dim 10 15 6))  #f`
+`(define record->name`<br>
+`  (lambda (x)`<br>
+`    (and (record? x) (record-type-name (record-rtd x))))) `<br>
+`(define-record-type dim (fields w l h))`<br>
+`(record->name (make-dim 10 15 6)) `$\Rightarrow$` dim `<br>
+`(define-record-type dim (fields w l h) (opaque #t))`<br>
+`(record->name (make-dim 10 15 6)) `$\Rightarrow$` #f`
 
 **procedure**: `(record-type-parent rtd)` \
  **returns:**the parent of `rtd`, or `#f` if it has no parent \
  **libraries:**`(rnrs records inspection)`, `(rnrs)`
 
-` (define-record-type point (fields x y))  (define-record-type cpoint (parent point) (fields color))  (record-type-parent (record-type-descriptor point))  #f  (record-type-parent (record-type-descriptor cpoint))  #<rtd>`
+`(define-record-type point (fields x y))`<br>
+`(define-record-type cpoint (parent point) (fields color))`<br>
+`(record-type-parent (record-type-descriptor point)) `$\Rightarrow$` #f`<br>
+`(record-type-parent (record-type-descriptor cpoint)) `$\Rightarrow$` #<rtd>`
 
 **procedure**: `(record-type-uid rtd)` \
  **returns:**the uid of `rtd`, or `#f` if it has no uid \
@@ -539,7 +653,14 @@ Whether a record type created without a programmer-supplied uid actually
 has one anyway is left up to the implementation, so this procedure is
 never guaranteed to return `#f`.
 
-`(define-record-type point (fields x y))  (define-record-type cpoint    (parent point)    (fields color)    (nongenerative e40cc926-8cf4-4559-a47c-cac636630314))  (record-type-uid (record-type-descriptor point))  unspecified  (record-type-uid (record-type-descriptor cpoint))                                e40cc926-8cf4-4559-a47c-cac636630314`
+`(define-record-type point (fields x y))`<br>
+`(define-record-type cpoint`<br>
+`  (parent point)`<br>
+`  (fields color)`<br>
+`  (nongenerative e40cc926-8cf4-4559-a47c-cac636630314))`<br>
+`(record-type-uid (record-type-descriptor point)) `$\Rightarrow$` unspecified`<br>
+`(record-type-uid (record-type-descriptor cpoint)) ``$\Rightarrow$`<br>
+`                             e40cc926-8cf4-4559-a47c-cac636630314`
 
 **procedure**: `(record-type-generative? rtd)` \
  **returns:**`#t` if the record type described by `rtd` is generative,
@@ -552,7 +673,21 @@ otherwise \
 otherwise \
  **libraries:**`(rnrs records inspection)`, `(rnrs)`
 
-` (define-record-type table    (fields keys vals)    (opaque #t))  (define rtd (record-type-descriptor table))  (record-type-generative? rtd)  #t  (record-type-sealed? rtd)  #f  (record-type-opaque? rtd)  #t   (define-record-type cache-table    (parent table)    (fields key val)    (nongenerative))  (define rtd (record-type-descriptor cache-table))  (record-type-generative? rtd)  #f  (record-type-sealed? rtd)  #f  (record-type-opaque? rtd)  #t`
+`(define-record-type table`<br>
+`  (fields keys vals)`<br>
+`  (opaque #t))`<br>
+`(define rtd (record-type-descriptor table))`<br>
+`(record-type-generative? rtd) `$\Rightarrow$` #t`<br>
+`(record-type-sealed? rtd) `$\Rightarrow$` #f`<br>
+`(record-type-opaque? rtd) `$\Rightarrow$` #t `<br>
+`(define-record-type cache-table`<br>
+`  (parent table)`<br>
+`  (fields key val)`<br>
+`  (nongenerative))`<br>
+`(define rtd (record-type-descriptor cache-table))`<br>
+`(record-type-generative? rtd) `$\Rightarrow$` #f`<br>
+`(record-type-sealed? rtd) `$\Rightarrow$` #f`<br>
+`(record-type-opaque? rtd) `$\Rightarrow$` #t`
 
 **procedure**: `(record-type-field-names rtd)` \
  **returns:**a vector containing the names of the fields of the type
@@ -565,7 +700,12 @@ names. The order of the names in the vector is the same as the order in
 which the fields were specified in the `define-record-type` form or
 `make-record-type-descriptor` call that created the record type.
 
-`(define-record-type point (fields x y))  (define-record-type cpoint (parent point) (fields color))  (record-type-field-names    (record-type-descriptor point))  #(x y)  (record-type-field-names    (record-type-descriptor cpoint))  #(color)`
+`(define-record-type point (fields x y))`<br>
+`(define-record-type cpoint (parent point) (fields color))`<br>
+`(record-type-field-names`<br>
+`  (record-type-descriptor point)) `$\Rightarrow$` #(x y)`<br>
+`(record-type-field-names`<br>
+`  (record-type-descriptor cpoint)) `$\Rightarrow$` #(color)`
 
 **procedure**: `(record-field-mutable? rtd idx)` \
  **returns:**`#t if the specified field of rtd` is mutable, `#f`
@@ -578,7 +718,10 @@ first field given in the `define-record-type` form or
 `make-record-type-descriptor` call that created the record type, 1
 specifies the second, and so on.
 
-`(define-record-type point (fields (mutable x) (mutable y)))  (define-record-type cpoint (parent point) (fields color))   (record-field-mutable? (record-type-descriptor point) 0)  #t  (record-field-mutable? (record-type-descriptor cpoint) 0)  #f`
+`(define-record-type point (fields (mutable x) (mutable y)))`<br>
+`(define-record-type cpoint (parent point) (fields color)) `<br>
+`(record-field-mutable? (record-type-descriptor point) 0) `$\Rightarrow$` #t`<br>
+`(record-field-mutable? (record-type-descriptor cpoint) 0) `$\Rightarrow$` #f`
 
 **procedure**: `(record? obj)` \
  **returns:**`#t` if `obj` is a non-opaque record instance, `#f`
@@ -594,7 +737,14 @@ Furthermore, the primary purpose of this predicate is to allow programs
 to check whether it is possible to obtain from the argument an rtd via
 the `record-rtd` procedure described below.
 
-`(define-record-type statement (fields str))  (define q (make-statement "He's dead, Jim"))  (statement? q)  #t  (record? q)  #t   (define-record-type opaque-statement (fields str) (opaque #t))  (define q (make-opaque-statement "He's moved on, Jim"))  (opaque-statement? q)  #t  (record? q)  #f`
+`(define-record-type statement (fields str))`<br>
+`(define q (make-statement "He's dead, Jim"))`<br>
+`(statement? q) `$\Rightarrow$` #t`<br>
+`(record? q) `$\Rightarrow$` #t `<br>
+`(define-record-type opaque-statement (fields str) (opaque #t))`<br>
+`(define q (make-opaque-statement "He's moved on, Jim"))`<br>
+`(opaque-statement? q) `$\Rightarrow$` #t`<br>
+`(record? q) `$\Rightarrow$` #f`
 
 **procedure**: `(record-rtd record)` \
  **returns:**the record-type descriptor (rtd) of `record` \
@@ -608,13 +758,30 @@ unknown to the inspector. This capability is illustrated by the
 procedure `print-fields` below, which accepts a record argument and
 writes the name and value of each field of the record.
 
-`(define print-fields    (lambda (r)      (unless (record? r)        (assertion-violation 'print-fields "not a record" r))      (let loop ([rtd (record-rtd r)])        (let ([prtd (record-type-parent rtd)])          (when prtd (loop prtd)))        (let* ([v (record-type-field-names rtd)]               [n (vector-length v)])          (do ([i 0 (+ i 1)])              ((= i n))            (write (vector-ref v i))            (display "=")            (write ((record-accessor rtd i) r))            (newline))))))`
+`(define print-fields`<br>
+`  (lambda (r)`<br>
+`    (unless (record? r)`<br>
+`      (assertion-violation 'print-fields "not a record" r))`<br>
+`    (let loop ([rtd (record-rtd r)])`<br>
+`      (let ([prtd (record-type-parent rtd)])`<br>
+`        (when prtd (loop prtd)))`<br>
+`      (let* ([v (record-type-field-names rtd)]`<br>
+`             [n (vector-length v)])`<br>
+`        (do ([i 0 (+ i 1)])`<br>
+`            ((= i n))`<br>
+`          (write (vector-ref v i))`<br>
+`          (display "=")`<br>
+`          (write ((record-accessor rtd i) r))`<br>
+`          (newline))))))`
 
 With the familiar definitions of `point` and `cpoint`:
 
-`(define-record-type point (fields x y))  (define-record-type cpoint (parent point) (fields color))`
+`(define-record-type point (fields x y))`<br>
+`(define-record-type cpoint (parent point) (fields color))`
 
 the expression `(print-fields (make-cpoint -3 7 'blue))` displays the
 following three lines.
 
-`x=-3  y=7  color=blue`
+`x=-3`<br>
+`y=7`<br>
+`color=blue`
