@@ -1,7 +1,7 @@
 Answers to Selected Exercises
 =============================
 
-**Exercise [2.2.1](start.html#g7). **(page [20](start.html#./start:s34))\
+**[Exercise 2.2.1]. **(page 20)\
 
 *  a*.
 
@@ -19,10 +19,10 @@ Answers to Selected Exercises
 
 `(* (* (* (* (* (* 1 -2) 3) -4) 5) -6) 7)` or `(* 1 -2 3 -4 5 -6 7)`
 
-**Exercise [2.2.2](start.html#g8). **(page [20](start.html#./start:s35))\
- See Section [6.4](objects.html#g110).
+**[Exercise 2.2.2]. **(page 20)\
+ See [Section 6.4].
 
-**Exercise [2.2.3](start.html#g9). **(page [20](start.html#./start:s36))\
+**[Exercise 2.2.3]. **(page 20)\
 
 *  a*.
 
@@ -84,20 +84,20 @@ Answers to Selected Exercises
 
 `5`
 
-**Exercise [2.2.4](start.html#g10). **(page [21](start.html#./start:s37))\
+**[Exercise 2.2.4]. **(page 21)\
 
 `(car (cdr (car '((a b) (c d))))) `$\Rightarrow$` b`<br>
 `(car (car (cdr '((a b) (c d))))) `$\Rightarrow$` c`<br>
 `(car (cdr (car (cdr '((a b) (c d)))))) `$\Rightarrow$` d`
 
-**Exercise [2.2.5](start.html#g11). **(page [21](start.html#./start:s38))\
+**[Exercise 2.2.5]. **(page 21)\
 
 ` '((a . b) ((c) d) ())`
 
-**Exercise [2.2.6](start.html#g12). **(page [21](start.html#./start:s39))\
+**[Exercise 2.2.6]. **(page 21)\
  ![\<graphic\>](math/tspl/50.gif)
 
-**Exercise [2.2.7](start.html#g13). **(page [21](start.html#./start:s40))\
+**[Exercise 2.2.7]. **(page 21)\
 
 `(car '((a b) (c d))) `$\Rightarrow$` (a b)`<br>
 `(car (car '((a b) (c d)))) `$\Rightarrow$` a`<br>
@@ -112,10 +112,11 @@ Answers to Selected Exercises
 `(cdr (cdr (car (cdr '((a b) (c d)))))) `$\Rightarrow$` ()`<br>
 `(cdr (cdr '((a b) (c d)))) `$\Rightarrow$` ()`
 
-**Exercise [2.2.8](start.html#g14). **(page [21](start.html#./start:s41))\
- See Section [2.3](start.html#g15).
+**[Exercise 2.2.8]. **(page 21)\
+ See [Section 2.3].
 
-**Exercise [2.3.1](start.html#g16). **(page [23](start.html#./start:s49))\
+**[Exercise 2.3.1]. **(page 23)\
+
 
 1.  Evaluate the variables `list`, `+`, `-`, `*`, and `/`, yielding the
     list, addition, subtraction, multiplication, and division
@@ -125,18 +126,18 @@ Answers to Selected Exercises
     these procedures in order.
 3.  Evaluate the variable `cdr`, yielding the cdr procedure.
 4.  Apply the cdr procedure to the list produced in
-    step [2](answers.html#g252), yielding a list containing the
+    step 2, yielding a list containing the
     subtraction, multiplication, and division procedures.
 5.  Evaluate the variable `car`, yielding the car procedure.
 6.  Apply the car procedure to the list produced in
-    step [4](answers.html#g254), yielding the subtraction procedure.
+    step 4, yielding the subtraction procedure.
 7.  Evaluate the constants `17` and `5`, yielding `17` and `5`.
 8.  Apply the subtraction procedure to `17` and `5`, yielding `12`.
 
 Other orders are possible. For example, the variable `car` could have
 been evaluated before its argument.
 
-**Exercise [2.4.1](start.html#g18). **(page [25](start.html#./start:s57))\
+**[Exercise 2.4.1]. **(page 25)\
 
 *  a*.
 
@@ -146,12 +147,12 @@ been evaluated before its argument.
 
 `(let ([x (list a b c)]) (cons (car x) (cdr x)))`
 
-**Exercise [2.4.2](start.html#g19). **(page [25](start.html#./start:s58))\
+**[Exercise 2.4.2]. **(page 25)\
  The value is 54. The outer `let` binds `x` to 9, while the inner `let`
 binds `x` to 3 (9/3). The inner `let` evaluates to 6 (3 + 3), and the
 outer `let` evaluates to 54 (9 × 6).
 
-**Exercise [2.4.3](start.html#g20). **(page [26](start.html#./start:s59))\
+**[Exercise 2.4.3]. **(page 26)\
 
 *  a*.
 
@@ -171,7 +172,7 @@ outer `let` evaluates to 54 (9 × 6).
 `                        x4)`<br>
 `                      (cdr x2))))))`
 
-**Exercise [2.5.1](start.html#g22). **(page [30](start.html#./start:s72))\
+**[Exercise 2.5.1]. **(page 30)\
 
 *  a*.
 
@@ -189,10 +190,10 @@ outer `let` evaluates to 54 (9 × 6).
 
 `()`
 
-**Exercise [2.5.2](start.html#g23). **(page [30](start.html#./start:s73))\
- See page [31](start.html#defn:list).
+**[Exercise 2.5.2]. **(page 30)\
+ See page 31([Section 2.6. Top-Level Definitions]).
 
-**Exercise [2.5.3](start.html#g24). **(page [30](start.html#./start:s74))\
+**[Exercise 2.5.3]. **(page 30)\
 
 *  a*.
 
@@ -218,10 +219,10 @@ no free variables
 
 `cons`, `y`, and `z` (`y` also appears as a bound variable)
 
-**Exercise [2.6.1](start.html#g26). **(page [34](start.html#./start:s91))\
+**[Exercise 2.6.1]. **(page 34)\
  The program would loop indefinitely.
 
-**Exercise [2.6.2](start.html#g27). **(page [34](start.html#./start:s92))\
+**[Exercise 2.6.2]. **(page 34)\
 
 `(define compose`<br>
 `  (lambda (p1 p2)`<br>
@@ -230,7 +231,7 @@ no free variables
 `(define cadr (compose car cdr))`<br>
 `(define cddr (compose cdr cdr))`
 
-**Exercise [2.6.3](start.html#g28). **(page [34](start.html#./start:s96))\
+**[Exercise 2.6.3]. **(page 34)\
 
 `(define caar (compose car car))`<br>
 `(define cadr (compose car cdr)) `<br>
@@ -261,13 +262,13 @@ no free variables
 `(define cdddar (compose cddr cdar))`<br>
 `(define cddddr (compose cddr cddr))`
 
-**Exercise [2.7.1](start.html#g30). **(page [41](start.html#./start:s126))\
+**[Exercise 2.7.1]. **(page 41)\
 
 `(define atom?`<br>
 `  (lambda (x)`<br>
 `    (not (pair? x))))`
 
-**Exercise [2.7.2](start.html#g31). **(page [41](start.html#./start:s128))\
+**[Exercise 2.7.2]. **(page 41)\
 
 `(define shorter`<br>
 `  (lambda (ls1 ls2)`<br>
@@ -275,12 +276,12 @@ no free variables
 `        ls2`<br>
 `        ls1)))`
 
-**Exercise [2.8.1](start.html#g33). **(page [46](start.html#./start:s149))\
+**[Exercise 2.8.1]. **(page 46)\
  The structure of the output would be the mirror image of the structure
 of the input. For example, `(a . b)` would become `(b . a)` and
 `((a . b) . (c . d))` would become `((d . c) . (b . a))`.
 
-**Exercise [2.8.2](start.html#g34). **(page [46](start.html#./start:s150))\
+**[Exercise 2.8.2]. **(page 46)\
 
 `(define append`<br>
 `  (lambda (ls1 ls2)`<br>
@@ -288,7 +289,7 @@ of the input. For example, `(a . b)` would become `(b . a)` and
 `        ls2`<br>
 `        (cons (car ls1) (append (cdr ls1) ls2)))))`
 
-**Exercise [2.8.3](start.html#g35). **(page [46](start.html#./start:s152))\
+**[Exercise 2.8.3]. **(page 46)\
 
 `(define make-list`<br>
 `  (lambda (n x)`<br>
@@ -296,12 +297,12 @@ of the input. For example, `(a . b)` would become `(b . a)` and
 `        '()`<br>
 `        (cons x (make-list (- n 1) x)))))`
 
-**Exercise [2.8.4](start.html#g36). **(page [47](start.html#./start:s154))\
+**[Exercise 2.8.4]. **(page 47)\
  See the description of `list-ref` on
-page [160](objects.html#defn:list-ref) and the description of
-`list-tail` on page [160](objects.html#defn:list-tail).
+page 160([Section 6.3. Lists and Pairs]) and the description of
+`list-tail` on page 160([Section 6.3. Lists and Pairs]).
 
-**Exercise [2.8.5](start.html#g37). **(page [47](start.html#./start:s155))\
+**[Exercise 2.8.5]. **(page 47)\
 
 `(define shorter?`<br>
 `  (lambda (ls1 ls2)`<br>
@@ -314,7 +315,7 @@ page [160](objects.html#defn:list-ref) and the description of
 `        ls2`<br>
 `        ls1)))`
 
-**Exercise [2.8.6](start.html#g38). **(page [47](start.html#./start:s158))\
+**[Exercise 2.8.6]. **(page 47)\
 
 `(define even?`<br>
 `  (lambda (x)`<br>
@@ -325,13 +326,13 @@ page [160](objects.html#defn:list-ref) and the description of
 `    (and (not (= x 0))`<br>
 `         (even? (- x 1)))))`
 
-**Exercise [2.8.7](start.html#g39). **(page [47](start.html#./start:s161))\
+**[Exercise 2.8.7]. **(page 47)\
 
 `(define transpose`<br>
 `  (lambda (ls)`<br>
 `    (cons (map car ls) (map cdr ls))))`
 
-**Exercise [2.9.1](start.html#g41). **(page [54](start.html#./start:s186))\
+**[Exercise 2.9.1]. **(page 54)\
 
 `(define make-counter`<br>
 `  (lambda (init incr)`<br>
@@ -341,7 +342,7 @@ page [160](objects.html#defn:list-ref) and the description of
 `          (set! next (+ next incr))`<br>
 `          v)))))`
 
-**Exercise [2.9.2](start.html#g42). **(page [55](start.html#./start:s188))\
+**[Exercise 2.9.2]. **(page 55)\
 
 `(define make-stack`<br>
 `  (lambda ()`<br>
@@ -354,7 +355,7 @@ page [160](objects.html#defn:list-ref) and the description of
 `          [(pop!) (set! ls (cdr ls))]`<br>
 `          [else "oops"])))))`
 
-**Exercise [2.9.3](start.html#g43). **(page [55](start.html#./start:s191))\
+**[Exercise 2.9.3]. **(page 55)\
 
 `(define make-stack`<br>
 `  (lambda ()`<br>
@@ -369,7 +370,7 @@ page [160](objects.html#defn:list-ref) and the description of
 `          [(set!) (set-car! (list-tail ls (car args)) (cadr args))]`<br>
 `          [else "oops"])))))`
 
-**Exercise [2.9.4](start.html#g44). **(page [55](start.html#./start:s192))\
+**[Exercise 2.9.4]. **(page 55)\
 
 `(define make-stack`<br>
 `  (lambda (n)`<br>
@@ -386,7 +387,7 @@ page [160](objects.html#defn:list-ref) and the description of
 `          [(set!) (vector-set! v (- i (car args)) (cadr args))]`<br>
 `          [else "oops"])))))`
 
-**Exercise [2.9.5](start.html#g45). **(page [56](start.html#./start:s194))\
+**[Exercise 2.9.5]. **(page 56)\
 
 `(define emptyq?`<br>
 `  (lambda (q)`<br>
@@ -402,7 +403,7 @@ page [160](objects.html#defn:list-ref) and the description of
 `        (assertion-violation 'delq! "the queue is empty")`<br>
 `        (set-car! q (cdr (car q))))))`
 
-**Exercise [2.9.6](start.html#g46). **(page [56](start.html#./start:s195))\
+**[Exercise 2.9.6]. **(page 56)\
 
 `(define make-queue`<br>
 `  (lambda ()`<br>
@@ -428,17 +429,17 @@ page [160](objects.html#defn:list-ref) and the description of
 `          (set-cdr! q '()))`<br>
 `        (set-car! q (cdr (car q))))))`
 
-**Exercise [2.9.7](start.html#g47). **(page [56](start.html#./start:s196))\
+**[Exercise 2.9.7]. **(page 56)\
  When asked to print a cyclic structure, some implementations print a
 representation of the output that reflects its cyclic structure. Other
 implementations do not detect the cycle and produce either no output or
 an infinite stream of output. When `length` is passed a cyclic list, an
 exception is raised, likely with a message indicating that the list is
 not proper. The definition of `length` on
-page [42](start.html#defn:simplelength) will, however, simply loop
+page 42([Section 2.8. Simple Recursion]) will, however, simply loop
 indefinitely.
 
-**Exercise [2.9.8](start.html#g48). **(page [56](start.html#./start:s199))\
+**[Exercise 2.9.8]. **(page 56)\
 
 `(define race`<br>
 `  (lambda (hare tortoise)`<br>
@@ -453,24 +454,24 @@ indefinitely.
 `  (lambda (x)`<br>
 `    (race x x)))`
 
-**Exercise [3.1.1](further.html#g51). **(page [64](further.html#./further:s25))\
+**[Exercise 3.1.1]. **(page 64)\
 
 `(let ([x (memv 'a ls)]) (and x (memv 'b x))) `<br>
 `  ((lambda (x) (and x (memv 'b x))) (memv 'a ls)) `<br>
 `  ((lambda (x) (if x (and (memv 'b x)) #f)) (memv 'a ls)) `<br>
 `  ((lambda (x) (if x (memv 'b x) #f)) (memv 'a ls))`
 
-**Exercise [3.1.2](further.html#g52). **(page [64](further.html#./further:s26))\
+**[Exercise 3.1.2]. **(page 64)\
 
 `(or (memv x '(a b c)) (list x)) `<br>
 `  (let ((t (memv x '(a b c)))) (if t t (or (list x)))) `<br>
 `  ((lambda (t) (if t t (or (list x)))) (memv x '(a b c))) `<br>
 `  ((lambda (t) (if t t (list x))) (memv x '(a b c)))`
 
-**Exercise [3.1.3](further.html#g53). **(page [64](further.html#./further:s27))\
- See page [97](binding.html#defn:let*).
+**[Exercise 3.1.3]. **(page 64)\
+ See page 97([Section 4.4. Local Binding]).
 
-**Exercise [3.1.4](further.html#g54). **(page [64](further.html#./further:s29))\
+**[Exercise 3.1.4]. **(page 64)\
 
 `(define-syntax when`<br>
 `  (syntax-rules ()`<br>
@@ -481,13 +482,13 @@ indefinitely.
 `    [(_ e0 e1 e2 ...)`<br>
 `     (when (not e0) e1 e2 ...)]))`
 
-**Exercise [3.2.1](further.html#g56). **(page [72](further.html#./further:s52))\
+**[Exercise 3.2.1]. **(page 72)\
  Tail-recursive: `even?` and `odd?`, `race`, `fact` in second definition
 of `factorial`, `fib` in second version of `fibonacci`.
 Nontail-recursive: `sum`, `factorial`, `fib` in first version of
 `fibonacci`. Both: `factor`.
 
-**Exercise [3.2.2](further.html#g57). **(page [72](further.html#./further:s53))\
+**[Exercise 3.2.2]. **(page 72)\
 
 `(define factor`<br>
 `  (lambda (n)`<br>
@@ -499,7 +500,7 @@ Nontail-recursive: `sum`, `factorial`, `fib` in first version of
 `                    [else (f n (+ i 1))]))])`<br>
 `      (f n 2))))`
 
-**Exercise [3.2.3](further.html#g58). **(page [72](further.html#./further:s55))\
+**[Exercise 3.2.3]. **(page 72)\
  Yes, but we need two named `let` expressions, one for `even?` and one
 for `odd?`.
 
@@ -509,7 +510,7 @@ for `odd?`.
 `        (and (not (= x 0))`<br>
 `             (even? (- x 1))))))`
 
-**Exercise [3.2.4](further.html#g59). **(page [72](further.html#./further:s56))\
+**[Exercise 3.2.4]. **(page 72)\
 
 `(define fibcount1 0)`<br>
 `(define fibonacci1`<br>
@@ -537,10 +538,10 @@ number of calls made by the second is directly proportional to the
 input, the number of calls made by the first grows rapidly
 (exponentially, in fact) as the input value increases.
 
-**Exercise [3.2.5](further.html#g60). **(page [73](further.html#./further:s57))\
- See page [312](syntax.html#defn:let).
+**[Exercise 3.2.5]. **(page 73)\
+ See page 312([Section 8.4. Examples]).
 
-**Exercise [3.2.6](further.html#g61). **(page [73](further.html#./further:s58))\
+**[Exercise 3.2.6]. **(page 73)\
  A call in the last subexpression of an `or` expression in tail position
 would not be a tail call with the modified definition of `or`. For the
 `even?`/`odd?` example, the resulting definition of `even?` would no
@@ -549,13 +550,13 @@ available space.
 
 The expansion performed by this definition is incorrect in another way,
 which has to do with multiple return values
-(Section [5.8](control.html#g104)): if the last subexpression returns
+([Section 5.8]): if the last subexpression returns
 multiple values, the `or` expression should return multiple values, but
 with the incorrect definition, each subexpression appears on the
 right-hand side of a `let`, which expects a single return value. The
 simpler and incorrect definition of `and` has the same problem.
 
-**Exercise [3.2.7](further.html#g62). **(page [73](further.html#./further:s59))\
+**[Exercise 3.2.7]. **(page 73)\
  The first of the three versions of `factor` below directly addresses
 the identified problems by stopping at ![\<graphic\>](math/tspl/10.gif),
 avoiding the redundant division, and skipping the even factors after 2.
@@ -587,7 +588,7 @@ The second version replaces `(> i (sqrt n))` with `(> (* i i) n)`, since
 `                (cons i (f n/i i step))`<br>
 `                (f n (+ i step) 2)))))))`
 
-The third version uses `gcd` (see page [179](objects.html#page:gcd)) to
+The third version uses `gcd` (see page 179([Section 6.4. Numbers])) to
 avoid most of the divisions, since `gcd` should be faster than `/`.
 
 `(define factor`<br>
@@ -604,7 +605,7 @@ including the original, in your Scheme system to see which performs
 better. Try a variety of inputs, including larger ones like
 `(+ (expt 2 100) 1)`.
 
-**Exercise [3.3.1](further.html#g70). **(page [77](further.html#./further:s66))\
+**[Exercise 3.3.1]. **(page 77)\
 
 `(let ([k.n (call/cc (lambda (k) (cons k 0)))])`<br>
 `  (let ([k (car k.n)] [n (cdr k.n)])`<br>
@@ -612,7 +613,7 @@ better. Try a variety of inputs, including larger ones like
 `    (newline)`<br>
 `    (k (cons k (+ n 1)))))`
 
-Or with multiple values (see Section [5.8](control.html#g104)):
+Or with multiple values (see [Section 5.8]):
 
 `(call-with-values`<br>
 `  (lambda () (call/cc (lambda (k) (values k 0))))`<br>
@@ -621,7 +622,7 @@ Or with multiple values (see Section [5.8](control.html#g104)):
 `    (newline)`<br>
 `    (k k (+ n 1))))`
 
-**Exercise [3.3.2](further.html#g71). **(page [77](further.html#./further:s67))\
+**[Exercise 3.3.2]. **(page 77)\
 
 `(define product`<br>
 `  (lambda (ls)`<br>
@@ -632,7 +633,7 @@ Or with multiple values (see Section [5.8](control.html#g104)):
 `            (let ([n (product (cdr ls))])`<br>
 `              (if (= n 0) 0 (* n (car ls))))))))`
 
-**Exercise [3.3.3](further.html#g72). **(page [77](further.html#./further:s68))\
+**[Exercise 3.3.3]. **(page 77)\
  If one of the processes returns without calling `pause`, it returns to
 the call to `pause` that first caused it to run, or to the original call
 to `start` if it was the first process in the list. Here is a
@@ -668,7 +669,7 @@ to `start`.
 `        (quit-k v)`<br>
 `        (next))))`
 
-**Exercise [3.3.4](further.html#g73). **(page [77](further.html#./further:s69))\
+**[Exercise 3.3.4]. **(page 77)\
 
 `(define lwp-queue (make-queue))`<br>
 `(define lwp`<br>
@@ -686,7 +687,7 @@ to `start`.
 `        (lwp (lambda () (k #f)))`<br>
 `        (start)))))`
 
-**Exercise [3.4.1](further.html#g76). **(page [80](further.html#./further:s75))\
+**[Exercise 3.4.1]. **(page 80)\
 
 `(define reciprocal`<br>
 `  (lambda (n success failure)`<br>
@@ -694,7 +695,7 @@ to `start`.
 `        (failure)`<br>
 `        (success (/ 1 n)))))`
 
-**Exercise [3.4.2](further.html#g77). **(page [80](further.html#./further:s77))\
+**[Exercise 3.4.2]. **(page 80)\
 
 `(define retry #f) `<br>
 `(define factorial`<br>
@@ -704,7 +705,7 @@ to `start`.
 `          (begin (set! retry k) (k 1))`<br>
 `          (f (- x 1) (lambda (y) (k (* x y))))))))`
 
-**Exercise [3.4.3](further.html#g78). **(page [80](further.html#./further:s79))\
+**[Exercise 3.4.3]. **(page 80)\
 
 `(define map/k`<br>
 `  (lambda (p ls k)`<br>
@@ -721,13 +722,13 @@ to `start`.
 `           ls`<br>
 `           (lambda (x) x))))`
 
-**Exercise [3.5.1](further.html#g80). **(page [85](further.html#./further:s86))\
+**[Exercise 3.5.1]. **(page 85)\
 
 `(define-syntax complain`<br>
 `  (syntax-rules ()`<br>
 `    [(_ ek msg expr) (ek (list msg expr))]))`
 
-**Exercise [3.5.2](further.html#g81). **(page [85](further.html#./further:s87))\
+**[Exercise 3.5.2]. **(page 85)\
 
 `(define calc`<br>
 `  (lambda (expr)`<br>
@@ -754,7 +755,7 @@ to `start`.
 `            (ek (list msg expr))))`<br>
 `        (do-calc expr)))))`
 
-**Exercise [3.5.3](further.html#g82). **(page [85](further.html#./further:s88))\
+**[Exercise 3.5.3]. **(page 85)\
 
 `(define calc #f)`<br>
 `(let ()`<br>
@@ -781,7 +782,7 @@ to `start`.
 `    (lambda (expr)`<br>
 `      (do-calc expr))))`
 
-**Exercise [3.5.4](further.html#g83). **(page [85](further.html#./further:s89))\
+**[Exercise 3.5.4]. **(page 85)\
  This adds `sqrt`, `times` (an alias for `mul`), and `expt` along with
 `minus`.
 
@@ -821,7 +822,7 @@ to `start`.
 `        (lambda (ek)`<br>
 `          (do-calc ek expr))))))`
 
-**Exercise [3.6.1](further.html#g85). **(page [87](further.html#./further:s90))\
+**[Exercise 3.6.1]. **(page 87)\
  This version of `gpa` returns `x` when all of the input letter grades
 are `x`.
 
@@ -833,7 +834,7 @@ are `x`.
 `           'x`<br>
 `           (/ (apply + ls) (length ls))))]))`
 
-**Exercise [3.6.2](further.html#g86). **(page [87](further.html#./further:s91))\
+**[Exercise 3.6.2]. **(page 87)\
  After defining `$distribution` and `distribution` within the library as
 follows:
 
@@ -862,7 +863,7 @@ follows:
 modify the `export` line to add `distribution` (but not
 `$distribution`).
 
-**Exercise [3.6.3](further.html#g87). **(page [87](further.html#./further:s92))\
+**[Exercise 3.6.3]. **(page 87)\
  After defining `histogram` as follows:
 
 `(define histogram`<br>
@@ -880,4 +881,8 @@ modify the `export` line to add `distribution` (but not
 `      (map cadr distr))))`
 
 modify the `export` line to add `histogram`. The solution uses
-`for-each`, which is described on page [118](control.html#desc:for-each)
+`for-each`, which is described on page 118([Section 5.5. Mapping and Folding])
+
+[Section 2.3]: #section-2.3.-evaluating-scheme-expressions
+[Section 5.8]: #section-5.8.-multiple-values
+[Section 6.4]: #section-6.4.-numbers

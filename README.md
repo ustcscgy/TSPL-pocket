@@ -29,6 +29,7 @@ Pass 2: clean math stuff | **DOING**
 ### Done chapter
 
 * Table of contents
+* Answers to Selected Exercises
 
 ### Doing chapter
 
@@ -60,6 +61,11 @@ insert a `<br>` and two no-break spaces mean to insert a
 `` `$\Rightarrow$` `` and `<br>` back to their proper postion.
 
 Those macros are recorded in emacs-macros.el.
+
+### Internal Links/References
+
+Remain page number, followed by a section reference(instead of word
+reference).
 
 ## BUGS
 
