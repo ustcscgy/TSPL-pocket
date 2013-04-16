@@ -29,6 +29,7 @@ Pass 2: clean math stuff | **DOING**
 ### Done chapter
 
 * Table of contents
+* Preface
 * Answers to Selected Exercises
 
 ### Doing chapter

@@ -2,7 +2,7 @@ Preface
 =======
 
 Scheme was introduced in 1975 by Gerald J. Sussman and
-Guy L. Steele Jr. [[28](bibliography.html#g246),[29](bibliography.html#g247)],
+Guy L. Steele Jr. [[28](#references),[29](#references)],
 and was the first dialect of Lisp to fully support lexical scoping,
 first-class procedures, and continuations. In its earliest form it was a
 small language intended primarily for research and teaching, supporting
@@ -19,18 +19,18 @@ programming language but not an introduction to programming in general.
 The reader is expected to have had some experience programming and to be
 familiar with terms commonly associated with computers and programming
 languages. Readers unfamiliar with Scheme or Lisp should also consider
-reading *The Little Schemer* [[13](bibliography.html#g231)] to become
+reading *The Little Schemer* [[13](#references)] to become
 familiar with the concepts of list processing and recursion. Readers new
 to programming should begin with an introductory text on programming.
 
 Scheme has been standardized both formally and informally. The *IEEE
 Standard for the Scheme Programming
-Language* [[18](bibliography.html#g236)], describes a formal ANSI/IEEE
+Language* [[18](#references)], describes a formal ANSI/IEEE
 Standard for Scheme but dates back to 1991. A related series of reports,
 the "Revised Reports on the Algorithmic Language Scheme," document an
 evolving informal standard that most implementations support. The
 current report in this series is the "Revised^6^ Report on the
-Algorithmic Language Scheme" [[24](bibliography.html#g242)], which was
+Algorithmic Language Scheme" [[24](#references)], which was
 completed in 2007.
 
 This book covers the language of the Revised^6^ Report. It is not
@@ -41,7 +41,7 @@ implementors. Features specific to particular implementations of Scheme
 are not included. In particular, features specific to the author's
 Chez Scheme and Petite Chez Scheme implementations are described
 separately in the *Chez Scheme User's
-Guide* [[9](bibliography.html#g227)]. On the other hand, no book on
+Guide* [[9](#references)]. On the other hand, no book on
 Scheme would be complete without some coverage of the interactive top
 level, since nearly every Scheme system supports interactive use in one
 form or another, even though the behavior is not standardized by the
@@ -58,49 +58,48 @@ useful extensions. All of the examples can be entered directly from the
 keyboard into an interactive Scheme session.
 
 This book is organized into twelve chapters, plus back matter.
-Chapter [1](intro.html#g0) describes the properties and features of
+[Chapter 1] describes the properties and features of
 Scheme that make it a useful and enjoyable language to use.
-Chapter [1](intro.html#g0) also describes Scheme's notational
+[Chapter 1] also describes Scheme's notational
 conventions and the typographical conventions employed in this book.
 
-Chapter [2](start.html#g4) is an introduction to Scheme programming for
+[Chapter 2] is an introduction to Scheme programming for
 the novice Scheme programmer that leads the reader through a series of
 examples, beginning with simple Scheme expressions and working toward
 progressively more difficult ones. Each section of
-Chapter [2](start.html#g4) introduces a small set of related features,
+[Chapter 2] introduces a small set of related features,
 and the end of each section contains a set of exercises for further
-practice. The reader will learn the most from Chapter [2](start.html#g4)
+practice. The reader will learn the most from [Chapter 2]
 by sitting at the keyboard and typing in the examples and trying the
 exercises.
 
-Chapter [3](further.html#g49) continues the introduction but covers more
+[Chapter 3] continues the introduction but covers more
 advanced features and concepts. Even readers with prior Scheme
 experience may wish to work through the examples and exercises found
 there.
 
-Chapters [4](binding.html#g88) through [11](exceptions.html#g147) make
+[Chapter 4] through [11] make
 up the reference portion of the text. They present each of Scheme's
 primitive procedures and syntactic forms in turn, grouping them into
 short sections of related procedures and forms.
-Chapter [4](binding.html#g88) describes operations for creating
-procedures and variable bindings; Chapter [5](control.html#g96), program
-control operations; Chapter [6](objects.html#g106), operations on the
+[Chapter 4] describes operations for creating
+procedures and variable bindings; [Chapter 5], program
+control operations; [Chapter 6], operations on the
 various object types (including lists, numbers, and strings);
-Chapter [7](io.html#g121), input and output operations;
-Chapter [8](syntax.html#g133), syntactic extension;
-Chapter [9](records.html#g138), record-type definitions;
-Chapter [10](libraries.html#g142), libraries and top-level programs; and
-Chapter [11](exceptions.html#g147), exceptions and conditions.
+[Chapter 7], input and output operations;
+[Chapter 8], syntactic extension;
+[Chapter 9], record-type definitions;
+[Chapter 10], libraries and top-level programs; and
+[Chapter 11], exceptions and conditions.
 
-Chapter [12](examples.html#g151) contains a collection of example
+[Chapter 12] contains a collection of example
 procedures, libraries, and programs, each with a short overview, some
 examples of its use, the implementation with brief explanation, and a
 set of exercises for further work. Each of these programs demonstrates a
 particular set of features, and together they illustrate an appropriate
 style for programming in Scheme.
 
-Following Chapter [12](examples.html#g151) are bibliographical
-references, answers to selected exercises, a detailed description of the
+Following [Chapter 12] are #references to selected exercises, a detailed description of the
 formal syntax of Scheme programs and data, a concise summary of Scheme
 syntactic forms and procedures, and the index. The summary of forms and
 procedures is a useful first stop for programmers unsure of the
@@ -114,11 +113,11 @@ Because the reference portion describes a number of aspects of the
 language not covered by the introductory chapters along with a number of
 interesting short examples, most readers will find it profitable to read
 through most of the material to become familiar with each feature and
-how it relates to other features. Chapter [6](objects.html#g106) is
+how it relates to other features. [Chapter 6] is
 lengthy, however, and may be skimmed and later referenced as needed.
 
 An online version of this book is available at
-*http://www.scheme.com/tspl/*. The summary of forms and index in the
+*<http://www.scheme.com/tspl/>*. The summary of forms and index in the
 online edition include page numbers for the printed version and are thus
 useful as searchable indexes.
 
@@ -159,3 +158,16 @@ editors of that report and many others who contributed to it. Finally
 and most importantly, my wife, Susan Dybvig, suggested that I write this
 book in the first place and lent her expertise and assistance to the
 production and publication of this and the previous editions.
+
+[Chapter 1]: #chapter-1.-introduction
+[Chapter 2]: #chapter-2.-getting-started
+[Chapter 3]: #chapter-3.-going-further
+[Chapter 4]: #chapter-4.-procedures-and-variable-bindings
+[Chapter 5]: #chapter-5.-control-operations
+[Chapter 6]: #chapter-6.-operations-on-objects
+[Chapter 7]: #chapter-7.-input-and-output
+[Chapter 8]: #chapter-8.-syntactic-extension
+[Chapter 9]: #chapter-9.-records
+[Chapter 10]: #chapter-chapter-10.-libraries-and-top-level-programs
+[Chapter 11]: #chapter-11.-exceptions-and-conditions
+[Chapter 12]: #chapter-12.-extended-examples
