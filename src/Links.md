@@ -7,14 +7,14 @@
 [Chapter 7]: #chapter-7.-input-and-output
 [Chapter 8]: #chapter-8.-syntactic-extension
 [Chapter 9]: #chapter-9.-records
-[Chapter 10]: #chapter-chapter-10.-libraries-and-top-level-programs
+[Chapter 10]: #chapter-10.-libraries-and-top-level-programs
 [Chapter 11]: #chapter-11.-exceptions-and-conditions
 [Chapter 12]: #chapter-12.-extended-examples
 
 [Section 2.1]: #section-2.1.-interacting-with-scheme
 [Section 2.3]: #section-2.3.-evaluating-scheme-expressions
 [Section 2.5]: #section-2.5.-lambda-expressions
-[Section 2.6]: #section-2.6.-top--level-definitions
+[Section 2.6]: #section-2.6.-top-level-definitions
 [Section 2.8]: #section-2.8.-simple-recursion
 [Section 2.9]: #section-2.9.-assignment
 [Section 3.1]: #section-3.1.-syntactic-extension
@@ -39,8 +39,8 @@
 [Section 7.8]: #section-7.8.-output-operations
 [Section 7.9]: #section-7.9.-convenience-io
 [Section 8.1]: #section-8.1.-keyword-bindings
-[Section 8.2]: #section-8.2.-syntax--rules-transformers
-[Section 8.3]: #section-8.3.-syntax--case-transformers
+[Section 8.2]: #section-8.2.-syntax-rules-transformers
+[Section 8.3]: #section-8.3.-syntax-case-transformers
 [Section 8.4]: #section-8.4.-examples
 [Section 9.1]: #section-9.1.-defining-records
 [Section 9.2]: #section-9.2.-procedural-interface
@@ -53,14 +53,13 @@
 [Section 12.4]: #section-12.4.-word-frequency-counting
 [Section 12.5]: #section-12.5.-scheme-printer
 [Section 12.6]: #section-12.6.-formatted-output
-[Section 12.7]: #section-12.7.-a-meta--circular interpreter-for-scheme
+[Section 12.7]: #section-12.7.-a-meta-circular-interpreter-for-scheme
 [Section 12.8]: #section-12.8.-defining-abstract-objects
 [Section 12.9]: #section-12.9.-fast-fourier-transform
 [Section 12.10]: #section-12.10.-a-unification-algorithm
 [Section 12.11]: #section-12.11.-multitasking-with-engines
 
-
-[page 31]: #section-2.6.-multitasking-with-engines
+[page 31]: #section-2.6.-top-level-definitions
 [page 42]: #section-2.8.-simple-recursion
 [page 46]: #section-2.8.-simple-recursion
 [page 62]: #section-3.1.-syntactic-extension
@@ -68,7 +67,7 @@
 [page 66]: #section-3.2.-more-recursion
 [page 67]: #section-3.2.-more-recursion
 [page 69]: #section-3.2.-more-recursion
-[page 75]: #section-3.3-continuations
+[page 75]: #section-3.3.-continuations
 [page 97]: #section-4.4.-local-binding
 [page 99]: #section-4.4.-local-binding
 [page 101]: #section-4.7.-assignment
@@ -82,10 +81,10 @@
 [page 183]: #section-6.4.-numbers
 [page 276]: #section-7.7.-input-operations
 [page 292]: #section-8.1.-keyword-bindings
-[page 305]: #section-8.3.-syntax--case-transformers
-[page 306]: #section-8.3.-syntax--case-transformers
-[page 307]: #section-8.3.-syntax--case-transformers
-[page 310]: #section-8.3.-syntax--case-transformers
+[page 305]: #section-8.3.-syntax-case-transformers
+[page 306]: #section-8.3.-syntax-case-transformers
+[page 307]: #section-8.3.-syntax-case-transformers
+[page 310]: #section-8.3.-syntax-case-transformers
 [page 312]: #section-8.4.-examples
 [page 313]: #section-8.4.-examples
 [page 317]: #section-8.4.-examples
