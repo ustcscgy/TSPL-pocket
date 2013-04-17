@@ -13,7 +13,7 @@ such as `define`, `letrec`, `let-values`, and `set!`.
 
 Various other forms that bind or assign variables for which the binding
 or assignment is not the primary purpose (such as named `let`) are found
-in Chapter [5](control.html#g96).
+in [Chapter 5].
 
 ### Section 4.1. Variable References
 
@@ -460,7 +460,7 @@ is transformed during macro expansion into a `letrec*` expression as
 described on page [292](syntax.html#body-expansion).
 
 Syntax definitions may appear along with variable definitions wherever
-variable definitions may appear; see Chapter [8](syntax.html#g133).
+variable definitions may appear; see [Chapter 8].
 
 `(define x 3)`<br>
 `x `$\Rightarrow$` 3 `<br>

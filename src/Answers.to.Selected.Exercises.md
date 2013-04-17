@@ -882,7 +882,3 @@ modify the `export` line to add `distribution` (but not
 
 modify the `export` line to add `histogram`. The solution uses
 `for-each`, which is described on page 118([Section 5.5. Mapping and Folding])
-
-[Section 2.3]: #section-2.3.-evaluating-scheme-expressions
-[Section 5.8]: #section-5.8.-multiple-values
-[Section 6.4]: #section-6.4.-numbers

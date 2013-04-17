@@ -247,7 +247,7 @@ expressions actually treat `#f` as false and all other objects as true,
 so `3`, `0`, `()`, `"false"`, and `nil` all count as true.
 
 Details of the syntax for each type of constant data are given in the
-individual sections of Chapter [6](objects.html#g106) and in the formal
+individual sections of [Chapter 6] and in the formal
 syntax of Scheme starting on
 page [455](grammar.html#APPENDIXFORMALSYNTAX).
 

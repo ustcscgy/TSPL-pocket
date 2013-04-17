@@ -50,7 +50,7 @@ occurrences of the form. \<variable\> is any Scheme identifier.
 vector. \<boolean\> is either `#t` or `#f`, \<number\> is any number,
 \<character\> is any character, and \<string\> is any string. We have
 already seen examples of numbers, strings, lists, symbols, and booleans.
-See Chapter [6](objects.html#g106) or the formal syntax description
+See [Chapter 6] or the formal syntax description
 starting on page [455](grammar.html#APPENDIXFORMALSYNTAX) for more on
 the object-level syntax of these and other objects.
 
@@ -129,7 +129,7 @@ of the syntactic extension being defined, in this case `let`. The
 The item following `syntax-rules` is a list of *auxiliary keywords* and
 is nearly always `()`. An example of an auxiliary keyword is the `else`
 of `cond`. (Other examples requiring the use of auxiliary keywords are
-given in Chapter [8](syntax.html#g133).) Following the list of auxiliary
+given in [Chapter 8].) Following the list of auxiliary
 keywords is a sequence of one or more *rules*, or *pattern/template*
 pairs. Only one rule appears in our definition of `let`. The pattern
 part of a rule specifies the form that the input must take, and the
@@ -137,7 +137,7 @@ template specifies to what the input should be transformed.
 
 The pattern should always be a structured expression whose first element
 is an underscore ( `_` ). (As we will see in
-Chapter [8](syntax.html#g133), the use of `_` is only a convention, but
+[Chapter 8], the use of `_` is only a convention, but
 it is a good one to follow.) If more than one rule is present, the
 appropriate one is chosen by matching the patterns, in order, against
 the input during expansion. It is a syntax violation if none of the
@@ -1393,7 +1393,7 @@ level, you can test the two exports as shown below.
 `(gpa c a c b b) `$\Rightarrow$` 2.8`<br>
 `(gpa->grade 2.8) `$\Rightarrow$` b`
 
-Chapter [10](libraries.html#g142) describes libraries in more detail and
+[Chapter 10] describes libraries in more detail and
 provides additional examples of their use.
 
 #### Exercise 3.6.1

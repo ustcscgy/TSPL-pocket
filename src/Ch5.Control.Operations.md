@@ -1362,7 +1362,7 @@ in the environment appears within the expression.
 `environment` returns an environment formed from the combined bindings
 of the given import specifiers. Each `import-spec` must be an
 s-expression representing a valid import specifier (see
-Chapter [10](libraries.html#g142)).
+[Chapter 10]).
 
 `(define env (environment '(rnrs) '(prefix (rnrs lists) $)))`<br>
 `(eval '($cons* 3 4 (* 5 8)) env) `$\Rightarrow$` (3 4 . 40)`

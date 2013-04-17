@@ -12,10 +12,10 @@ type of an object. Later sections describe procedures that deal
 primarily with one of the object types mentioned above. There is no
 section treating operations on procedures, since the only operation
 defined specifically for procedures is application, and this is
-described in Chapter [5](control.html#g96). Operations on ports are
+described in [Chapter 5]. Operations on ports are
 covered in the more general discussion of input and output in
-Chapter [7](io.html#g121). A mechanism for defining new data types is
-described in Chapter [9](records.html#g138).
+[Chapter 7]. A mechanism for defining new data types is
+described in [Chapter 9].
 
 ### Section 6.1. Constants and Quotation
 
@@ -3085,7 +3085,7 @@ hexadecimal digits and represents a valid Unicode scalar value.
 
 This section describes the operations that deal primarily with
 characters. See also the following section on strings and
-Chapter [7](io.html#g121) on input and output for other operations
+[Chapter 7] on input and output for other operations
 relating to characters.
 
 **procedure**: `(char=? char1 char2 char3 ...)` \

@@ -8,9 +8,10 @@ every Scheme syntactic form has a representation as a Scheme datum. In
 particular, parenthesized syntactic forms are written as lists, and
 identifiers (e.g., keywords and variables) are written as symbols. The
 high-level structure of each syntactic form is described in detail by
-the entries marked "syntax" in Chapters [4](binding.html#g88)
-through [11](exceptions.html#g147), and the syntactic forms are
-summarized in the Summary of Forms.
+the entries marked "syntax" in
+Chapters [4](#chapter-4.-procedures-and-variable-bindings)
+through [11](#chapter-11.-exceptions-and-conditions), and the
+syntactic forms are summarized in the Summary of Forms.
 
 The written representation of a datum involves tokens, whitespace, and
 comments. *Tokens* are sequences of one or more characters representing
