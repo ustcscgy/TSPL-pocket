@@ -17,7 +17,7 @@ out.
 
 ## TODO
 
-1. Typeset math using latex to replace gifs. (DOING)
+Bug fix, minor update.
 
 ## Status
 
@@ -25,13 +25,8 @@ Pass 1: clean up code blocks | **DONE**
 
 Pass 2: clean up internal references | **DONE**
 
-Pass 3: clean up math stuff | **DOING**
-
-### Done section
-
-### Doing section
-
-Ch1
+Pass 3: clean up math stuff | **PARTLY DONE** | some complex images
+needed to be converted to tex code
 
 ## What have I done?
 
