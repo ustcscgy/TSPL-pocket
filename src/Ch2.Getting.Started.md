@@ -195,7 +195,7 @@ procedures given above to evaluate more complicated formulas.
 These examples demonstrate everything you need to use Scheme as a
 four-function desk calculator. While we will not discuss them in this
 chapter, Scheme supports many other arithmetic procedures. Now might be
-a good time to turn to Section [6.4](objects.html#g110) and experiment
+a good time to turn to [Section 6.4] and experiment
 with some of them.
 
 Simple numeric objects are sufficient for many tasks, but sometimes
@@ -276,7 +276,7 @@ You might wonder why applications and variables share notations with
 lists and symbols. The shared notation allows Scheme programs to be
 represented as Scheme data, simplifying the writing of interpreters,
 compilers, editors, and other tools in Scheme. This is demonstrated by
-the Scheme interpreter given in Section [12.7](examples.html#g187),
+the Scheme interpreter given in [Section 12.7],
 which is itself written in Scheme. Many people believe this to be one of
 the most important features of Scheme.
 
@@ -361,7 +361,7 @@ arbitrary number of arguments and always builds a proper list.
 `(list 'a) `$\Rightarrow$` (a)`<br>
 `(list) `$\Rightarrow$` ()`
 
-Section [6.3](objects.html#g109) provides more information on lists and
+[Section 6.3] provides more information on lists and
 the Scheme procedures for manipulating them. This might be a good time
 to turn to that section and familiarize yourself with the other
 procedures given there.
@@ -532,7 +532,7 @@ by a Scheme programmer; these are referred to as *core* syntactic forms.
 The remaining syntactic forms are *syntactic extensions* defined,
 ultimately, in terms of the core syntactic forms. We will discuss the
 remaining core syntactic forms and a few syntactic extensions in the
-remaining sections of this chapter. Section [3.1](further.html#g50)
+remaining sections of this chapter. [Section 3.1]
 summarizes the core syntactic forms and introduces the syntactic
 extension mechanism.
 
@@ -853,7 +853,7 @@ is equivalent to the following.
 `((lambda (var ...) body1 body2 ...)`<br>
 ` expr ...)`
 
-See Section [3.1](further.html#g50) for more about core forms and
+See [Section 3.1] for more about core forms and
 syntactic extensions.
 
 As mentioned above, the general form of `lambda` is a bit more
@@ -1171,7 +1171,7 @@ procedure of one argument that applies `p1` to the result of applying
 Scheme also provides `caar`, `cdar`, `caaar`, `caadr`, and so on, with
 any combination of up to four `a`'s (representing `car`) and `d`'s
 (representing `cdr`) between the `c` and the `r` (see
-Section [6.3](objects.html#g109)). Define each of these with the
+[Section 6.3]). Define each of these with the
 `compose` procedure of the preceding exercise.
 
 ### Section 2.7. Conditional Expressions
@@ -1355,7 +1355,7 @@ As you can see, `eqv?` returns true if the arguments are the same
 symbol, boolean, number, pair, or string. Two pairs are not the same by
 `eqv?` if they are created by different calls to `cons`, even if they
 have the same contents. Detailed equivalence rules for `eqv?` are given
-in Section [6.2](objects.html#g108).
+in [Section 6.2].
 
 Scheme also provides a set of *type predicates* that return true or
 false depending on the type of the object, e.g., `pair?`, `symbol?`,
@@ -1674,7 +1674,7 @@ clearly and succinctly via recursion. Recursion is more general and
 eliminates the need for the variable assignments required by many other
 languages' iteration constructs, resulting in code that is more reliable
 and easier to follow. Some recursion is essentially iteration and
-executes as such; Section [3.2](further.html#g55) has more to say about
+executes as such; [Section 3.2] has more to say about
 this. Often, there is no need to make a distinction, however.
 Concentrate instead on writing clear, concise, and correct programs.
 
@@ -1740,7 +1740,7 @@ single list.
 
 All we have done is to replace the call to `abs` in `abs-all` with a
 call to the new parameter `p`. A definition of the more general `map` is
-given in Section [5.4](control.html#g100).
+given in [Section 5.4].
 
 #### Exercise 2.8.1
 
@@ -1749,7 +1749,7 @@ Describe what would happen if you switched the order of the arguments to
 
 #### Exercise 2.8.2
 
-Consult Section [6.3](objects.html#g109) for the description of `append`
+Consult [Section 6.3] for the description of `append`
 and define a two-argument version of it. What would happen if you
 switched the order of the arguments in the call to `append` within your
 definition of `append`?
@@ -1974,9 +1974,9 @@ procedures visible at top level.
 
 Variables must be defined before they can be assigned, so we define
 `shhh` and `tell` to be `#f` initially. (Any initial value would do.)
-We'll see this structure again in Section [3.5](further.html#g79) and a
+We'll see this structure again in [Section 3.5] and a
 better way to structure code like this as a library in
-Section [3.6](further.html#g84).
+[Section 3.6].
 
 Local state is sometimes useful for caching computed values or allowing
 a computation to be evaluated *lazily*, i.e., only once and only on
@@ -2074,10 +2074,10 @@ each stack object is directly accessible only within the object. Each
 reference or change to this state is made explicitly by the object
 itself. One important benefit is that we can change the internal
 structure of the stack, perhaps to use a vector (see
-Section [6.9](objects.html#g115)) instead of a list to hold the
+[Section 6.9]) instead of a list to hold the
 elements, without changing its external behavior. Because the behavior
 of the object is known abstractly (not operationally), it is known as an
-*abstract object*. See Section [12.8](examples.html#g193) for more about
+*abstract object*. See [Section 12.8] for more about
 creating abstract objects.
 
 In addition to changing the values of variables, we can also change the
@@ -2148,7 +2148,7 @@ each time.
 
 #### Exercise 2.9.2
 
-Look up the description of `case` in Section [5.3](control.html#g99).
+Look up the description of `case` in [Section 5.3].
 Replace the `cond` expression in `make-stack` with an equivalent `case`
 expression. Add `mt?` as a second name for the `empty?` message.
 
@@ -2189,7 +2189,7 @@ This makes vectors more suitable for applications needing fast access to
 any element of the aggregate but less suitable for applications needing
 data structures that grow and shrink as needed.
 
-Look up the basic vector operations in Section [6.9](objects.html#g115)
+Look up the basic vector operations in [Section 6.9]
 and reimplement the `stack` object to use a vector instead of a list to
 hold the stack contents. Include the `ref` and `set!` messages of
 Exercise [2.9.3](start.html#g43). Have the new `make-stack` accept a
@@ -2228,7 +2228,7 @@ What does the built-in `length` primitive do?
 #### Exercise 2.9.8
 
 Define the predicate `list?`, which returns `#t` if its argument is a
-proper list and `#f` otherwise (see Section [6.3](objects.html#g109)).
+proper list and `#f` otherwise (see [Section 6.3]).
 It should return `#f` for cyclic lists as well as for lists terminated
 by objects other than `()`.
 

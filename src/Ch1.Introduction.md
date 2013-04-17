@@ -322,7 +322,7 @@ printed.
 While most standard procedures return a single value, the language
 supports procedures that return zero, one, more than one, or even a
 variable number of values via the mechanisms described in
-Section [5.8](control.html#g104). Some standard expressions can evaluate
+[Section 5.8]. Some standard expressions can evaluate
 to multiple values if one of their subexpressions evaluates to multiple
 values, e.g., by calling a procedure that returns multiple values. When
 this situation can occur, an expression is said to return "the values"

@@ -63,7 +63,7 @@ using `define-syntax`, `let-syntax`, or `letrec-syntax`.
 
 The following example defines `let*` as a syntactic extension,
 specifying the transformer with `syntax-rules` (see
-Section [8.2](syntax.html#g135)).
+[Section 8.2]).
 
 `(define-syntax let*`<br>
 `  (syntax-rules ()`<br>
@@ -156,8 +156,8 @@ binding is established by the `letrec-syntax` form.
 The `syntax-rules` form described in this section permits simple
 transformers to be specified in a convenient manner. These transformers
 may be bound to keywords using the mechanisms described in
-Section [8.1](syntax.html#g134). While it is much less expressive than
-the mechanism described in Section [8.3](syntax.html#g136), it is
+[Section 8.1]. While it is much less expressive than
+the mechanism described in [Section 8.3], it is
 sufficient for defining many common syntactic extensions.
 
 **syntax**: `(syntax-rules (literal ...) clause ...)` \
@@ -191,7 +191,7 @@ An input form `F` matches a pattern `P` if and only if
 -   `P` is an underscore or pattern variable,
 -   `P` is a literal identifier and `F` is an identifier with the same
     binding as determined by the predicate `free-identifier=?`
-    (Section [8.3](syntax.html#g136)),
+    ([Section 8.3]),
 -   `P` is of the form `(P1 ... Pn)` and `F` is a list of *n* elements
     that match `P1` through `Pn`,
 -   `P` is of the form `(P1 ... Pn . Px)` and `F` is a list or improper
@@ -223,7 +223,7 @@ in one of the list-structured forms above, although subpatterns of the
 pattern may be in any of the above forms. Furthermore, the first element
 of the outermost pattern is ignored, since it is always assumed to be
 the keyword naming the syntactic form. (These statements do not apply to
-`syntax-case`; see Section [8.3](syntax.html#g136).)
+`syntax-case`; see [Section 8.3].)
 
 If an input form passed to a `syntax-rules` transformer matches the
 pattern for a given clause, the clause is accepted and the form is
@@ -419,7 +419,7 @@ following two forms.
 `(pattern fender output-expression)`
 
 `syntax-case` patterns may be in any of the forms described in
-Section [8.2](syntax.html#g135).
+[Section 8.2].
 
 `syntax-case` first evaluates `expr`, then attempts to match the
 resulting value against the pattern from the first `clause`. This value
@@ -474,7 +474,7 @@ empty lists are never wrapped. For example, `#'(x ...)`, `#'(a b c)`,
 `#'()` are all lists if `x`, `a`, `b`, and `c` are pattern variables.
 
 The definition of `or` below is equivalent to the one given in
-Section [8.2](syntax.html#g135) except that it employs `syntax-case` and
+[Section 8.2] except that it employs `syntax-case` and
 `syntax` in place of `syntax-rules`.
 
 `(define-syntax or`<br>
@@ -509,7 +509,7 @@ shorter than the equivalent definitions expressed with `syntax-case`.
 The choice of which to use when either suffices is a matter of taste,
 but many transformers that can be written easily with `syntax-case`
 cannot be written easily or at all with `syntax-rules` (see
-Section [8.4](syntax.html#g137)).
+[Section 8.4]).
 
 **procedure**: `(identifier? obj)` \
  **returns:**`#t` if `obj` is an identifier, `#f` otherwise \
@@ -721,7 +721,7 @@ expansion.
 
 `quasisyntax` is similar to `syntax`, but it allows parts of the quoted
 text to be evaluated, in a manner similar to `quasiquote`
-(Section [6.1](objects.html#g107)).
+([Section 6.1]).
 
 Within a `quasisyntax` `template`, subforms of `unsyntax` and
 `unsyntax-splicing` forms are evaluated, and everything else is treated
@@ -770,7 +770,7 @@ support certain useful nested quasiquotation (`quasisyntax`)
 idioms [[3](#references)], such as `#,@#,@`, which has the
 effect of a doubly indirect splicing when used within a doubly nested
 and doubly evaluated `quasisyntax` expression, as with the nested
-`quasiquote` examples shown in Section [6.1](objects.html#g107).
+`quasiquote` examples shown in [Section 6.1].
 
 `unsyntax` and `unsyntax-splicing` are auxiliary keywords for
 `quasisyntax`. It is a syntax violation to reference these identifiers
@@ -805,7 +805,7 @@ contexts. The argument, `procedure`, should accept one argument.
 `    (list before a ls))) `$\Rightarrow$` (0 1 (1))`
 
 This syntactic abstraction can be defined more succinctly using
-`identifier-syntax`, as shown in Section [8.2](syntax.html#g135), but
+`identifier-syntax`, as shown in [Section 8.2], but
 `make-variable-transformer` can be used to create transformers that
 perform arbitrary computations, while `identifier-syntax` is limited to
 simple term rewriting, like `syntax-rules`. `identifier-syntax` can be
@@ -1059,7 +1059,7 @@ With the fender, we can even put the clauses in the opposite order.
 `       #'((lambda (x ...) b1 b2 ...) e ...)])))`
 
 To be completely robust, the `ids?` and `unique-ids?` checks employed in
-the definition of unnamed `let` in Section [8.3](syntax.html#g136)
+the definition of unnamed `let` in [Section 8.3]
 should be employed here as well.
 
 Both variants of `let` are easily described by simple one-line patterns,
@@ -1095,7 +1095,7 @@ result expressions are provided and to produce a loop with either a one-
 or two-armed `if` as appropriate. The resulting expansion would be
 cleaner but semantically equivalent.
 
-As mentioned in Section [8.2](syntax.html#g135), ellipses lose their
+As mentioned in [Section 8.2], ellipses lose their
 special meaning within templates of the form `(... template)`. This fact
 allows syntactic extensions to expand into syntax definitions containing
 ellipses. This usage is illustrated by the definition below of

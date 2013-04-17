@@ -325,7 +325,7 @@ standard input, standard output, and standard error streams.
 The values returned by `current-input-port` and `current-output-port`
 can be altered temporarily by the convenience I/O procedures
 `with-input-from-file` and `with-output-to-file`
-(Section [7.9](io.html#g130)).
+([Section 7.9]).
 
 **procedure**: `(standard-input-port)` \
  **returns:**a fresh binary input port connected to the standard input
@@ -1092,7 +1092,7 @@ representation is implementation-dependent, but when `obj` does have an
 external representation as a datum, `put-datum` should produce a
 sequence of characters that can later be read by `get-datum` as an
 object equivalent (in the sense of `equal?`) to `obj`. See
-Section [12.5](examples.html#g176) for an implementation of `put-datum`,
+[Section 12.5] for an implementation of `put-datum`,
 `write`, and `display`.
 
 **procedure**: `(flush-output-port output-port)` \
@@ -1179,7 +1179,7 @@ possible that another continuation created inside of `procedure` will be
 invoked at a later time, returning control to `procedure`. If
 `procedure` does not return, an implementation is free to close the
 input port only if it can prove that the input port is no longer
-accessible. As shown in Section [5.6](control.html#g102), `dynamic-wind`
+accessible. As shown in [Section 5.6], `dynamic-wind`
 may be used to ensure that the port is closed if a continuation created
 outside of `procedure` is invoked.
 
@@ -1223,7 +1223,7 @@ possible that another continuation created inside of `procedure` will be
 invoked at a later time, returning control to `procedure`. If
 `procedure` does not return, an implementation is free to close the
 output port only if it can prove that the output port is no longer
-accessible. As shown in Section [5.6](control.html#g102), `dynamic-wind`
+accessible. As shown in [Section 5.6], `dynamic-wind`
 may be used to ensure that the port is closed if a continuation created
 outside of `procedure` is invoked.
 
@@ -1319,7 +1319,7 @@ input port. This procedure is otherwise equivalent to `lookahead-char`.
 
 If `textual-output-port` is not supplied, it defaults to the current
 output port. This procedure is otherwise equivalent to `put-datum`, with
-the arguments reversed. See Section [12.5](examples.html#g176) for an
+the arguments reversed. See [Section 12.5] for an
 implementation of `put-datum`, `write`, and `display`.
 
 **procedure**: `(display obj)` \
@@ -1339,7 +1339,7 @@ the two-element list `("a b" c)` both print as `(a b c)`. Because of
 this, `display` should not be used to print objects that are intended to
 be read with `read`. `display` is useful primarily for printing
 messages, with `obj` most often being a string. See
-Section [12.5](examples.html#g176) for an implementation of `put-datum`,
+[Section 12.5] for an implementation of `put-datum`,
 `write`, and `display`.
 
 **procedure**: `(write-char char)` \

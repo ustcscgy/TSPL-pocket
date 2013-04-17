@@ -11,7 +11,7 @@ programs.
 
 ### Section 3.1. Syntactic Extension
 
-As we saw in Section [2.5](start.html#g21), the `let` syntactic form is
+As we saw in [Section 2.5], the `let` syntactic form is
 merely a *syntactic extension* defined in terms of a `lambda` expression
 and a procedure application, both core syntactic forms. At this point,
 you might be wondering which syntactic forms are core forms and which
@@ -79,11 +79,11 @@ expressions. In order to qualify as a procedure application, the first
 \<expression\> must not be one of these keywords, unless the keyword has
 been redefined or locally bound.
 
-The "defun" syntax for `define` given in Section [2.6](start.html#g25)
+The "defun" syntax for `define` given in [Section 2.6]
 is not included in the core, since definitions in that form are
 straightforwardly translated into the simpler `define` syntax.
 Similarly, the core syntax for `if` does not permit the `alternative` to
-be omitted, as did one example in Section [2.9](start.html#g40). An `if`
+be omitted, as did one example in [Section 2.9]. An `if`
 expression lacking an `alternative` can be translated into the core
 syntax for `if` merely by replacing the missing subexpression with an
 arbitrary constant, such as `#f`.
@@ -294,7 +294,7 @@ Define `let*` with `define-syntax`.
 
 #### Exercise 3.1.4
 
-As we saw in Section [2.9](start.html#g40), it is legal to omit the
+As we saw in [Section 2.9], it is legal to omit the
 third, or *alternative*, subexpression of an `if` expression. Doing so,
 however, often leads to confusion. Scheme provides two syntactic forms,
 `when` and `unless`, that may be used in place of such "one-armed" `if`
@@ -320,7 +320,7 @@ define `unless` in terms of `when`.
 
 ### Section 3.2. More Recursion
 
-In Section [2.8](start.html#g32), we saw how to define recursive
+In [Section 2.8], we saw how to define recursive
 procedures using top-level definitions. Before that, we saw how to
 create local bindings for procedures using `let`. It is natural to
 wonder whether a `let`-bound procedure can be recursive. The answer is
@@ -467,7 +467,7 @@ Alternatively, it can be rewritten as
 provided that the variable `name` does not appear free within
 `expr ...`.
 
-As we discussed in Section [2.8](start.html#g32), some recursion is
+As we discussed in [Section 2.8], some recursion is
 essentially iteration and executes as such. When a procedure call is in
 tail position (see below) with respect to a `lambda` expression, it is
 considered to be a *tail call*, and Scheme systems must treat it
@@ -675,7 +675,7 @@ of indentation.
 #### Exercise 3.2.1
 
 Which of the recursive procedures defined in
-Section [3.2](further.html#g55) are tail-recursive, and which are not?
+[Section 3.2] are tail-recursive, and which are not?
 
 #### Exercise 3.2.2
 
@@ -701,19 +701,19 @@ not, why not? If so, do it.
 
 Rewrite both definitions of `fibonacci` given in this section to count
 the number of recursive calls to `fib`, using a counter similar to the
-one used in the `cons-count` example of Section [2.9](start.html#g40).
+one used in the `cons-count` example of [Section 2.9].
 Count the number of recursive calls made in each case for several input
 values. What do you notice?
 
 #### Exercise 3.2.5
 
-Augment the definition of `let` given in Section [3.1](further.html#g50)
+Augment the definition of `let` given in [Section 3.1]
 to handle named `let` as well as unnamed `let`, using two rules.
 
 #### Exercise 3.2.6
 
 The following definition of `or` is simpler than the one given in
-Section [3.1](further.html#g50).
+[Section 3.1].
 
 `(define-syntax or ; incorrect!`<br>
 `  (syntax-rules ()`<br>
@@ -916,7 +916,7 @@ sequence of lines containing `"hey!"`.
 `         hey!`<br>
 `         `
 
-See Section [12.11](examples.html#g208) for an implementation of
+See [Section 12.11] for an implementation of
 *engines*, which support preemptive multitasking, with `call/cc`.
 
 #### Exercise 3.3.1
@@ -943,7 +943,7 @@ process terminates.
 Each time `lwp` is called, the list of processes is copied because `lwp`
 uses `append` to add its argument to the end of the process list. Modify
 the original `lwp` code to use the queue data type developed in
-Section [2.9](start.html#g40) to avoid this problem.
+[Section 2.9] to avoid this problem.
 
 #### Exercise 3.3.5
 
@@ -1014,7 +1014,7 @@ arguments.
 `(car&cdr '(a b c a d) memv) `$\Rightarrow$` (a d)`
 
 (This can be done with multiple values as well; see
-Section [5.8](control.html#g104).) CPS also allows a procedure to take
+[Section 5.8].) CPS also allows a procedure to take
 separate "success" and "failure" continuations, which may accept
 different numbers of arguments. An example is `integer-divide` below,
 which passes the quotient and remainder of its first two arguments to
@@ -1038,8 +1038,8 @@ the extra communication necessary to separate successful execution of a
 procedure from unsuccessful execution. Furthermore, it is possible to
 have multiple success or failure continuations for different flavors of
 success or failure, each possibly taking different numbers and types of
-arguments. See Sections [12.10](examples.html#g204)
-and [12.11](examples.html#g208) for extended examples that employ
+arguments. See Sections [12.10](#section-12.10.-a-unification-algorithm)
+and [12.11](#section-12.11.-multitasking-with-engines) for extended examples that employ
 continuation-passing style.
 
 At this point you might be wondering about the relationship between CPS
@@ -1067,7 +1067,7 @@ CPS before looking at the version below.
 #### Exercise 3.4.1
 
 Rewrite the `reciprocal` example first given in
-Section [2.1](start.html#g5) to accept both success and failure
+[Section 2.1] to accept both success and failure
 continuations, like `integer-divide` above.
 
 #### Exercise 3.4.2
@@ -1097,7 +1097,7 @@ page [46](start.html#defn:map1).]
 
 ### Section 3.5. Internal Definitions
 
-In Section [2.6](start.html#g25), we discussed top-level definitions.
+In [Section 2.6], we discussed top-level definitions.
 Definitions may also appear at the front of a `lambda`, `let`, or
 `letrec` body, in which case the bindings they create are local to the
 body.
@@ -1110,7 +1110,7 @@ body.
 
 Procedures bound by internal definitions can be mutually recursive, as
 with `letrec`. For example, we can rewrite the `even?` and `odd?`
-example from Section [3.2](further.html#g55) using internal definitions
+example from [Section 3.2] using internal definitions
 as follows.
 
 `(let ()`<br>
@@ -1418,7 +1418,7 @@ procedure to do the actual work.
 
 #### Exercise 3.6.3
 
-Now read about output operations in Section [7.8](io.html#g129) and
+Now read about output operations in [Section 7.8] and
 define a new export, `histogram`, as a procedure that takes a
 `textual output port` and a distribution, such as might be produced by
 `distribution`, and prints a histogram in the style illustrated by the

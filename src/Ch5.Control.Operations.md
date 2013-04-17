@@ -353,7 +353,7 @@ See page [306](syntax.html#defn:case) for a syntax definition of `case`.
 
 This form of `let`, called `named` `let`, is a general-purpose iteration
 and recursion construct. It is similar to the more common form of `let`
-(see Section [4.4](binding.html#g92)) in the binding of the variables
+(see [Section 4.4]) in the binding of the variables
 `var ...` to the values of `expr ...` within the body `body1 body2 ...`,
 which is processed and evaluated like a `lambda` body. In addition, the
 variable `name` is bound within the body to a procedure that may be
@@ -438,7 +438,7 @@ See page [313](syntax.html#defn:do) for a syntax definition of `do`.
 
 The definitions of `factorial` and `fibonacci` below are straightforward
 translations of the tail-recursive named-`let` versions given in
-Section [3.2](further.html#g55).
+[Section 3.2].
 
 `(define factorial`<br>
 `  (lambda (n)`<br>
@@ -765,8 +765,8 @@ nonlocal exit from a loop.
 `(member 'd '(a b c)) `$\Rightarrow$` #f`<br>
 `(member 'b '(a b c)) `$\Rightarrow$` (b c)`
 
-Additional examples are given in Sections [3.3](further.html#g63)
-and [12.11](examples.html#g208).
+Additional examples are given in Sections [3.3](#section-3.3.-continuations)
+and [12.11](#section-12.11.-multitasking-with-engines).
 
 The current continuation is typically represented internally as a stack
 of procedure activation records, and obtaining the continuation involves
@@ -1253,7 +1253,7 @@ expression in the interest of readability.
 
 If the `consumer` is also a `lambda` expression, the multiple-value
 variants of `let` and `let*` described in
-Section [4.5](binding.html#g93) are usually even more convenient.
+[Section 4.5] are usually even more convenient.
 
 `(let-values ([(odds evens) (split '(1 2 3 4))])`<br>
 `  evens) `$\Rightarrow$` (2 4) `<br>

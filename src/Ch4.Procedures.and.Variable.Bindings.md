@@ -261,7 +261,7 @@ from `lambda`.
 `     ((lambda (x ...) b1 b2 ...) e ...)]))`
 
 Another form of `let`, *named* `let`, is described in
-Section [5.4](control.html#g100), and a definition of the full `let` can
+[Section 5.4], and a definition of the full `let` can
 be found on page [312](syntax.html#defn:let).
 
 **syntax**: `(let* ((var expr) ...) body1 body2 ...)` \

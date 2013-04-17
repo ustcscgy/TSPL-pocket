@@ -1125,7 +1125,7 @@ place of `eq?`.
 `  (set-cdr! (assv 3 alist) 'c)`<br>
 `  alist) `$\Rightarrow$` ((2 . a) (3 . c))`
 
-The interpreter given in Section [12.7](examples.html#g187) represents
+The interpreter given in [Section 12.7] represents
 environments as association lists and uses `assq` for both variable
 lookup and assignment.
 
@@ -1175,7 +1175,7 @@ Scheme numbers may be classified as integers, rational numbers, real
 numbers, or complex numbers. This classification is hierarchical, in
 that all integers are rational, all rational numbers are real, and all
 real numbers are complex. The predicates `integer?`, `rational?`,
-`real?`, and `complex?` described in Section [6.2](objects.html#g108)
+`real?`, and `complex?` described in [Section 6.2]
 are used to determine into which of these classes a number falls.
 
 A Scheme number may also be classified as *exact* or *inexact*,
@@ -4424,7 +4424,7 @@ of programs, allowing fast comparison of identifiers. This property also
 makes symbols useful for a variety of other purposes. For example,
 symbols might be used as messages passed between procedures, labels for
 list-structured records, or names for objects stored in an association
-list (see `assq` in Section [6.3](objects.html#g109)).
+list (see `assq` in [Section 6.3]).
 
 Symbols are written without double quotes or other bracketing
 characters. Parentheses, double quotes, spaces, and most other

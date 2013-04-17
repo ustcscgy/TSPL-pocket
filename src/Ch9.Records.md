@@ -365,7 +365,7 @@ sealed.
 declares that the record type is *opaque*. Instances of an opaque record
 type are not considered records by the `record?` predicate or, more
 importantly, the rtd-extraction procedure `record-rtd`, which are both
-described in Section [9.3](records.html#g141). Thus, it is not possible
+described in [Section 9.3]. Thus, it is not possible
 for code that does not have access to the `record-name`, accessors, or
 mutators to access or modify any of the fields of an opaque record type.
 A record type is also opaque if its parent is opaque. If no `opaque`
@@ -458,7 +458,7 @@ generate constructors, type predicates, field accessors, and field
 mutators dynamically. The following code demonstrates how the procedural
 interface might be used to create a `point` record type and associated
 definitions similar to those of the second `point` record definition in
-Section [9.1](records.html#g139), with a mutable `x` field and an
+[Section 9.1], with a mutable `x` field and an
 immutable `y` field.
 
 `(define point-rtd (make-record-type-descriptor 'point #f #f #f #f`<br>
@@ -752,7 +752,7 @@ the `record-rtd` procedure described below.
 
 The argument must be an instance of a non-opaque record type. In
 combination with some of the other procedures described in this section
-and Section [9.2](records.html#g140), `record-rtd` allows the inspection
+and [Section 9.2], `record-rtd` allows the inspection
 or mutation of record instances, even if the type of the instance is
 unknown to the inspector. This capability is illustrated by the
 procedure `print-fields` below, which accepts a record argument and
