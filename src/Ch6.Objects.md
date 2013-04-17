@@ -731,7 +731,7 @@ list.
 `  x) `$\Rightarrow$` (a . 1)`
 
 **procedure**: `(caar pair)` \
- **procedure**: `(cadr pair)` ![\<graphic\>](math/tspl/3.gif) \
+ **procedure**: `(cadr pair)` $\vdots$ \
  **procedure**: `(cddddr pair)` \
  **returns:**the caar, cadr, ..., or cddddr of `pair` \
  **libraries:**`(rnrs base)`, `(rnrs)`
@@ -1617,8 +1617,8 @@ If `real` is an infinity or NaN, `truncate` returns `real`.
 
 **procedure**: `(floor real)` \
  **returns:**the integer closest to `real` toward
-![\<graphic\>](math/tspl/11.gif) \
- **libraries:**`(rnrs base)`, `(rnrs)`
+$-\infty$ \
+**libraries:**`(rnrs base)`, `(rnrs)`
 
 If `real` is an infinity or NaN, `floor` returns `real`.
 
@@ -1630,8 +1630,8 @@ If `real` is an infinity or NaN, `floor` returns `real`.
 
 **procedure**: `(ceiling real)` \
  **returns:**the integer closest to `real` toward
-![\<graphic\>](math/tspl/12.gif) \
- **libraries:**`(rnrs base)`, `(rnrs)`
+$+\infty$ \
+**libraries:**`(rnrs base)`, `(rnrs)`
 
 If `real` is an infinity or NaN, `ceiling` returns `real`.
 
@@ -1711,7 +1711,7 @@ called with no arguments, `gcd` returns 0.
 
 The result is always nonnegative, i.e., common multiples of -1 are
 ignored. Although `lcm` should probably return
-![\<graphic\>](math/tspl/13.gif) when called with no arguments, it is
+$\infty$ when called with no arguments, it is
 defined to return 1. If one or more of the arguments is 0, `lcm` returns
 0.
 
@@ -1861,8 +1861,8 @@ component `real2` \
  **returns:**the angle part of the polar representation of `num` \
  **libraries:**`(rnrs base)`, `(rnrs)`
 
-The range of the result is ![\<graphic\>](math/tspl/14.gif) (exclusive)
-to ![\<graphic\>](math/tspl/15.gif) (inclusive).
+The range of the result is $-\pi$ (exclusive)
+to $+\pi$ (inclusive).
 
 `(angle 7.3@1.5708) `$\Rightarrow$` 1.5708`<br>
 `(angle 5.2) `$\Rightarrow$` 0.0`
@@ -2943,10 +2943,10 @@ These are flonum-specific versions of the generic `div0`, `mod0`, and
  **returns:**the integer closest to `fl` toward zero \
  **procedure**: `(flfloor fl)` \
  **returns:**the integer closest to `fl` toward
-![\<graphic\>](math/tspl/11.gif) \
+$-\infty$ \
  **procedure**: `(flceiling fl)` \
  **returns:**the integer closest to `fl` toward
-![\<graphic\>](math/tspl/12.gif) \
+$+\infty$ \
  **libraries:**`(rnrs arithmetic flonums)`, `(rnrs)`
 
 If `fl` is an integer, NaN, or infinity, each of these procedures
@@ -3260,7 +3260,7 @@ most characters, `(char-foldcase char)` is equivalent to
  **libraries:**`(rnrs base)`, `(rnrs)`
 
 `n` must be an exact integer and a valid Unicode scalar value, i.e.,
-![\<graphic\>](math/tspl/23.gif) or ![\<graphic\>](math/tspl/24.gif).
+0 $\leq$ n $\leq$ #xD7FF or #xE000 $\leq$ n $\leq$ 10FFFF.
 
 `(integer->char 48) `$\Rightarrow$` #\0`<br>
 `(integer->char #x3BB) `$\Rightarrow$` #\`

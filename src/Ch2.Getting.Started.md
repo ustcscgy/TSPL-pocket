@@ -502,7 +502,7 @@ following.
 -   Find the value of `procedure`.
 -   Find the value of `arg1`.
 
-    ![\<graphic\>](math/tspl/3.gif)
+    $\vdots$
 
 -   Find the value of `argn`.
 -   Apply the value of `procedure` to the values of `arg1 ... argn`.

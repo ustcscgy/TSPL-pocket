@@ -42,7 +42,9 @@ remove the broken links and use 'implicit header references'.
 
 ### Math stuff
 
-Use latex to replace `math/tspl/*.gif`. This is not difficult.
+Use latex to replace `math/tspl/*.gif`. This is not difficult. But it
+seems that there is no epub reader support full mathml or a simple
+`$\sqrt{n}$`.
 
 ### Code stuff
 
