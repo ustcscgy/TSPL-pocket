@@ -2222,7 +2222,7 @@ and whose cdr is the list itself.
 
 What happens when you enter the above expression during an interactive
 Scheme session? What will the implementation of `length` on
-page [42](start.html#defn:simplelength) do when given a cyclic list?
+[page 42] do when given a cyclic list?
 What does the built-in `length` primitive do?
 
 #### Exercise 2.9.8

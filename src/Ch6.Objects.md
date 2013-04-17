@@ -776,7 +776,7 @@ is not a list, the result is an improper list.
  **libraries:**`(rnrs base)`, `(rnrs)`
 
 `list?` must return `#f` for all improper lists, including cyclic lists.
-A definition of `list?` is shown on page [67](further.html#defn:list?).
+A definition of `list?` is shown on [page 67].
 
 `(list? '()) `$\Rightarrow$` #t`<br>
 `(list? '(a b c)) `$\Rightarrow$` #t`<br>
@@ -793,7 +793,7 @@ A definition of `list?` is shown on page [67](further.html#defn:list?).
 
 `length` may be defined as follows, using an adaptation of the hare and
 tortoise algorithm used for the definition of `list?` on
-page [67](further.html#defn:list?).
+[page 67].
 
 `(define length`<br>
 `  (lambda (x)`<br>
@@ -1282,7 +1282,7 @@ support multiple representations, the default size has at least as much
 precision as *double*.
 
 A precise grammar for Scheme numbers is given on
-page [459](grammar.html#grammar:numbers).
+[page 459].
 
 Any number can be written in a variety of different ways, but the system
 printer (invoked by `put-datum`, `write`, and `display`) and
@@ -1661,7 +1661,7 @@ returned. If `real` is an infinity or NaN, `round` returns `real`.
  **libraries:**`(rnrs base)`, `(rnrs)`
 
 `abs` is equivalent to `(lambda (x) (if (< x 0) (- x) x))`. `abs` and
-`magnitude` (see page [183](objects.html#page:magnitude)) are identical
+`magnitude` (see [page 183]) are identical
 for real inputs.
 
 `(abs 1) `$\Rightarrow$` 1`<br>
@@ -1871,7 +1871,7 @@ to ![\<graphic\>](math/tspl/15.gif) (inclusive).
  **returns:**the magnitude of `num` \
  **libraries:**`(rnrs base)`, `(rnrs)`
 
-`magnitude` and `abs` (see page [178](objects.html#page:abs)) are
+`magnitude` and `abs` (see [page 178]) are
 identical for real arguments. The magnitude of a complex number *x* +
 *yi* is ![\<graphic\>](math/tspl/16.gif).
 
@@ -3079,7 +3079,7 @@ written character representation of the letter `A`, for example, is
 manner as well, but they can be written more clearly as `#\newline`,
 `#\space`, and `#\tab`. Other character names are supported as well, as
 defined by the grammar for character objects on
-page [457](grammar.html#grammar:characters). Any Unicode character may
+[page 457]. Any Unicode character may
 be written with the syntax `#\xn`, where `n` consists of one or more
 hexadecimal digits and represents a valid Unicode scalar value.
 
@@ -3283,7 +3283,7 @@ characters can be inserted with other two-character sequences, e.g.,
 Unicode character may be inserted with the syntax `#\xn;`, where `n`
 consists of one or more hexadecimal digits and represents a valid
 Unicode scalar value. A grammar defining the precise syntax of strings
-is given on page [458](grammar.html#grammar:strings).
+is given on [page 458].
 
 Strings are indexed by exact nonnegative integers, and the index of the
 first element of any string is 0. The highest valid index for a given
@@ -3495,7 +3495,7 @@ is returned. `substring` may be defined without error checks as follows.
 `          (string-set! s i c)))))`
 
 An alternative definition is given on
-page [276](io.html#backdoor-string-fill).
+[page 276].
 
 **procedure**: `(string-upcase string)` \
  **returns:**the upper-case equivalent of `string` \
@@ -4434,7 +4434,7 @@ Unicode character may appear anywhere within the printed representation
 of a symbol with the syntax `#\xn;`, where `n` consists of one or more
 hexadecimal digits and represents a valid Unicode scalar value.
 
-The grammar for symbols on page [458](grammar.html#grammar:symbols)
+The grammar for symbols on [page 458]
 gives a precise definition of the syntax of symbols.
 
 **procedure**: `(symbol=? symbol1 symbol2)` \
@@ -4503,7 +4503,7 @@ is typically more efficient than `boolean=?`.
 
 Hashtables represent sets of associations between arbitrary Scheme
 values. They serve essentially the same purpose as association lists
-(see page  [165](objects.html#page:assq)) but are typically much faster
+(see [page 165]) but are typically much faster
 when large numbers of associations are involved.
 
 **procedure**: `(make-eq-hashtable)` \

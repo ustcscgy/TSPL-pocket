@@ -191,7 +191,7 @@ outer `let` evaluates to 54 (9 × 6).
 `()`
 
 **[Exercise 2.5.2]. **(page 30)\
- See page 31([Section 2.6. Top-Level Definitions]).
+ See [page 31].
 
 **[Exercise 2.5.3]. **(page 30)\
 
@@ -299,8 +299,8 @@ of the input. For example, `(a . b)` would become `(b . a)` and
 
 **[Exercise 2.8.4]. **(page 47)\
  See the description of `list-ref` on
-page 160([Section 6.3. Lists and Pairs]) and the description of
-`list-tail` on page 160([Section 6.3. Lists and Pairs]).
+[page 160] and the description of
+`list-tail` on [page 160].
 
 **[Exercise 2.8.5]. **(page 47)\
 
@@ -436,7 +436,7 @@ implementations do not detect the cycle and produce either no output or
 an infinite stream of output. When `length` is passed a cyclic list, an
 exception is raised, likely with a message indicating that the list is
 not proper. The definition of `length` on
-page 42([Section 2.8. Simple Recursion]) will, however, simply loop
+[page 42] will, however, simply loop
 indefinitely.
 
 **[Exercise 2.9.8]. **(page 56)\
@@ -469,7 +469,7 @@ indefinitely.
 `  ((lambda (t) (if t t (list x))) (memv x '(a b c)))`
 
 **[Exercise 3.1.3]. **(page 64)\
- See page 97([Section 4.4. Local Binding]).
+ See [page 97].
 
 **[Exercise 3.1.4]. **(page 64)\
 
@@ -539,7 +539,7 @@ input, the number of calls made by the first grows rapidly
 (exponentially, in fact) as the input value increases.
 
 **[Exercise 3.2.5]. **(page 73)\
- See page 312([Section 8.4. Examples]).
+ See [page 312].
 
 **[Exercise 3.2.6]. **(page 73)\
  A call in the last subexpression of an `or` expression in tail position
@@ -588,7 +588,7 @@ The second version replaces `(> i (sqrt n))` with `(> (* i i) n)`, since
 `                (cons i (f n/i i step))`<br>
 `                (f n (+ i step) 2)))))))`
 
-The third version uses `gcd` (see page 179([Section 6.4. Numbers])) to
+The third version uses `gcd` (see [page 179]) to
 avoid most of the divisions, since `gcd` should be faster than `/`.
 
 `(define factor`<br>
@@ -881,4 +881,4 @@ modify the `export` line to add `distribution` (but not
 `      (map cadr distr))))`
 
 modify the `export` line to add `histogram`. The solution uses
-`for-each`, which is described on page 118([Section 5.5. Mapping and Folding])
+`for-each`, which is described on [page 118].

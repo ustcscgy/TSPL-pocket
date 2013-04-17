@@ -74,7 +74,7 @@ bindings created by the definitions are local to the body. If
 definitions are present, the keyword bindings are used and discarded
 while expanding the body, and the body is expanded into a `letrec*`
 expression formed from the variable definitions and the remaining
-expressions, as described on page [292](syntax.html#body-expansion). The
+expressions, as described on [page 292]. The
 remainder of this description of `lambda` assumes that this
 transformation has taken place, if necessary, so that the body is a
 sequence of expressions without definitions.
@@ -262,7 +262,7 @@ from `lambda`.
 
 Another form of `let`, *named* `let`, is described in
 [Section 5.4], and a definition of the full `let` can
-be found on page [312](syntax.html#defn:let).
+be found on [page 312].
 
 **syntax**: `(let* ((var expr) ...) body1 body2 ...)` \
  **returns:**the values of the final body expression \
@@ -351,7 +351,7 @@ expressions assign each variable to the corresponding value. The inner
 `let` is present in case the body contains internal definitions.
 
 A definition of `letrec` that uses this transformation is shown on
-page [310](syntax.html#defn:letrec).
+[page 310].
 
 This transformation does not enforce the restriction that the `expr`
 expressions must not evaluate any references of or assignments to the
@@ -416,7 +416,7 @@ similar but performs the bindings in left-to-right order, as with
 number of values returned by an `expr` is not appropriate for the
 corresponding `formals`, as described in the entry for `lambda` above. A
 definition of `let-values` is given on
-page [310](syntax.html#fullletvalues).
+[page 310].
 
 `(let-values ([(a b) (values 1 2)] [c (values 1 2 3)])`<br>
 `  (list a b c)) `$\Rightarrow$` (1 2 (1 2 3)) `<br>
@@ -457,7 +457,7 @@ the forms of a top-level-program body, and at the front of a `lambda` or
 `case-lambda` body or the body of any form derived from `lambda`, e.g.,
 `let`, or `letrec*`. Any body that begins with a sequence of definitions
 is transformed during macro expansion into a `letrec*` expression as
-described on page [292](syntax.html#body-expansion).
+described on [page 292].
 
 Syntax definitions may appear along with variable definitions wherever
 variable definitions may appear; see [Chapter 8].
@@ -560,7 +560,7 @@ technique called *memoization*, in which a procedure records the values
 associated with old input values so it need not recompute them, to
 implement a fast version of the otherwise exponential doubly recursive
 definition of the Fibonacci function (see
-page [69](further.html#fibonacci)).
+[page 69]).
 
 `(define memoize`<br>
 `  (lambda (proc)`<br>

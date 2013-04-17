@@ -249,7 +249,7 @@ so `3`, `0`, `()`, `"false"`, and `nil` all count as true.
 Details of the syntax for each type of constant data are given in the
 individual sections of [Chapter 6] and in the formal
 syntax of Scheme starting on
-page [455](grammar.html#APPENDIXFORMALSYNTAX).
+[page 455].
 
 Scheme expressions may span several lines, and no explicit terminator is
 required. Since the number of whitespace characters (spaces and

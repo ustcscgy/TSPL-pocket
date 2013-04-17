@@ -93,7 +93,7 @@ definition and may appear only where definitions are valid.
 
 This form of `begin` is primarily used by syntactic extensions that must
 expand into multiple definitions. (See
-page [101](binding.html#multi-define-syntax).)
+[page 101].)
 
 The bodies of many syntactic forms, including `lambda`, `case-lambda`,
 `let`, `let*`, `letrec`, and `letrec*`, as well as the result clauses of
@@ -165,7 +165,7 @@ right until only one subexpression remains or a subexpression returns
 `#f`. If one subexpression remains, it is evaluated and its values are
 returned. If a subexpression returns `#f`, `and` returns `#f` without
 evaluating the remaining subexpressions. A syntax definition of `and`
-appears on page [62](further.html#defn:and).
+appears on [page 62].
 
 `(let ([x 3])`<br>
 `  (and (> x 2) (< x 4))) `$\Rightarrow$` #t `<br>
@@ -185,7 +185,7 @@ value other than `#f`. If one subexpression remains, it is evaluated and
 its values are returned. If a subexpression returns a value other than
 `#f`, `or` returns that value without evaluating the remaining
 subexpressions. A syntax definition of `or` appears on
-page [63](further.html#defn:or).
+[page 63].
 
 `(let ([x 3])`<br>
 `  (or (< x 2) (> x 4))) `$\Rightarrow$` #f `<br>
@@ -230,7 +230,7 @@ returned.
 If none of the tests evaluates to a true value and no `else` clause is
 present, the value or values are unspecified.
 
-See page [305](syntax.html#defn:cond) for a syntax definition of `cond`.
+See [page 305] for a syntax definition of `cond`.
 
 `(let ([x 0])`<br>
 `  (cond`<br>
@@ -337,7 +337,7 @@ returned.
 If none of the clauses contains a matching key and no `else` clause is
 present, the value or values are unspecified.
 
-See page [306](syntax.html#defn:case) for a syntax definition of `case`.
+See [page 306] for a syntax definition of `case`.
 
 `(let ([x 4] [y 5])`<br>
 `  (case (+ x y)`<br>
@@ -373,7 +373,7 @@ can be rewritten with `letrec` as follows.
 
 A syntax definition of `let` that implements this transformation and
 handles unnamed `let` as well can be found on
-page [312](syntax.html#defn:let).
+[page 312].
 
 The procedure `divisors` defined below uses named `let` to compute the
 nontrivial divisors of a nonnegative integer.
@@ -434,7 +434,7 @@ iterands be updated via assignment, `do` requires the loop iterands
 involved in the evaluation of a `do` expression unless they are
 performed explicitly by its subexpressions.
 
-See page [313](syntax.html#defn:do) for a syntax definition of `do`.
+See [page 313] for a syntax definition of `do`.
 
 The definitions of `factorial` and `fibonacci` below are straightforward
 translations of the tail-recursive named-`let` versions given in
@@ -1266,7 +1266,7 @@ done by the implementation to make this happen. The usual expansion of
 `let` into a direct `lambda` call automatically propagates multiple
 values produced by the body of the `let`. Other operators must be coded
 specially to pass along multiple values. The `call-with-port` procedure
-(page [7.6](io.html#g127)), for example, calls its procedure argument,
+([Section 7.6]), for example, calls its procedure argument,
 then closes the port argument before returning the procedure's values,
 so it must save the values temporarily. This is easily accomplished via
 `let-values`, `apply`, and `values`:

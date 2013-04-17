@@ -51,7 +51,7 @@ vector. \<boolean\> is either `#t` or `#f`, \<number\> is any number,
 \<character\> is any character, and \<string\> is any string. We have
 already seen examples of numbers, strings, lists, symbols, and booleans.
 See [Chapter 6] or the formal syntax description
-starting on page [455](grammar.html#APPENDIXFORMALSYNTAX) for more on
+starting on [page 455] for more on
 the object-level syntax of these and other objects.
 
   ------------------------- --------------------------------- ----------------------------------------------------------
@@ -724,7 +724,7 @@ The following definition of `or` is simpler than the one given in
 
 Say why it is not correct. [*Hint*: Think about what would happen if
 this version of `or` were used in the `even?` and `odd?` example given
-on page [66](further.html#defn:even?/odd?) for very large inputs.]
+on [page 66] for very large inputs.]
 
 #### Exercise 3.2.7
 
@@ -1047,7 +1047,7 @@ and the continuations captured via `call/cc`. It turns out that any
 program that uses `call/cc` can be rewritten in CPS without `call/cc`,
 but a total rewrite of the program (sometimes including even
 system-defined primitives) might be necessary. Try to convert the
-`product` example on page [75](further.html#defn:product-call/cc) into
+`product` example on [page 75] into
 CPS before looking at the version below.
 
 `(define product`<br>
@@ -1072,7 +1072,7 @@ continuations, like `integer-divide` above.
 
 #### Exercise 3.4.2
 
-Rewrite the `retry` example from page [75](further.html#retry) to use
+Rewrite the `retry` example from [page 75] to use
 CPS.
 
 #### Exercise 3.4.3
@@ -1093,7 +1093,7 @@ Rewrite the following expression in CPS to avoid using `call/cc`.
 `(reciprocals '(2 1/3 0 5 1/4)) `$\Rightarrow$` "zero found"`
 
 [*Hint*: A single-list version of `map` is defined on
-page [46](start.html#defn:map1).]
+[page 46].]
 
 ### Section 3.5. Internal Definitions
 
@@ -1384,7 +1384,7 @@ and procedures are defined within the library, but none of the others
 are exported. The ones that aren't exported are simply helpers for the
 ones that are. Everything used within the library should be familiar,
 except for the `apply` procedure, which is described on
-page [107](control.html#desc:apply).
+[page 107].
 
 If your Scheme implementation supports `import` in the interactive top
 level, you can test the two exports as shown below.

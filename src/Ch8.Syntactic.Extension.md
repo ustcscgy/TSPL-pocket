@@ -363,7 +363,7 @@ specify what happens when `set!` is used.
 
 A definition of `identifier-syntax` in terms of
 `make-variable-transformer` is shown on
-page [307](syntax.html#defn:identifier-syntax).
+[page 307].
 
 ### Section 8.3. Syntax-Case Transformers
 
@@ -846,7 +846,7 @@ might be defined as follows.
 Two identifiers that are `free-identifier=?` need not be
 `symbolic-identifier=?`: two identifiers that refer to the same binding
 usually have the same name, but the `rename` and `prefix` subforms of
-the library's `import` form (page [345](libraries.html#desc:import)) may
+the library's `import` form ([page 345]) may
 result in two identifiers with different names but the same binding.
 
 **procedure**: `(datum->syntax template-identifier obj)` \
@@ -963,7 +963,7 @@ rewritten to avoid using it, albeit with a loss of clarity. The trick is
 to use a recursively defined intermediate form that generates one
 temporary per expansion step and completes the expansion after enough
 temporaries have been generated. Here is a definition of `let-values`
-(page [99](binding.html#desc:let-values)) that uses this technique to
+([page 99]) that uses this technique to
 support multiple sets of bindings.
 
 `(define-syntax let-values`<br>

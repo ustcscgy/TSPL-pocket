@@ -786,7 +786,7 @@ the copy has been completed.
 `          (put-char op c))))))`
 
 A definition of `call-with-port` is given on
-page [135](control.html#defn:call-with-port).
+[page 135].
 
 **procedure**: `(output-port-buffer-mode port)` \
  **returns:**the symbol representing the buffer mode of `port` \

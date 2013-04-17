@@ -352,7 +352,7 @@ If `uid` is not the uid of an existing record type, or if no
 that the generated constructor uses to construct instances of the record
 type. It must evaluate to a procedure, and this procedure should be an
 appropriate protocol for the record type, as described on
-page [326](records.html#page:protocols).
+[page 326].
 
 **Sealed clause.**  A `sealed` clause of the form `(sealed #t)` declares
 that the record type is *sealed*. This means that it cannot be extended,
@@ -432,16 +432,16 @@ other.
 If `uid` is `#f` or is not the uid of an existing record type, this
 procedure creates a new record type and returns a record-type descriptor
 (rtd) for the new type. The type has the parent type
-(page [325](records.html#page:parent-type)) described by `parent`, if
+([page 325]) described by `parent`, if
 nonfalse; the uid specified by `uid`, if nonfalse; and the fields
 specified by `fields`. It is sealed
-(page [330](records.html#page:sealed)) if `s?` is nonfalse. It is opaque
-(page [330](records.html#page:opaque)) if `opaque` is nonfalse or the
+([page 330]) if `s?` is nonfalse. It is opaque
+([page 330]) if `opaque` is nonfalse or the
 parent (if specified) is opaque. The name of the new record type is
 `name` and the names of the fields are `field-name ...`.
 
 If `uid` is nonfalse and is the uid
-(page [325](records.html#page:record-uid)) of an existing record type,
+([page 325]) of an existing record type,
 the `parent`, `fields`, `s?`, and `o?` arguments must match the
 corresponding characteristics of the existing record type. That is,
 `parent` must be the same (by `eqv?`); the number of fields must be the
@@ -499,7 +499,7 @@ parent.
 
 The `protocol` argument must be a procedure or `#f`. If it is `#f`, a
 default protocol is assumed. Protocols are discussed on
-page [326](records.html#page:protocols).
+[page 326].
 
 See the examples given at the end of this section.
 
