@@ -486,7 +486,7 @@ applied to `((a b) (c d))`.
 #### Exercise 2.2.8
 
 Try to explain how Scheme expressions are evaluated. Does your
-explanation cover the last example in Exercise [2.2.3](start.html#g9)?
+explanation cover the last example in [Exercise 2.2.3]?
 
 ### Section 2.3. Evaluating Scheme Expressions
 
@@ -550,7 +550,7 @@ implementation.
 The second point is that `procedure` is evaluated in the same way as
 `arg1 ... argn`. While `procedure` is often a variable that names a
 particular procedure, this need not be the case.
-Exercise [2.2.3](start.html#g9) had you determine the value of the
+[Exercise 2.2.3] had you determine the value of the
 expression `((car (list + - * /)) 2 3)`. Here, `procedure` is
 `(car (list + - * /))`. The value of `(car (list + - * /))` is the
 addition procedure, just as if `procedure` were simply the variable `+`.
@@ -1782,7 +1782,7 @@ Define both procedures.
 
 #### Exercise 2.8.5
 
-Exercise [2.7.2](start.html#g31) had you use `length` in the definition
+[Exercise 2.7.2] had you use `length` in the definition
 of `shorter`, which returns the shorter of its two list arguments, or
 the first if the two have the same length. Write `shorter` without using
 `length`. [*Hint*: Define a recursive helper, `shorter?`, and use it in
@@ -2192,7 +2192,7 @@ data structures that grow and shrink as needed.
 Look up the basic vector operations in [Section 6.9]
 and reimplement the `stack` object to use a vector instead of a list to
 hold the stack contents. Include the `ref` and `set!` messages of
-Exercise [2.9.3](start.html#g43). Have the new `make-stack` accept a
+[Exercise 2.9.3]. Have the new `make-stack` accept a
 size argument *n* and make the vector length *n*, but do not otherwise
 change the external (abstract) interface.
 

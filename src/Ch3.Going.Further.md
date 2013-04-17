@@ -253,7 +253,7 @@ As with the simpler version of `and` given above, the simpler version of
 `       (if t t (or e2 ...)))]))`
 
 The reason is more subtle, however, and is the subject of
-Exercise [3.2.6](further.html#g61).
+[Exercise 3.2.6].
 
 #### Exercise 3.1.1
 
@@ -364,7 +364,7 @@ the expression above as follows.
 
 Using `letrec`, we can also define mutually recursive procedures, such
 as the procedures `even?` and `odd?` that were the subject of
-Exercise [2.8.6](start.html#g38).
+[Exercise 2.8.6].
 
 `(letrec ([even?`<br>
 `          (lambda (x)`<br>
@@ -402,7 +402,7 @@ where it is referenced.
 We can use `letrec` to hide the definitions of "help" procedures so that
 they do not clutter the top-level namespace. This is demonstrated by the
 definition of `list?` below, which follows the "hare and tortoise"
-algorithm outlined in Exercise [2.9.8](start.html#g48).
+algorithm outlined in [Exercise 2.9.8].
 
 `(define list?`<br>
 `  (lambda (x)`<br>
