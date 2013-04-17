@@ -234,7 +234,7 @@ Implementations may support additional file option symbols. Chez Scheme,
 for example, supports options that control whether the file is or should
 be compressed, whether it is locked for exclusive access, and what
 permissions are given to the file if it is
-created [[9](bibliography.html#g227)].
+created [[9](#references)].
 
 **syntax**: `(buffer-mode symbol)` \
  **returns:**`symbol` \

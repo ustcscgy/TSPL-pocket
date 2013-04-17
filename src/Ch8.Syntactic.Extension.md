@@ -44,10 +44,10 @@ also supports libraries and top-level programs is available at
 [http://www.cs.indiana.edu/syntax-case/](http://www.cs.indiana.edu/syntax-case/).
 A description of the motivations behind and implementation of the system
 can be found in the article "Syntactic Abstraction in
-Scheme" [[12](bibliography.html#g230)]. Additional features that have
+Scheme" [[12](#references)]. Additional features that have
 not yet been standardized, including `modules`, local `import`, and meta
 definitions, are described in the *Chez Scheme User's
-Guide* [[9](bibliography.html#g227)].
+Guide* [[9](#references)].
 
 ### Section 8.1. Keyword Bindings
 
@@ -767,7 +767,7 @@ and `(unsyntax-splicing template ...)` is equivalent to
 `(unsyntax-splicing template) ...`. These forms are primarily useful as
 intermediate forms in the output of the `quasisyntax` expander. They
 support certain useful nested quasiquotation (`quasisyntax`)
-idioms [[3](bibliography.html#g221)], such as `#,@#,@`, which has the
+idioms [[3](#references)], such as `#,@#,@`, which has the
 effect of a doubly indirect splicing when used within a doubly nested
 and doubly evaluated `quasisyntax` expression, as with the nested
 `quasiquote` examples shown in Section [6.1](objects.html#g107).
@@ -1246,7 +1246,7 @@ binding that unconditionally expands `name` to `xname`.
 This problem can be solved for mutually recursive procedures by
 replacing the `let-syntax` forms with the nonstandard `fluid-let-syntax`
 form, which is described in the *Chez Scheme User's
-Guide* [[9](bibliography.html#g227)].
+Guide* [[9](#references)].
 
 Both definitions of `define-integrable` treat the case where an
 identifier appears in the first position of a structured expression

@@ -747,9 +747,9 @@ If `procedure` returns normally when passed the continuation procedure,
 the values returned by `call/cc` are the values returned by `procedure`.
 
 Continuations allow the implementation of nonlocal exits,
-backtracking [[14](bibliography.html#g232),[29](bibliography.html#g247)],
-coroutines [[16](bibliography.html#g234)], and
-multitasking [[10](bibliography.html#g228),[32](bibliography.html#g250)].
+backtracking [[14](#references),[29](#references)],
+coroutines [[16](#references)], and
+multitasking [[10](#references),[32](#references)].
 
 The example below illustrates the use of a continuation to perform a
 nonlocal exit from a loop.
@@ -774,7 +774,7 @@ encapsulating the stack within a procedural object. Since an
 encapsulated stack has indefinite extent, some mechanism must be used to
 preserve the stack contents indefinitely. This can be done with
 surprising ease and efficiency and with no impact on programs that do
-not use continuations [[17](bibliography.html#g235)].
+not use continuations [[17](#references)].
 
 **procedure**: `(dynamic-wind in body out)` \
  **returns:**values resulting from the application of `body` \
@@ -1326,7 +1326,7 @@ context, such as the test part of an `if` expression.
 `            (consumer x))))))`
 
 Multiple values can be implemented more
-efficiently [[2](bibliography.html#g220)], but this code serves to
+efficiently [[2](#references)], but this code serves to
 illustrate the meanings of the operators and may be used to provide
 multiple values in older, nonstandard implementations that do not
 support them.

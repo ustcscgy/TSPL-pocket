@@ -110,7 +110,7 @@ subform are valid only in splicing (list or vector) contexts.
 `(unquote-splicing obj) ...`. These forms are primarily useful as
 intermediate forms in the output of the `quasiquote` expander. They
 support certain useful nested quasiquotation
-idioms [[3](bibliography.html#g221)], such as `,@,@`, which has the
+idioms [[3](#references)], such as `,@,@`, which has the
 effect of a doubly indirect splicing when used within a doubly nested
 and doubly evaluated `quasiquote` expression.
 
@@ -356,14 +356,14 @@ corresponding elements are equal.
 `equal?` is required to terminate even for cyclic arguments and return
 `#t` "if and only if the (possibly infinite) unfoldings of its arguments
 into regular trees are equal as ordered
-trees" [[24](bibliography.html#g242)]. In essence, two values are
+trees" [[24](#references)]. In essence, two values are
 equivalent, in the sense of `equal?`, if the structure of the two
 objects cannot be distinguished by any composition of pair and vector
 accessors along with the `eqv?`, `string=?`, and `bytevector=?`
 procedures for comparing data at the leaves.
 
 Implementing `equal?` efficiently is
-tricky [[1](bibliography.html#g219)], and even with a good
+tricky [[1](#references)], and even with a good
 implementation, it is likely to be more expensive than either `eqv?` or
 `eq?`.
 
@@ -2247,7 +2247,7 @@ greater than or equal to `precision` that makes the expression above
 true.
 
 If `radix` is 10, inexact values of `num` are expressed using the fewest
-number of significant digits possible [[5](bibliography.html#g223)]
+number of significant digits possible [[5](#references)]
 without violating the above restriction.
 
 `(number->string 3.4) `$\Rightarrow$` "3.4"`<br>
@@ -3519,7 +3519,7 @@ Turkic languages.
 `string-titlecase` converts the first cased character of each word in
 `string` to its title-case counterpart and converts each other character
 to its lower-case counterpart. Word breaks are recognized as specified
-in Unicode Standard Annex \#29 [[8](bibliography.html#g226)].
+in Unicode Standard Annex \#29 [[8](#references)].
 
 `(string-upcase "Hi") `$\Rightarrow$` "HI"`<br>
 `(string-downcase "Hi") `$\Rightarrow$` "hi"`<br>

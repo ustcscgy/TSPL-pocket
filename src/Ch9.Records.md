@@ -120,7 +120,7 @@ Even this can be overridden by including a uid (unique id) in the
 `(g (f)) `$\Rightarrow$` #t`
 
 The uid may be any identifier, but programmers are encouraged to select
-uids from the RFC 4122 UUID namespace [[20](bibliography.html#g238)],
+uids from the RFC 4122 UUID namespace [[20](#references)],
 possibly with the record-type name as a prefix.
 
 A record type may be defined as a subtype of an existing "parent" type

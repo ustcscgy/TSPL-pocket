@@ -25,7 +25,7 @@ almost completely hidden from the programmer. They are also portable
 across different implementations because of the efforts of a group of
 Scheme language designers who have published a series of reports, the
 "Revised Reports" on Scheme. The most recent, the "Revised^6^
-Report" [[24](bibliography.html#g242)], emphasizes portability through a
+Report" [[24](#references)], emphasizes portability through a
 set of standard libraries and a standard mechanism for defining new
 portable libraries and top-level programs.
 
@@ -165,12 +165,12 @@ of Lisp. Scheme inherited from Lisp the treatment of values as
 first-class objects, several important data types, including symbols and
 lists, and the representation of programs as objects, among other
 things. Lexical scoping and block structure are features taken from
-Algol 60 [[21](bibliography.html#g239)]. Scheme was the first Lisp
+Algol 60 [[21](#references)]. Scheme was the first Lisp
 dialect to adopt lexical scoping and block structure, first-class
 procedures, the treatment of tail calls as jumps, continuations, and
 lexically scoped syntactic extensions.
 
-Common Lisp [[27](bibliography.html#g245)] and Scheme are both
+Common Lisp [[27](#references)] and Scheme are both
 contemporary Lisp languages, and the development of each has been
 influenced by the other. Like Scheme but unlike earlier Lisp languages,
 Common Lisp adopted lexical scoping and first-class procedures, although

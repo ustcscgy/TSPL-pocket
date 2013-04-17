@@ -152,7 +152,7 @@ The `case-lambda` syntactic form directly supports procedures with
 optional arguments as well as procedures with fixed or indefinite
 numbers of arguments. `case-lambda` is based on the `lambda*` syntactic
 form introduced in the article "A New Approach to Procedures with
-Variable Arity" [[11](bibliography.html#g229)].
+Variable Arity" [[11](#references)].
 
 **syntax**: `(case-lambda clause ...)` \
  **returns:**a procedure \
@@ -357,7 +357,7 @@ This transformation does not enforce the restriction that the `expr`
 expressions must not evaluate any references of or assignments to the
 variables. More elaborate transformations that enforce this restriction
 and actually produce more efficient code are
-possible [[31](bibliography.html#g249)].
+possible [[31](#references)].
 
 **syntax**: `(letrec* ((var expr) ...) body1 body2 ...)` \
  **returns:**the values of the final body expression \

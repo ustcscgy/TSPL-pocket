@@ -26,7 +26,7 @@ unquotation marks `#,` and `#,@`.
 *Whitespace* consists of space, tab, newline, form-feed,
 carriage-return, and next-line characters along with any additional
 characters categorized as Zs, Zl, or Zp by the Unicode
-standard [[30](bibliography.html#g248)]. A newline character is also
+standard [[30](#references)]. A newline character is also
 called a linefeed character. Some whitespace characters or character
 sequences serve as *line endings*, which are recognized as part of the
 syntax of line comments and strings. A line ending is a newline
