@@ -17,22 +17,24 @@ out.
 
 ## TODO
 
-1. Typeset math using latex to replace gifs. (DOING)
-2. Repair broken internal sectional level links.
+1. Repair broken internal sectional level links. (DOING)
+2. Typeset math using latex to replace gifs.
 
 ## Status
 
-Pass 1: clean code blocks | **DONE**
+Pass 1: clean up code blocks | **DONE**
 
-Pass 2: clean math stuff | **DOING**
+Pass 2: clean up internal references | **DOING**
 
-### Done chapter
+Pass 3: clean up math stuff | **TODO**
+
+### Done section
 
 * Table of contents
 * Preface
 * Answers to Selected Exercises
 
-### Doing chapter
+### Doing section
 
 Ch1
 
