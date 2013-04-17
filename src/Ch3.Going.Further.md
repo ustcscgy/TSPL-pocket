@@ -54,24 +54,24 @@ See [Chapter 6] or the formal syntax description
 starting on [page 455] for more on
 the object-level syntax of these and other objects.
 
-  ------------------------- --------------------------------- ----------------------------------------------------------
-  \<program\>               ![\<graphic\>](math/tspl/8.gif)   \<form\>\*
-  \<form\>                  ![\<graphic\>](math/tspl/8.gif)   \<definition\> | \<expression\>
-  \<definition\>            ![\<graphic\>](math/tspl/8.gif)   \<variable definition\> | `(begin` \<definition\>\*`)`
-  \<variable definition\>   ![\<graphic\>](math/tspl/8.gif)   `(define` \<variable\> \<expression\>`)`
-  \<expression\>            ![\<graphic\>](math/tspl/8.gif)   \<constant\>
-                            |                                 \<variable\>
-                            |                                 `(quote` \<datum\>`)`
-                            |                                 `(lambda` \<formals\> \<expression\> \<expression\>\*`)`
-                            |                                 `(if` \<expression\> \<expression\> \<expression\>`)`
-                            |                                 `(set!` \<variable\> \<expression\>`)`
-                            |                                 \<application\>
-  \<constant\>              ![\<graphic\>](math/tspl/8.gif)   \<boolean\> | \<number\> | \<character\> | \<string\>
-  \<formals\>               ![\<graphic\>](math/tspl/8.gif)   \<variable\>
-                            |                                 `(`\<variable\>\*`)`
-                            |                                 `(`\<variable\> \<variable\>\* `.` \<variable\>`)`
-  \<application\>           ![\<graphic\>](math/tspl/8.gif)   `(`\<expression\> \<expression\>\*`)`
-  ------------------------- --------------------------------- ----------------------------------------------------------
+  ------------------------- ------------------- ----------------------------------------------------------
+  \<program\>               $\longrightarrow$   \<form\>\*
+  \<form\>                  $\longrightarrow$   \<definition\> | \<expression\>
+  \<definition\>            $\longrightarrow$   \<variable definition\> | `(begin` \<definition\>\*`)`
+  \<variable definition\>   $\longrightarrow$   `(define` \<variable\> \<expression\>`)`
+  \<expression\>            $\longrightarrow$   \<constant\>
+                            |                   \<variable\>
+                            |                   `(quote` \<datum\>`)`
+                            |                   `(lambda` \<formals\> \<expression\> \<expression\>\*`)`
+                            |                   `(if` \<expression\> \<expression\> \<expression\>`)`
+                            |                   `(set!` \<variable\> \<expression\>`)`
+                            |                   \<application\>
+  \<constant\>              $\longrightarrow$   \<boolean\> | \<number\> | \<character\> | \<string\>
+  \<formals\>               $\longrightarrow$   \<variable\>
+                            |                   `(`\<variable\>\*`)`
+                            |                   `(`\<variable\> \<variable\>\* `.` \<variable\>`)`
+  \<application\>           $\longrightarrow$   `(`\<expression\> \<expression\>\*`)`
+  ------------------------- ------------------- ----------------------------------------------------------
 
 The grammar is ambiguous in that the syntax for procedure applications
 conflicts with the syntaxes for `quote`, `lambda`, `if`, and `set!`

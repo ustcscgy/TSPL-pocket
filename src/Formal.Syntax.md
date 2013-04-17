@@ -92,16 +92,16 @@ were not present.
 **Datums.**  A datum is a boolean, character, symbol, string, number,
 list, vector, or bytevector.
 
-  ----------- --------------------------------- ----------------
-  \<datum\>   ![\<graphic\>](math/tspl/8.gif)   \<boolean\>
-              |                                 \<character\>
-              |                                 \<symbol\>
-              |                                 \<string\>
-              |                                 \<number\>
-              |                                 \<list\>
-              |                                 \<vector\>
-              |                                 \<bytevector\>
-  ----------- --------------------------------- ----------------
+  ----------- ------------------- ----------------
+  \<datum\>   $\longrightarrow$   \<boolean\>
+              |                   \<character\>
+              |                   \<symbol\>
+              |                   \<string\>
+              |                   \<number\>
+              |                   \<list\>
+              |                   \<vector\>
+              |                   \<bytevector\>
+  ----------- ------------------- ----------------
 
 Lists, vectors, and bytevectors are compound datums formed from groups
 of tokens possibly separated by whitespace and comments. The others are
@@ -111,9 +111,9 @@ single tokens.
 count as true, the canonical true value (and only other value to be
 considered a boolean value by the `boolean?` predicate) is written `#t`.
 
-  ------------- --------------------------------- -------------
-  \<boolean\>   ![\<graphic\>](math/tspl/8.gif)   `#t` | `#f`
-  ------------- --------------------------------- -------------
+  ------------- ------------------- -------------
+  \<boolean\>   $\longrightarrow$   `#t` | `#f`
+  ------------- ------------------- -------------
 
 Case is not significant in the syntax of booleans, so these may also be
 written as `#T` and `#F`.
@@ -122,12 +122,12 @@ written as `#T` and `#F`.
 followed by a single character, a character name, or a sequence of
 characters specifying a Unicode scalar value.
 
-  ---------------------- --------------------------------- -------------------------------------------------------------------------------
-  \<character\>          ![\<graphic\>](math/tspl/8.gif)   `#\` \<any character\> | `#\` \<character name\> | `#\x` \<hex scalar value\>
-  \<character name\>     ![\<graphic\>](math/tspl/8.gif)   `alarm` | `backspace` | `delete` | `esc` |`linefeed`
-                         |                                 `newline` | `page` | `return` | `space` | `tab` | `vtab`
-  \<hex scalar value\>   ![\<graphic\>](math/tspl/8.gif)   \<digit 16\>^+^
-  ---------------------- --------------------------------- -------------------------------------------------------------------------------
+  ---------------------- ------------------- -------------------------------------------------------------------------------
+  \<character\>          $\longrightarrow$   `#\` \<any character\> | `#\` \<character name\> | `#\x` \<hex scalar value\>
+  \<character name\>     $\longrightarrow$   `alarm` | `backspace` | `delete` | `esc` |`linefeed`
+                         |                   `newline` | `page` | `return` | `space` | `tab` | `vtab`
+  \<hex scalar value\>   $\longrightarrow$   \<digit 16\>^+^
+  ---------------------- ------------------- -------------------------------------------------------------------------------
 
 The named characters correspond to the Unicode characters alarm (Unicode
 scalar value 7, i.e., U+0007), backspace (U+0008), delete (U+007F), esc
@@ -136,7 +136,7 @@ scalar value 7, i.e., U+0007), backspace (U+0008), delete (U+007F), esc
 (U+000B).
 
 A hex scalar value represents a Unicode scalar value *n*,
-![\<graphic\>](math/tspl/51.gif) or ![\<graphic\>](math/tspl/52.gif).
+0 $\leq$ n $\leq$ D800~16~ or E000~16~ $\leq$ n $\leq$ 10FFF~16~.
 The \<digit 16\> nonterminal is defined under **Numbers** below.
 
 A `#\` prefix followed by a character name is always interpreted as a
@@ -157,13 +157,13 @@ a backslash followed by sequence of characters specifying a Unicode
 scalar value, or a backslash followed by sequence of intraline
 whitespace characters that includes a single line ending.
 
-  -------------------- --------------------------------- ---------------------------------------------------------------------------
-  \<string\>           ![\<graphic\>](math/tspl/8.gif)   `"` \<string character\>\* `"`
-  \<string element\>   ![\<graphic\>](math/tspl/8.gif)   \<any character except `"` or `\`\>
-                       |                                 `\"` | `\\` | `\a` | `\b` | `\f` | `\n` | `\r` | `\t` | `\v`
-                       |                                 `\x` \<hex scalar value\> `;`
-                       |                                 `\` \<intraline whitespace\>\* \<line ending\> \<intraline whitespace\>\*
-  -------------------- --------------------------------- ---------------------------------------------------------------------------
+  -------------------- ------------------- ---------------------------------------------------------------------------
+  \<string\>           $\longrightarrow$   `"` \<string character\>\* `"`
+  \<string element\>   $\longrightarrow$   \<any character except `"` or `\`\>
+                       |                   `\"` | `\\` | `\a` | `\b` | `\f` | `\n` | `\r` | `\t` | `\v`
+                       |                   `\x` \<hex scalar value\> `;`
+                       |                   `\` \<intraline whitespace\>\* \<line ending\> \<intraline whitespace\>\*
+  -------------------- ------------------- ---------------------------------------------------------------------------
 
 A string element consisting of a single character represents that
 character, except that any single character or pair of characters
@@ -192,14 +192,14 @@ digits, certain additional special characters, and a set of additional
 Unicode characters. The peculiar symbols are `+`, `-`, `...`, and any
 sequence of subsequent characters prefixed by `->`.
 
-  ---------------- --------------------------------- ------------------------------------------------------------------------------------------------
-  \<symbol\>       ![\<graphic\>](math/tspl/8.gif)   \<initial\> \<subsequent\>\*
-  \<initial\>      ![\<graphic\>](math/tspl/8.gif)   \<letter\> | `!` | `$` | `%` | `&` | `*` | `/` | `:` | `<` | `=` | `>` | `?` | `~` | `_` | `^`
-                   |                                 \<Unicode Lu, Ll, Lt, Lm, Lo, Mn, Nl, No, Pd, Pc, Po, Sc, Sm, Sk, So, or Co\>
-                   |                                 `\x` \<hex scalar value\> `;`
-  \<subsequent\>   ![\<graphic\>](math/tspl/8.gif)   \<initial\> | \<digit 10\> | `.` | `+` | `-` | `@` | \<Unicode Nd, Mc, or Me\>
-  \<letter\>       ![\<graphic\>](math/tspl/8.gif)   `a` | `b` | ... | `z` | `A` | `B` | ... | `Z`
-  ---------------- --------------------------------- ------------------------------------------------------------------------------------------------
+  ---------------- ------------------- ------------------------------------------------------------------------------------------------
+  \<symbol\>       $\longrightarrow$   \<initial\> \<subsequent\>\*
+  \<initial\>      $\longrightarrow$   \<letter\> | `!` | `$` | `%` | `&` | `*` | `/` | `:` | `<` | `=` | `>` | `?` | `~` | `_` | `^`
+                   |                   \<Unicode Lu, Ll, Lt, Lm, Lo, Mn, Nl, No, Pd, Pc, Po, Sc, Sm, Sk, So, or Co\>
+                   |                   `\x` \<hex scalar value\> `;`
+  \<subsequent\>   $\longrightarrow$   \<initial\> | \<digit 10\> | `.` | `+` | `-` | `@` | \<Unicode Nd, Mc, or Me\>
+  \<letter\>       $\longrightarrow$   `a` | `b` | ... | `z` | `A` | `B` | ... | `Z`
+  ---------------- ------------------- ------------------------------------------------------------------------------------------------
 
 \<Unicode Lu, Ll, Lt, Lm, Lo, Mn, Nl, No, Pd, Pc, Po, Sc, Sm, Sk, So, or
 Co\> represents any character whose Unicode scalar value is greater than
@@ -218,35 +218,35 @@ one for each of the four possible radices. Numbers that contain radix
 points or exponents are constrained to appear in radix 10, so \<decimal
 `r`\> is valid only when `r` is 10.
 
-  --------------------- --------------------------------- ---------------------------------------------------------------------------------------
-  \<number\>            ![\<graphic\>](math/tspl/8.gif)   \<num 2\> | \<num 8\> | \<num 10\> | \<num 16\>
-  \<num `r`\>           ![\<graphic\>](math/tspl/8.gif)   \<prefix `r`\> \<complex `r`\>
-  \<prefix `r`\>        ![\<graphic\>](math/tspl/8.gif)   \<radix `r`\> \<exactness\> | \<exactness\> \<radix `r`\>
-  \<radix 2\>           ![\<graphic\>](math/tspl/8.gif)   `#b`
-  \<radix 8\>           ![\<graphic\>](math/tspl/8.gif)   `#o`
-  \<radix 10\>          ![\<graphic\>](math/tspl/8.gif)   \<empty\> | `#d`
-  \<radix 16\>          ![\<graphic\>](math/tspl/8.gif)   `#x`
-  \<exactness\>         ![\<graphic\>](math/tspl/8.gif)   \<empty\> | `#i` | `#e`
-  \<complex `r`\>       ![\<graphic\>](math/tspl/8.gif)   \<real `r`\> | \<real `r`\> @ \<real `r`\>
-                        |                                 \<real `r`\> `+` \<imag `r`\> | \<real `r`\> `-` \<imag `r`\>
-                        |                                 `+` \<imag `r`\> | `-` \<imag `r`\>
-  \<real `r`\>          ![\<graphic\>](math/tspl/8.gif)   \<sign\> \<ureal `r`\> | `+nan.0` | `-nan.0` | `+inf.0` | `-inf.0`
-  \<imag `r`\>          ![\<graphic\>](math/tspl/8.gif)   `i` | \<ureal `r`\> `i` | `inf.0` `i` | `nan.0` `i`
-  \<ureal `r`\>         ![\<graphic\>](math/tspl/8.gif)   \<uinteger `r`\> | \<uinteger `r`\> `/` \<uinteger `r`\> | \<decimal `r`\> \<suffix\>
-  \<uinteger `r`\>      ![\<graphic\>](math/tspl/8.gif)   \<digit `r`\>^+^
-  \<decimal 10\>        ![\<graphic\>](math/tspl/8.gif)   \<uinteger 10\> \<suffix\>
-                        |                                 `.` \<digit 10\>^+^ \<suffix\>
-                        |                                 \<digit 10\>^+^ `.` \<digit 10\>\* \<suffix\>
-  \<suffix\>            ![\<graphic\>](math/tspl/8.gif)   \<exponent\> \<mantissa width\>
-  \<exponent\>          ![\<graphic\>](math/tspl/8.gif)   \<empty\> | \<exponent marker\> \<sign\> \<digit 10\>^+^
-  \<exponent marker\>   ![\<graphic\>](math/tspl/8.gif)   `e` | `s` | `f` | `d` | `l`
-  \<mantissa width\>    ![\<graphic\>](math/tspl/8.gif)   \<empty\> | `|` \<digit 10\>^+^
-  \<sign\>              ![\<graphic\>](math/tspl/8.gif)   \<empty\> | `+` | `-`
-  \<digit 2\>           ![\<graphic\>](math/tspl/8.gif)   `0` | `1`
-  \<digit 8\>           ![\<graphic\>](math/tspl/8.gif)   `0` | `1` | `2` | `3` | `4` | `5` | `6` | `7`
-  \<digit 10\>          ![\<graphic\>](math/tspl/8.gif)   `0` | `1` | `2` | `3` | `4` | `5` | `6` | `7` | `8` | `9`
-  \<digit 16\>          ![\<graphic\>](math/tspl/8.gif)   \<digit 10\> | `a` | `b` | `c` | `d` | `e` | `f`
-  --------------------- --------------------------------- ---------------------------------------------------------------------------------------
+  --------------------- ------------------- ---------------------------------------------------------------------------------------
+  \<number\>            $\longrightarrow$   \<num 2\> | \<num 8\> | \<num 10\> | \<num 16\>
+  \<num `r`\>           $\longrightarrow$   \<prefix `r`\> \<complex `r`\>
+  \<prefix `r`\>        $\longrightarrow$   \<radix `r`\> \<exactness\> | \<exactness\> \<radix `r`\>
+  \<radix 2\>           $\longrightarrow$   `#b`
+  \<radix 8\>           $\longrightarrow$   `#o`
+  \<radix 10\>          $\longrightarrow$   \<empty\> | `#d`
+  \<radix 16\>          $\longrightarrow$   `#x`
+  \<exactness\>         $\longrightarrow$   \<empty\> | `#i` | `#e`
+  \<complex `r`\>       $\longrightarrow$   \<real `r`\> | \<real `r`\> @ \<real `r`\>
+                        |                   \<real `r`\> `+` \<imag `r`\> | \<real `r`\> `-` \<imag `r`\>
+                        |                   `+` \<imag `r`\> | `-` \<imag `r`\>
+  \<real `r`\>          $\longrightarrow$   \<sign\> \<ureal `r`\> | `+nan.0` | `-nan.0` | `+inf.0` | `-inf.0`
+  \<imag `r`\>          $\longrightarrow$   `i` | \<ureal `r`\> `i` | `inf.0` `i` | `nan.0` `i`
+  \<ureal `r`\>         $\longrightarrow$   \<uinteger `r`\> | \<uinteger `r`\> `/` \<uinteger `r`\> | \<decimal `r`\> \<suffix\>
+  \<uinteger `r`\>      $\longrightarrow$   \<digit `r`\>^+^
+  \<decimal 10\>        $\longrightarrow$   \<uinteger 10\> \<suffix\>
+                        |                   `.` \<digit 10\>^+^ \<suffix\>
+                        |                   \<digit 10\>^+^ `.` \<digit 10\>\* \<suffix\>
+  \<suffix\>            $\longrightarrow$   \<exponent\> \<mantissa width\>
+  \<exponent\>          $\longrightarrow$   \<empty\> | \<exponent marker\> \<sign\> \<digit 10\>^+^
+  \<exponent marker\>   $\longrightarrow$   `e` | `s` | `f` | `d` | `l`
+  \<mantissa width\>    $\longrightarrow$   \<empty\> | `|` \<digit 10\>^+^
+  \<sign\>              $\longrightarrow$   \<empty\> | `+` | `-`
+  \<digit 2\>           $\longrightarrow$   `0` | `1`
+  \<digit 8\>           $\longrightarrow$   `0` | `1` | `2` | `3` | `4` | `5` | `6` | `7`
+  \<digit 10\>          $\longrightarrow$   `0` | `1` | `2` | `3` | `4` | `5` | `6` | `7` | `8` | `9`
+  \<digit 16\>          $\longrightarrow$   \<digit 10\> | `a` | `b` | `c` | `d` | `e` | `f`
+  --------------------- ------------------- ---------------------------------------------------------------------------------------
 
 A number written as above is inexact if it is prefixed by `#i` or if it
 is not prefixed by `#e` and contains a decimal point, nonempty exponent,
@@ -260,13 +260,13 @@ written as a sequence of datums within parentheses or brackets; as a
 nonempty sequence of datums, dotted-pair marker ( . ), and single datum
 enclosed within parentheses or brackets; or as an abbreviation.
 
-  ------------------ --------------------------------- ------------------------------------------------------------------------
-  \<list\>           ![\<graphic\>](math/tspl/8.gif)   `(`\<datum\>\*`)` | `[`\<datum\>\*`]`
-                     |                                 `(`\<datum\>^+^ `.` \<datum\>`)` | `[`\<datum\>^+^ `.` \<datum\>`]`
-                     |                                 \<abbreviation\>
-  \<abbreviation\>   ![\<graphic\>](math/tspl/8.gif)   `'` \<datum\> | `` ` `` \<datum\> | `,` \<datum\> | `,@` \<datum\>
-                     |                                 `#'` \<datum\> | `` #` `` \<datum\> | `#,` \<datum\> | `#,@` \<datum\>
-  ------------------ --------------------------------- ------------------------------------------------------------------------
+  ------------------ ------------------- ------------------------------------------------------------------------
+  \<list\>           $\longrightarrow$   `(`\<datum\>\*`)` | `[`\<datum\>\*`]`
+                     |                   `(`\<datum\>^+^ `.` \<datum\>`)` | `[`\<datum\>^+^ `.` \<datum\>`]`
+                     |                   \<abbreviation\>
+  \<abbreviation\>   $\longrightarrow$   `'` \<datum\> | `` ` `` \<datum\> | `,` \<datum\> | `,@` \<datum\>
+                     |                   `#'` \<datum\> | `` #` `` \<datum\> | `#,` \<datum\> | `#,@` \<datum\>
+  ------------------ ------------------- ------------------------------------------------------------------------
 
 If no dotted-pair marker appears in a list enclosed in parentheses or
 brackets, it is a proper list, and the datums are the elements of the
@@ -296,9 +296,9 @@ and possibly involving other datums, including other vectors. A vector
 is written as an open vector parenthesis followed by a sequence of
 datums and a close parenthesis.
 
-  ------------ --------------------------------- --------------------
-  \<vector\>   ![\<graphic\>](math/tspl/8.gif)   `#(`\<datum\>\*`)`
-  ------------ --------------------------------- --------------------
+  ------------ ------------------- --------------------
+  \<vector\>   $\longrightarrow$   `#(`\<datum\>\*`)`
+  ------------ ------------------- --------------------
 
 **Bytevectors.**  Bytevectors are compound datums formed from groups of
 tokens, but the syntax does not permit them to contain arbitrary nested
@@ -306,7 +306,7 @@ datums. A bytevector is written as an open bytevector parenthesis
 followed by a sequence of octets (unsigned 8-bit exact integers) and a
 close parenthesis.
 
-  ---------------- --------------------------------- ---------------------------------------------------------------------
-  \<bytevector\>   ![\<graphic\>](math/tspl/8.gif)   `#vu8(`\<octet\>\*`)`
-  \<octet\>        ![\<graphic\>](math/tspl/8.gif)   \<any \<number\> representing an exact integer `n`, 0 ≤ *n* ≤ 255\>
-  ---------------- --------------------------------- ---------------------------------------------------------------------
+  ---------------- ------------------- ---------------------------------------------------------------------
+  \<bytevector\>   $\longrightarrow$   `#vu8(`\<octet\>\*`)`
+  \<octet\>        $\longrightarrow$   \<any \<number\> representing an exact integer `n`, 0 ≤ *n* ≤ 255\>
+  ---------------- ------------------- ---------------------------------------------------------------------
