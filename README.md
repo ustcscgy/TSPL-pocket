@@ -12,27 +12,22 @@ word level references are lost, but section level references are remained.
 
 If you don't want to install pandoc which depends on a huge haskell
 compiler(although pandoc is a very excellent software), check
-[this](https://github.com/ustcscgy/TSPL-pocket/blob/epub-binary-alpha1/build/TSPL-alpha1.epub)
+[this](https://github.com/ustcscgy/TSPL-pocket/blob/epub-binary-alpha2/build/TSPL-alpha2.epub)
 out.
 
 ## TODO
 
-1. Repair broken internal sectional level links. (DOING)
-2. Typeset math using latex to replace gifs.
+1. Typeset math using latex to replace gifs. (DOING)
 
 ## Status
 
 Pass 1: clean up code blocks | **DONE**
 
-Pass 2: clean up internal references | **DOING**
+Pass 2: clean up internal references | **DONE**
 
-Pass 3: clean up math stuff | **TODO**
+Pass 3: clean up math stuff | **DOING**
 
 ### Done section
-
-* Table of contents
-* Preface
-* Answers to Selected Exercises
 
 ### Doing section
 
