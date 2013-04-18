@@ -53,7 +53,9 @@ in addition to the other products shown above.
 
 The mutator can be used to change the contents of the `x` field.
 
-`(define p (make-point 36 -17))  (point-x-set! p (- (point-x p) 12))  (point-x p)  24`
+`(define p (make-point 36 -17))`<br>
+`(point-x-set! p (- (point-x p) 12))`<br>
+`(point-x p) `$\Rightarrow$` 24`
 
 A field may be declared immutable explicitly for clarity; the definition
 of `point` below is equivalent to the second definition above.

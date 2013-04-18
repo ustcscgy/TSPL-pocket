@@ -78,7 +78,7 @@ advanced features and concepts. Even readers with prior Scheme
 experience may wish to work through the examples and exercises found
 there.
 
-[Chapter 4] through [11] make
+[Chapter 4] through [11](#chapter-11.-exceptions-and-conditions) make
 up the reference portion of the text. They present each of Scheme's
 primitive procedures and syntactic forms in turn, grouping them into
 short sections of related procedures and forms.
@@ -99,7 +99,8 @@ set of exercises for further work. Each of these programs demonstrates a
 particular set of features, and together they illustrate an appropriate
 style for programming in Scheme.
 
-Following [Chapter 12] are #references to selected exercises, a detailed description of the
+Following [Chapter 12] are bibliographical references, answers to
+selected exercises, a detailed description of the
 formal syntax of Scheme programs and data, a concise summary of Scheme
 syntactic forms and procedures, and the index. The summary of forms and
 procedures is a useful first stop for programmers unsure of the

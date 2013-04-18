@@ -98,7 +98,8 @@ or `unquote-splicing` expressions to be evaluated.
 ``   `(,a . ,b)) `$\Rightarrow$` (1 . 2)``<br>
 `` `(+ ,@(cdr '(* 2 3))) `$\Rightarrow$` (+ 2 3)``<br>
 `` `(a b ,@(reverse '(c d e)) f g) `$\Rightarrow$` (a b e d c f g)``<br>
-`` (let ([a 1] [b 2])    `(,a ,@b)) `$\Rightarrow$` (1 . 2)``<br>
+`` (let ([a 1] [b 2])``<br>
+``   `(,a ,@b)) `$\Rightarrow$` (1 . 2)``<br>
 `` `#(,@(list 1 2 3)) `$\Rightarrow$` #(1 2 3)``<br>
 `` '`,(cons 'a 'b) `$\Rightarrow$` `,(cons 'a 'b)``<br>
 `` `',(cons 'a 'b) `$\Rightarrow$` '(a . b) ``
@@ -2184,7 +2185,8 @@ the bits shifted out of the range inserted at the bottom end of the
 range. `exint1` is treated as if represented in two's complement, even
 if it is not represented that way internally.
 
-`(bitwise-rotate-bit-field #b00011010 0 5 3)  #b00010110  (bitwise-rotate-bit-field #b01101011 2 7 3)  #b01011011`
+`(bitwise-rotate-bit-field #b00011010 0 5 3) `$\Rightarrow$` #b00010110`<br>
+`(bitwise-rotate-bit-field #b01101011 2 7 3) `$\Rightarrow$` #b01011011`
 
 **procedure**: `(bitwise-reverse-bit-field exint1 exint2 exint3)` \
  **returns:**see below \

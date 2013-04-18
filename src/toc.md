@@ -113,4 +113,3 @@ Table of Contents
 -   **[References]**
 -   **[Answers to Selected Exercises]**
 -   **[Formal Syntax]**
--   **[Summary of Forms]**

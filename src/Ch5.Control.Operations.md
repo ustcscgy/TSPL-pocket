@@ -799,7 +799,11 @@ The following example demonstrates the use of `dynamic-wind` to be sure
 that an input port is closed after processing, regardless of whether the
 processing completes normally.
 
-`(let ([p (open-input-file "input-file")])    (dynamic-wind      (lambda () #f)      (lambda () (process p))      (lambda () (close-port p))))`
+`(let ([p (open-input-file "input-file")])`<br>
+`  (dynamic-wind`<br>
+`    (lambda () #f)`<br>
+`    (lambda () (process p))`<br>
+`    (lambda () (close-port p))))`
 
 Common Lisp provides a similar facility (`unwind-protect`) for
 protection from nonlocal exits. This is often sufficient.

@@ -100,7 +100,9 @@ quotes and parentheses.
 
 Next, let's try defining a procedure.
 
-`(define square    (lambda (n)      (* n n)))`
+`(define square`<br>
+`  (lambda (n)`<br>
+`    (* n n)))`
 
 The procedure `square` computes the square *n*^2^ of any number *n*. We
 say more about the expressions that make up this definition later in
@@ -113,7 +115,10 @@ this is true even for simple arithmetic operations such as `*`.
 
 Try using `square`.
 
-`(square 5)  25  (square -200)  40000  (square 0.5)  0.25  (square -1/2)  1/4`
+`(square 5) `$\Rightarrow$` 25`<br>
+`(square -200) `$\Rightarrow$` 40000`<br>
+`(square 0.5) `$\Rightarrow$` 0.25`<br>
+`(square -1/2) `$\Rightarrow$` 1/4`
 
 Even though the next definition is short, you might enter it into a
 file. Let's assume you call the file "reciprocal.ss."
@@ -957,7 +962,8 @@ or `cons`.
 *  e*.
 
 `(lambda (x)`<br>
-`  (let ([z (cons x y)])      (x y z)))`
+`  (let ([z (cons x y)])`<br>
+`    (x y z)))`
 
 *  f*.
 
