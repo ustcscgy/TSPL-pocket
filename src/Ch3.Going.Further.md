@@ -518,7 +518,7 @@ defined to be 1.
 `(factorial 1) `$\Rightarrow$` 1`<br>
 `(factorial 2) `$\Rightarrow$` 2`<br>
 `(factorial 3) `$\Rightarrow$` 6`<br>
-`(factorial 10)  3628800`
+`(factorial 10) `$\Rightarrow$` 3628800`
 
 The second is an iterative version that employs the iterative definition
 *n*! = *n* × (*n* - 1) × (*n* - 2) × ... × 1, using an accumulator, `a`,
@@ -1205,14 +1205,14 @@ redefinition of those bindings. A common way of structuring a module is
 shown below.
 
 `(define export-var #f)`<br>
-`  `<br>
+`  `$\vdots$<br>
 `(let ()`<br>
 `  (define var expr)`<br>
-`    `<br>
+`    `$\vdots$<br>
 `  init-expr`<br>
-`    `<br>
+`    `$\vdots$<br>
 `  (set! export-var export-val)`<br>
-`    `<br>
+`    `$\vdots$<br>
 `)`
 
 The first set of definitions establish top-level bindings for the
