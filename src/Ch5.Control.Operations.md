@@ -664,7 +664,7 @@ and the result returned by the recursion.
 `  (lambda (x a) (+ a (* x x)))`<br>
 `  0 '(1 2 3 4 5)) `$\Rightarrow$` 55 `<br>
 `(fold-right`<br>
-`  (lambda (x y a) (cons* x y a))    (parting is such sweet sorrow`<br>
+`  (lambda (x y a) (cons* x y a))   `$\Rightarrow$` (parting is such sweet sorrow`<br>
 `  '((with apologies))                gotta go see ya tomorrow`<br>
 `  '(parting such sorrow go ya)       (with apologies))`<br>
 `  '(is sweet gotta see tomorrow))`
@@ -874,7 +874,7 @@ are maintained and reflected upon reentry.
 `(fluid-let ([x 1])`<br>
 `  (call/cc (lambda (k) (set! reenter k)))`<br>
 `  (set! x (+ x 1))`<br>
-`  x)  2`<br>
+`  x) `$\Rightarrow$` 2`<br>
 `x `$\Rightarrow$` 0`<br>
 `(reenter '*) `$\Rightarrow$` 3`<br>
 `(reenter '*) `$\Rightarrow$` 4`<br>

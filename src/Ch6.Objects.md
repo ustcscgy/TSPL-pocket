@@ -90,19 +90,19 @@ introducing a new level of quotation and each `unquote` or
 nested within *n* `quasiquote` expressions must be within *n* `unquote`
 or `unquote-splicing` expressions to be evaluated.
 
-`` `(+ 2 3) `$\Rightarrow$` (+ 2 3)``<br>
-`` `(+ 2 ,(* 3 4)) `$\Rightarrow$` (+ 2 12)``<br>
-`` `(a b (,(+ 2 3) c) d) `$\Rightarrow$` (a b (5 c) d)``<br>
-`` `(a b ,(reverse '(c d e)) f g) `$\Rightarrow$` (a b (e d c) f g)``<br>
+`` `(+ 2 3) ``$\Rightarrow$`` (+ 2 3)``<br>
+`` `(+ 2 ,(* 3 4)) ``$\Rightarrow$`` (+ 2 12)``<br>
+`` `(a b (,(+ 2 3) c) d) ``$\Rightarrow$`` (a b (5 c) d)``<br>
+`` `(a b ,(reverse '(c d e)) f g) ``$\Rightarrow$`` (a b (e d c) f g)``<br>
 `` (let ([a 1] [b 2])``<br>
-``   `(,a . ,b)) `$\Rightarrow$` (1 . 2)``<br>
-`` `(+ ,@(cdr '(* 2 3))) `$\Rightarrow$` (+ 2 3)``<br>
-`` `(a b ,@(reverse '(c d e)) f g) `$\Rightarrow$` (a b e d c f g)``<br>
+``   `(,a . ,b)) ``$\Rightarrow$`` (1 . 2)``<br>
+`` `(+ ,@(cdr '(* 2 3))) ``$\Rightarrow$`` (+ 2 3)``<br>
+`` `(a b ,@(reverse '(c d e)) f g) ``$\Rightarrow$`` (a b e d c f g)``<br>
 `` (let ([a 1] [b 2])``<br>
-``   `(,a ,@b)) `$\Rightarrow$` (1 . 2)``<br>
-`` `#(,@(list 1 2 3)) `$\Rightarrow$` #(1 2 3)``<br>
-`` '`,(cons 'a 'b) `$\Rightarrow$` `,(cons 'a 'b)``<br>
-`` `',(cons 'a 'b) `$\Rightarrow$` '(a . b) ``
+``   `(,a ,@b)) ``$\Rightarrow$`` (1 . 2)``<br>
+`` `#(,@(list 1 2 3)) ``$\Rightarrow$`` #(1 2 3)``<br>
+`` '`,(cons 'a 'b) ``$\Rightarrow$`` `,(cons 'a 'b)``<br>
+`` `',(cons 'a 'b) ``$\Rightarrow$`` '(a . b) ``
 
 `unquote` and `unquote-splicing` forms with zero or more than one
 subform are valid only in splicing (list or vector) contexts.
@@ -115,13 +115,13 @@ idioms [[3](#references)], such as `,@,@`, which has the
 effect of a doubly indirect splicing when used within a doubly nested
 and doubly evaluated `quasiquote` expression.
 
-``` `(a (unquote) b) `$\Rightarrow$` (a b) ```<br>
-``` `(a (unquote (+ 3 3)) b) `$\Rightarrow$` (a 6 b) ```<br>
-``` `(a (unquote (+ 3 3) (* 3 3)) b) `$\Rightarrow$` (a 6 9 b) ```<br>
-``` (let ([x '(m n)]) ``(a ,@,@x f)) `$\Rightarrow$` `(a (unquote-splicing m n) f) ```<br>
+``` `(a (unquote) b) ```$\Rightarrow$``` (a b) ```<br>
+``` `(a (unquote (+ 3 3)) b) ```$\Rightarrow$``` (a 6 b) ```<br>
+``` `(a (unquote (+ 3 3) (* 3 3)) b) ```$\Rightarrow$``` (a 6 9 b) ```<br>
+``` (let ([x '(m n)]) ``(a ,@,@x f)) ```$\Rightarrow$``` `(a (unquote-splicing m n) f) ```<br>
 ``` (let ([x '(m n)]) ```<br>
 ```   (eval `(let ([m '(b c)] [n '(d e)]) `(a ,@,@x f)) ```<br>
-```         (environment '(rnrs)))) `$\Rightarrow$` (a b c d e f) ```
+```         (environment '(rnrs)))) ```$\Rightarrow$``` (a b c d e f) ```
 
 `unquote` and `unquote-splicing` are auxiliary keywords for
 `quasiquote`. It is a syntax violation to reference these identifiers
@@ -3131,8 +3131,7 @@ distinct values; `char-ci=?` does not.
 `(char-ci=? #\= #\+) `$\Rightarrow$` #f`<br>
 `(let ([c #\R])`<br>
 `  (list (char<=? #\a c #\z)`<br>
-`        (char-ci<=? #\a c #\z))) `$\Rightarrow$` (#f #t)``<br>
-`
+`        (char-ci<=? #\a c #\z))) `$\Rightarrow$` (#f #t)`
 
 **procedure**: `(char-alphabetic? char)` \
  **returns:**`#t` if `char` is a letter, `#f` otherwise \
