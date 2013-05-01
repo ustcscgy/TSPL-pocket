@@ -69,3 +69,10 @@ reference).
 Multiple return values are not aligned.
 
 ## You are welcome to report bugs!
+
+## Alternative
+
+[Here](http://www.douban.com/group/topic/38649871/) or
+[here](http://ishare.iask.sina.com.cn/f/36701555.html) has a mobi
+version which converted by calibre, with full internal links but the
+chapter orders are wrong.
