@@ -14,7 +14,7 @@ word level references are lost, but section level references are remained.
 
 If you don't want to install pandoc which depends on a huge haskell
 compiler(although pandoc is a very excellent software), check
-[this](https://github.com/ustcscgy/TSPL-pocket/blob/epub-binary-alpha2/build/TSPL-alpha2.epub)
+[this](https://github.com/ustcscgy/TSPL-pocket/raw/binary/build/TSPL.epub)
 out.
 
 ## TODO
