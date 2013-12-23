@@ -1011,7 +1011,7 @@ effort.
 `         (if (= x 0)`<br>
 `             0`<br>
 `             (+ x (sum (- x 1))))))`<br>
-`     '(0 1 2 3 4 5))  (0 1 3 6 10 15)`
+`     '(0 1 2 3 4 5)) `$\Rightarrow$` (0 1 3 6 10 15)`
 
 Using `rec`, we can define the full `let` (both unnamed and named) as
 follows.
@@ -1260,7 +1260,7 @@ make doing so more convenient.
 `    (identifier-syntax`<br>
 `      (let ([t x])`<br>
 `        (set! x (+ t 1)) t)))`<br>
-`  (let ([a x++]) (list a x)))  (0 1)`
+`  (let ([a x++]) (list a x))) `$\Rightarrow$` (0 1)`
 
 The following example uses `identifier-syntax`, `datum->syntax`, and
 local syntax definitions to define a form of *method*, one of the basic
