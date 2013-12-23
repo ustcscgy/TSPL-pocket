@@ -2,8 +2,8 @@ TSPL-pocket
 ===========
 
 Re-typesetting [The Scheme Programming Language](http://scheme.com/tspl4/)
-4th edtion into epub format by markdown(pandoc). You can easily have a
-mobi edition on kindle by kindlegen, or a proper-size pdf(This
+4th edtion into epub format by markdown (pandoc). You can easily have a
+mobi edition on kindle by kindlegen, or a proper-size pdf (This
 requeries a little more work).
 
 I use pandoc_markdown as middle format because it's easy to convert to other
@@ -13,8 +13,8 @@ word level references are lost, but section level references are remained.
 ## BINARY DOWNLOAD
 
 If you don't want to install pandoc which depends on a huge haskell
-compiler(although pandoc is a very excellent software), check
-[this](https://github.com/ustcscgy/TSPL-pocket/raw/binary/build/TSPL.epub)
+compiler (although pandoc is a very excellent software), check
+[this prebuilt epub](https://github.com/ustcscgy/TSPL-pocket/raw/binary/build/TSPL.epub)
 out.
 
 ## TODO
@@ -61,7 +61,7 @@ Those macros are recorded in emacs-macros.el.
 
 ### Internal Links/References
 
-Remain page number, followed by a section reference(instead of word
+Remain page number, followed by a section reference (instead of word
 reference).
 
 ## BUGS
