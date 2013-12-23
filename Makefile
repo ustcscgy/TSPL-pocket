@@ -15,3 +15,5 @@ epub: build
             Links.md
 build:
 	mkdir -p build
+clean:
+	rm -r build
